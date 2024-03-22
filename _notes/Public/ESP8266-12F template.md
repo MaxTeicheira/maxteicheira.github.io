@@ -1,3 +1,9 @@
+---
+title : Esp8266 Template
+feed: show
+date : 22-04-2024
+---
+
 I plan to use the ESP8266 for multiple projects so this will be the information I've learned about a generic ESP8266-12F setup.
 
 # Resources
