@@ -1,5 +1,5 @@
 ---
-title : Esp8266 Template
+title : ESP8266-12F template
 feed: show
 date : 22-04-2024
 ---
