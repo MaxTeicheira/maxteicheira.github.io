@@ -1,7 +1,7 @@
 ---
-title : Test 
+title: Test 
 feed: show
-date : 30-04-2024
+date: 30-04-2024
 permalink: /Test
 ---
 
