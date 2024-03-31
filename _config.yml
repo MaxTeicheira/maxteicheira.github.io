@@ -97,6 +97,8 @@ defaults:
       layout: Post
       content-type: notes
 
+permissions:
+  id-token: write
 
 # Exclude from processing.
 # The following items will not be processed, by default.
