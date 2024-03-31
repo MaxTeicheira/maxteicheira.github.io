@@ -2,6 +2,7 @@
 title : Test 
 feed: show
 date : 30-04-2024
+permalink: /Test
 ---
 
 This is another test
