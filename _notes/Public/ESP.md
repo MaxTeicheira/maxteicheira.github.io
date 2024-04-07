@@ -8,8 +8,8 @@ I plan to use the ESP8266 for multiple projects so this will be the information 
 
 # Resources
 [ESP8266 Tutorial](https://tttapa.github.io/ESP8266/Chap02%20-%20Hardware.html)
-https://rayshobby.net/wordpress/tips-and-tricks-for-using-esp8266/
-https://tttapa.github.io/ESP8266/Chap04%20-%20Microcontroller.html
+[rayshobby.net(]https://rayshobby.net/wordpress/tips-and-tricks-for-using-esp8266/)
+[tttapa.github.io(]https://tttapa.github.io/ESP8266/Chap04%20-%20Microcontroller.html)
 
 # Todo
 - [x] Clear all majority of copper ✅ 2023-11-18
