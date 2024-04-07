@@ -66,4 +66,4 @@ Works, was able to upload a blink program to the esp over USB.
 - Needs more robust IO pins, maybe logic level converters?
 - Want SPI/I2C junction breakouts
 
-![[Pasted image 20240322051337.png]]
+![V0.1 Circuit](/assets/img/Pasted image 20240322051337.png)
