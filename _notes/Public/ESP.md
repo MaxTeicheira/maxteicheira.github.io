@@ -3,7 +3,6 @@
 title : ESP
 feed: show
 date : 22-04-2024
-permalink: /ESP8266
 
 ---
 
