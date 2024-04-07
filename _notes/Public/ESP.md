@@ -31,7 +31,7 @@ I need a version of this to work as it needs to be programmed initially and shou
 ## JTAG
 
 # V0
-![[Pasted image 20240202225235.png]]
+![V0.1 Circuit](/assets/img/Pasted image 20240202225235.png)
 ## Issues
 - MicroUSB soldering issues
 	- The traces and pins hardly overlap making it very difficult to solder
