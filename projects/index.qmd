@@ -1,0 +1,10 @@
+---
+title: "Projects"
+listing:
+  contents:
+    - "*/index.qmd"
+  type: grid
+  categories: true
+  image-placeholder: ../static/logo.png
+  image-height: 200px
+---

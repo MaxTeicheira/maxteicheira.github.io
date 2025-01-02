@@ -1,0 +1,32 @@
+---
+title: "Rong Fu 31"
+description: "The maintainance and upgrades for a RF31"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - Machining
+  - Upgrades
+  - Tools
+image: ../../static/logo.png
+---
+
+## Background
+
+I received this mill from a friend of a friend as they were unable to store it any longer. As far as I could tell it was never used and still had the original thick waxy oil used when shipping these mills from Asia. I had to dissasemble it to move it into my shop so I know that I was the first to even do any basic maintanace, because every part I needed to remove would crack the paint at the joint. 
+
+The RF31 is a round column mill that is typcally called a mill/drill which helps indicate it's general use as a drill press, with a secondard use as a lightweight milling machine. I have learned with my steady upgrades in milling machine sizes that weight is king in nearly every possible way when it comes to rigidity and percision. This is the 3rd milling machine I have owned, the other two being <150lbs each. The RF31 is ~600lbs and the rigidity improvements when compared to the lighter machines is stunning.
+
+
+## Upgrades
+
+### Digital Read Out(DRO)
+![Messy shop](dro.png)
+I was able to find a cheap DRO on AliExpress that seemed to have the correct buttons and screen I wanted. From my research on DRO's they are usually packaged to match your specific mill, instead I just asked the supplier to give me 3 scales with the correct travel distances from the manual. All aspects of the DRO installation are custom and don't somewhat on the fly, so I assumed I could just attach it somehow if I got the correct size.
+
+#### X-Axis Scale
+![](dro-x)
+
+
+#### Y-Axis scales
+
+![](dro-y)

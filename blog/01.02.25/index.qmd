@@ -1,0 +1,14 @@
+---
+title: "Machining Theory"
+description: "How machining changes your thinking"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - Machining
+image: ../../static/logo.png
+---
+
+
+## Machining History
+
+Like any subtractive process you start with a larger piece and remove the parts you don't want to build your design. 

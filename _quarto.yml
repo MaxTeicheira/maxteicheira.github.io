@@ -1,0 +1,28 @@
+project:
+  type: website
+  resources:
+  - keybase.txt
+  - resume.pdf
+  - cv.pdf
+
+website:
+  title: "Max Teicheira"
+  description: "Tools and prototypes"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: "Projects"
+        href: projects
+      - text: "Blog"
+        href: blog
+      - about.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

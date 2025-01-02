@@ -1,0 +1,35 @@
+# RStudio files
+.Rproj.user/
+.Rhistory
+.RData
+
+# Quarto files
+*.qmd
+*.qmd.cache/
+*.qmd.pdf/
+*.qmd.docx/
+*.qmd.html/
+
+# Output files
+_output/
+docs/
+_site/
+
+# Cache directories
+.cache/
+.Rproj.user/
+
+# Project-specific files
+*.log
+*.Rproj
+*.Rproj.user/
+*.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Others
+*.swp # vim swap files
+*.swo # vim swap files
