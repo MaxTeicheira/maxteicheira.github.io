@@ -1,0 +1,310 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "Hello, I like to build stuff. I’m always looking to find ways to learn new skills and find novel ways to apply them.\nI believe that there is no subsitute for experience and that mistakes accelerate learning by forcing us to be critical of our process. Which allows for improvement, small incremental improvement is the goal."
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Notebook",
+    "section": "",
+    "text": "Machining Theory\n\n\n\nMachining\n\n\n\nHow machining changes your thinking\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/Router Table V0/index.html#purpose",
+    "href": "projects/Router Table V0/index.html#purpose",
+    "title": "Router Table - V0",
+    "section": "Purpose",
+    "text": "Purpose\nI wanted to have a router table to have more control over my woodworking router and be able to quickly use it with minimal setup. Router tables are very simple in construction, so there are many different options when designing.\n\nRestrictions\nAt the time, I didn’t have many woodworking tools but I had a CNC and a 3d printer.\n\nMinimal cost\nCNC cut wood only\n3d printed hardware\n\n\n\nDesign goals\n\nAdjustable fence\nDust extraction\nEasy access to router"
+  },
+  {
+    "objectID": "projects/Router Table V0/index.html#design-choices",
+    "href": "projects/Router Table V0/index.html#design-choices",
+    "title": "Router Table - V0",
+    "section": "Design Choices",
+    "text": "Design Choices\n\nAdjustable Fence\n The fence has replaceable front faces that slide open so I can tune the air flow for the dust extraction. These faces are adjusted by releasing the 3d printed knob(orange) on the back of the fence.\n\nTo whole fence can move forwards by adusting another 3d printed knob(blue) that engages a wedge in the 3d printed dovetail slot.\n The dovetail wedge has a bolt pressed into it so the knob can pull the wedge up, locking the wedge into the dovetail to lock the fence. The bolt is not shown here but extends up through the fence to the blue knob.\n\n\nDust extraction\n The vaccum adapter was kept simple, just a taper to match my vaccum hose. The airflow is is tuned by adjusting the width of the gap in the fence. The vaccum adapter also adds to the rigidity of the fence.\n\n\nReplacement router plate mount\n The plate that came with my router didn’t not have apropriate mounting holes and had too large of an opening. I redesigned it to have a wider area that would easily index into the table and could be firmly mounted. Additional airflow holes were added to allow debris to not interfere with the cuts. This part was 3d printed out of ABS, with an option for replaceable zero clearance insert.\n\n\nCNC box joint plywood\nThe box construction is entirely CNC cut and tightly fits together. The joints are fastened together only with screws temporarily(for 1 year)."
+  },
+  {
+    "objectID": "projects/Router Table V0/index.html#problems",
+    "href": "projects/Router Table V0/index.html#problems",
+    "title": "Router Table - V0",
+    "section": "Problems",
+    "text": "Problems\n\nLack of rigidity\nLikely due to the non-glued joints and difficulties with tightening dovetail.\n\n\nLack of flatness\nThe CNC cut joints all protruded past the top surface requiring them to be sanded down, however the veneer is very thin and I often sanded through resulting in even more inconsistencies.\n\n\nToo tall\nThe router table needed to be tall enough to contain the full travel of the router but is also table mounted so is too tall for easy use.\n\n\nDifficult to adjust\nThe fence is difficult to do micro-adjustments, likely due to the stick-slip nature of the ABS dovetail surfaces.\n\n\nNon-square fence\nThe fence would go out of alignment whenever it was moved, likely due to the lack of rigidity in the fence.\n\n\nNo miter slot\nWithout a miter slot I was unable to securely move parts across the router bit, which led to many damaged parts where the bit grabbed the part."
+  },
+  {
+    "objectID": "projects/Router Table V0/index.html#next-version",
+    "href": "projects/Router Table V0/index.html#next-version",
+    "title": "Router Table - V0",
+    "section": "Next Version",
+    "text": "Next Version\nI want to incorporate the router table into my table saw table area. So mounting features for the router table so it can be aligned perfectly flush with adjoining tables will be crucial so to not jam movement across the table surface.\nI think Mattias’ tilting router lift will dictace the whole mount and bottom assembly.\nThe fence needs to be much more rigid, ideally a monolithic part with many methods for micro-adjustments.\nA miter slot would allow for many ways to run the move the parts across the bit, giving me access to many different jig options."
+  },
+  {
+    "objectID": "projects/3d Printed Capsule Packer/index.html",
+    "href": "projects/3d Printed Capsule Packer/index.html",
+    "title": "3d printed Capsule Packer",
+    "section": "",
+    "text": "Capsule pill packer model\n\n\nI have been unable to find capsule packers online, likely due to some illicit uses of them. However, I find pills to be very convient for taking supplements so I designed my own modular model to pack capsules."
+  },
+  {
+    "objectID": "projects/3d Printed Capsule Packer/index.html#background",
+    "href": "projects/3d Printed Capsule Packer/index.html#background",
+    "title": "3d printed Capsule Packer",
+    "section": "",
+    "text": "Capsule pill packer model\n\n\nI have been unable to find capsule packers online, likely due to some illicit uses of them. However, I find pills to be very convient for taking supplements so I designed my own modular model to pack capsules."
+  },
+  {
+    "objectID": "projects/3d Printed Capsule Packer/index.html#usage",
+    "href": "projects/3d Printed Capsule Packer/index.html#usage",
+    "title": "3d printed Capsule Packer",
+    "section": "Usage",
+    "text": "Usage\nThis design allows for the split capsules to be added to the frame. The capsules are level with the upper frame so materials can placed on top and directed into the capsules. After filling and removing the excess material the upper frame can be removed to press the capsules so they are proud of the upper frame surfrace. Then capsules can be capped and removed from the frame.\n\n\n\nSplit capsules added to frame"
+  },
+  {
+    "objectID": "projects/3d Printed Capsule Packer/index.html#problems-with-this-design",
+    "href": "projects/3d Printed Capsule Packer/index.html#problems-with-this-design",
+    "title": "3d printed Capsule Packer",
+    "section": "Problems with this design",
+    "text": "Problems with this design\n\nLimited number of capsules at a time.\nNo integrated area to pressing capsules proud of uppper frame\n\nI have to find a flat area to gently press the capsules out\n\nCapsules must be split and capped individually by hand"
+  },
+  {
+    "objectID": "projects/3d Printed Capsule Packer/index.html#potential-upgrades",
+    "href": "projects/3d Printed Capsule Packer/index.html#potential-upgrades",
+    "title": "3d printed Capsule Packer",
+    "section": "Potential upgrades",
+    "text": "Potential upgrades\n\nWay to semi-automate the aligning of capsules into a grid\nRemove caps all at once with jig\nIntegrate a way of pressing the capsules proud of the upper frame once they are filled\nApply all caps at once with a jig"
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "3d printed Capsule Packer\n\n\n\nTools\n\n\n3d printing\n\n\n\nCapsule packer\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBackground\n\n\n\nWoodworking\n\n\nTools\n\n\n3d printing\n\n\n\n\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nESP8266-12F Breakout Board\n\n\n\nElectronics\n\n\nPCB design\n\n\n3d printing\n\n\nKicad\n\n\n\nBreaking out an ESP8266 for prototyping and usb programming\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRong Fu 31\n\n\n\nMachining\n\n\nUpgrades\n\n\nTools\n\n\n\nThe maintainance and upgrades for a RF31\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRouter Table V0\n\n\n\nCNC\n\n\nWoodworking\n\n\nTools\n\n\n3d printing\n\n\n\nRouter table build using CNC cut plywood and 3d printed parts\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpiral Featherboard\n\n\n\nWoodworking\n\n\nTools\n\n\n3d printing\n\n\n\nSpiral featherboard inspired by the golden spiral\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nToolpost Grinder - Trim Router\n\n\n\nMachining\n\n\nTools\n\n\n3d printing\n\n\n\nToolpost Grinder made from a trim router with a 3d printed bracket to attach a lathe\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTrim Router Jig - Tougue and Groove Jointer\n\n\n\nWoodworking\n\n\nTools\n\n\n3d printing\n\n\n\nA jig for a trim router to make tongue and groove joints for gluing up panels\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/test_project2/test_project.html",
+    "href": "projects/test_project2/test_project.html",
+    "title": "Test Project name 2",
+    "section": "",
+    "text": "Test code"
+  },
+  {
+    "objectID": "projects/test_project2/test_project.html#test-project-heading",
+    "href": "projects/test_project2/test_project.html#test-project-heading",
+    "title": "Test Project name 2",
+    "section": "",
+    "text": "Test code"
+  },
+  {
+    "objectID": "projects/Trim Router Tounge and Groove Jig/index.html",
+    "href": "projects/Trim Router Tounge and Groove Jig/index.html",
+    "title": "Trim Router Jig - Tongue and Groove Jointer",
+    "section": "",
+    "text": "I wanted to experiment with making custom router jigs after seeing a some amazing Japanese woodworking youtube shorts.\nI can’t find the video, but it looks nearly identical to the 3d model above except mine is 3d printed instead of make of hardwood. Mine does use a hardwood runner to guide the joint as I find there is often too much flex and variation in 3d prints."
+  },
+  {
+    "objectID": "projects/Trim Router Tounge and Groove Jig/index.html#background",
+    "href": "projects/Trim Router Tounge and Groove Jig/index.html#background",
+    "title": "Trim Router Jig - Tongue and Groove Jointer",
+    "section": "",
+    "text": "I wanted to experiment with making custom router jigs after seeing a some amazing Japanese woodworking youtube shorts.\nI can’t find the video, but it looks nearly identical to the 3d model above except mine is 3d printed instead of make of hardwood. Mine does use a hardwood runner to guide the joint as I find there is often too much flex and variation in 3d prints."
+  },
+  {
+    "objectID": "projects/Trim Router Tounge and Groove Jig/index.html#usage",
+    "href": "projects/Trim Router Tounge and Groove Jig/index.html#usage",
+    "title": "Trim Router Jig - Tongue and Groove Jointer",
+    "section": "Usage",
+    "text": "Usage\nWhen the jig is attached to the router it must be aligned so the runner is the correct distance from the router bit. I’m using a 1/4” bit so runner and gap are also 1/4” so the tongues and grooves fit perfectly.\n\nAdjustment\nBy loosening the bolts that hold the jig to the router, the gap between the runner and bit can be adjusted. A perfect fit will need to also allow for a thin layer of glue."
+  },
+  {
+    "objectID": "projects/Featherboard/index.html",
+    "href": "projects/Featherboard/index.html",
+    "title": "Spiral Featherboard",
+    "section": "",
+    "text": "Spiral Featherboard\n\n\nThis featherboard is used in woodworking to apply pressure to the workpiece as it goes through the tool(table saw, bandsaw, etc). The design follows the golden spiral which is derived from the Fibonacci sequence, mostly because it looks aesthetic"
+  },
+  {
+    "objectID": "projects/Featherboard/index.html#background",
+    "href": "projects/Featherboard/index.html#background",
+    "title": "Spiral Featherboard",
+    "section": "",
+    "text": "Spiral Featherboard\n\n\nThis featherboard is used in woodworking to apply pressure to the workpiece as it goes through the tool(table saw, bandsaw, etc). The design follows the golden spiral which is derived from the Fibonacci sequence, mostly because it looks aesthetic"
+  },
+  {
+    "objectID": "projects/Featherboard/index.html#usage",
+    "href": "projects/Featherboard/index.html#usage",
+    "title": "Spiral Featherboard",
+    "section": "Usage",
+    "text": "Usage\n\n\n\nPlaceholder of spiral featherboard in use\n\n\nI want to minimize the amount of steps when using my tools, so this spiral design means I only have to adjust the rotation of the spiral to apply the correct pressure to the workpiece."
+  },
+  {
+    "objectID": "projects/Toolpost grinder - Trim Router/index.html",
+    "href": "projects/Toolpost grinder - Trim Router/index.html",
+    "title": "Toolpost Grinder - Trim Router",
+    "section": "",
+    "text": "Toolpost grinders allow for machining of harder materials and can produce a better surface finish for parts. My mini lathe has lack of rigidity due to it’s total size/weight, so a grinding will allow much higher quality surface finishes.\n\nThe 3d printed mount was designed using a 3d model of my mini lathe. The mount positions the spindle of the router to be vertically aligned to the lathe spindle. This will allow to the abrasive wheel to have good contact at the center, so I can grind points on the lathe."
+  },
+  {
+    "objectID": "projects/Toolpost grinder - Trim Router/index.html#background",
+    "href": "projects/Toolpost grinder - Trim Router/index.html#background",
+    "title": "Toolpost Grinder - Trim Router",
+    "section": "",
+    "text": "Toolpost grinders allow for machining of harder materials and can produce a better surface finish for parts. My mini lathe has lack of rigidity due to it’s total size/weight, so a grinding will allow much higher quality surface finishes.\n\nThe 3d printed mount was designed using a 3d model of my mini lathe. The mount positions the spindle of the router to be vertically aligned to the lathe spindle. This will allow to the abrasive wheel to have good contact at the center, so I can grind points on the lathe."
+  },
+  {
+    "objectID": "projects/Toolpost grinder - Trim Router/index.html#usage",
+    "href": "projects/Toolpost grinder - Trim Router/index.html#usage",
+    "title": "Toolpost Grinder - Trim Router",
+    "section": "Usage",
+    "text": "Usage\n\n\n\nPlaceholder Image of grinder in use"
+  },
+  {
+    "objectID": "projects/ESP32 Breakout Board/index.html",
+    "href": "projects/ESP32 Breakout Board/index.html",
+    "title": "ESP8266-12F Breakout Board",
+    "section": "",
+    "text": "I plan to use the ESP8266 for multiple projects so this will be the information I’ve learned about a generic ESP8266-12F setup.\nTechnically I think this board would qualify as a development board, it is essentially what I am using it for. In addition to teach me how to design these kinds of boards."
+  },
+  {
+    "objectID": "projects/ESP32 Breakout Board/index.html#background",
+    "href": "projects/ESP32 Breakout Board/index.html#background",
+    "title": "ESP8266-12F Breakout Board",
+    "section": "",
+    "text": "I plan to use the ESP8266 for multiple projects so this will be the information I’ve learned about a generic ESP8266-12F setup.\nTechnically I think this board would qualify as a development board, it is essentially what I am using it for. In addition to teach me how to design these kinds of boards."
+  },
+  {
+    "objectID": "projects/ESP32 Breakout Board/index.html#resources",
+    "href": "projects/ESP32 Breakout Board/index.html#resources",
+    "title": "ESP8266-12F Breakout Board",
+    "section": "Resources",
+    "text": "Resources\n\nESP8266 Tutorial\ntips-and-tricks-for-using-esp8266\nhttps://tttapa.github.io/ESP8266/Chap04%20-%20Microcontroller.html"
+  },
+  {
+    "objectID": "projects/ESP32 Breakout Board/index.html#plan",
+    "href": "projects/ESP32 Breakout Board/index.html#plan",
+    "title": "ESP8266-12F Breakout Board",
+    "section": "Plan:",
+    "text": "Plan:\nUse linear regulator(AMS1117-3-3v) to drop input voltage(5-12v). Use filter caps (10pF) on input and output ### Power Requirements: - 3.3v - &lt;500mA ### Unknown/ToDo: Find amperage/power reqs"
+  },
+  {
+    "objectID": "projects/ESP32 Breakout Board/index.html#programminguart",
+    "href": "projects/ESP32 Breakout Board/index.html#programminguart",
+    "title": "ESP8266-12F Breakout Board",
+    "section": "Programming/UART",
+    "text": "Programming/UART\nThe ESP8266 comes with a basic firmware that allows for a new firmware to be uploaded over UART. This allows for the USB to be able to upload firmware without a specific program upload option like JTAG."
+  },
+  {
+    "objectID": "projects/ESP32 Breakout Board/index.html#versions",
+    "href": "projects/ESP32 Breakout Board/index.html#versions",
+    "title": "ESP8266-12F Breakout Board",
+    "section": "Versions:",
+    "text": "Versions:\n\nV0\n\n\n\nV0 PCB\n\n\n\nIssues\n\nMicroUSB soldering issues\n\nThe traces and pins hardly overlap making it very difficult to solder\n\nThe solution is add more adjustment to the slots or make the traces extend further into the footprint\n\nBad connection\nMight be weak with repeated use\nMight look for better USB option, USB-C?\n\nThe pinout of the ESP12-F completely wrong\n\nSeveral pins grounded that shouldn’t\nRX and TX in wrong place\nNeed to reroute whole board\n\nButtons and surrounding pins needed modification\n\nSW1 needed ground from SW2\nSW2 needed to cut connection from the resistor to ground\n\nSo that when pressed it pulls to ground\n\n\nNew ideas\n\nAdd status LEDs\n\nTX,RX, Power, +customizable?\n\nRearange the caps to properly reflect the schematic and move away from USB to protect\nMounting holes or standoffs\nAdd JTAG or programming pins\nJST connectors for pinouts?\nAlso add auto programming and reset\nAlso research other features\n\n\n\n\n\nV0.1\nWorks, was able to upload a blink program to the esp over USB. #### Problems - The button is not connected to anything - The leds are not bright, should increase current - Can hardly see LEDs flash on TX/RX - Needs more robust IO pins, maybe logic level converters? - Want SPI/I2C junction breakouts\n\n\n\nV0.1 Schematic"
+  },
+  {
+    "objectID": "projects/ESP32 Breakout Board/index.html#flashing-firmware",
+    "href": "projects/ESP32 Breakout Board/index.html#flashing-firmware",
+    "title": "ESP8266-12F Breakout Board",
+    "section": "Flashing firmware",
+    "text": "Flashing firmware\nCan be done in console using esptool.\npip install esptool\nesptool.py --port /dev/ttyUSB0 --baud 115200 write_flash -fm dout 0x00000 &lt;firmware.bin&gt;\nCan also be done in the Arduino dev environment, which is also an easy way to compile the code to *.bin. Arduino also has a cli tool, arduino-cli that can invoke all the same tools as the GUI."
+  },
+  {
+    "objectID": "projects/Rong Fu 31/index.html",
+    "href": "projects/Rong Fu 31/index.html",
+    "title": "Rong Fu 31",
+    "section": "",
+    "text": "RF31 3d model\n\n\nI received this mill from a friend of a friend as they were unable to store it any longer. As far as I could tell it was never used and still had the original thick waxy oil used when shipping these mills from Asia. I had to dissasemble it to move it into my shop so I know that I was the first to even do any basic maintanace, because every part I needed to remove would crack the paint at the joint.\nThe RF31 is a round column mill that is typcally called a mill/drill which helps indicate it’s general use as a drill press, with a secondard use as a lightweight milling machine. I have learned with my steady upgrades in milling machine sizes that weight is king in nearly every possible way when it comes to rigidity and percision. This is the 3rd milling machine I have owned, the other two being &lt;150lbs each. The RF31 is ~600lbs and the rigidity improvements when compared to the lighter machines is drastic."
+  },
+  {
+    "objectID": "projects/Rong Fu 31/index.html#background",
+    "href": "projects/Rong Fu 31/index.html#background",
+    "title": "Rong Fu 31",
+    "section": "",
+    "text": "RF31 3d model\n\n\nI received this mill from a friend of a friend as they were unable to store it any longer. As far as I could tell it was never used and still had the original thick waxy oil used when shipping these mills from Asia. I had to dissasemble it to move it into my shop so I know that I was the first to even do any basic maintanace, because every part I needed to remove would crack the paint at the joint.\nThe RF31 is a round column mill that is typcally called a mill/drill which helps indicate it’s general use as a drill press, with a secondard use as a lightweight milling machine. I have learned with my steady upgrades in milling machine sizes that weight is king in nearly every possible way when it comes to rigidity and percision. This is the 3rd milling machine I have owned, the other two being &lt;150lbs each. The RF31 is ~600lbs and the rigidity improvements when compared to the lighter machines is drastic."
+  },
+  {
+    "objectID": "projects/Rong Fu 31/index.html#upgrades",
+    "href": "projects/Rong Fu 31/index.html#upgrades",
+    "title": "Rong Fu 31",
+    "section": "Upgrades",
+    "text": "Upgrades\n\nDigital Read Out(DRO)\n I was able to find a cheap DRO on AliExpress that seemed to have the correct buttons and screen I wanted. From my research on DRO’s they are usually packaged to match your specific mill, instead I just asked the supplier to give me 3 scales with the correct travel distances from the manual. All aspects of the DRO installation are custom and don’t somewhat on the fly, so I assumed I could just attach it somehow if I got the correct size.\n\nX-Axis Scale\n\n\n\nY-Axis scales"
+  },
+  {
+    "objectID": "projects/test_project/test_project.html",
+    "href": "projects/test_project/test_project.html",
+    "title": "Test Project name",
+    "section": "",
+    "text": "Test code"
+  },
+  {
+    "objectID": "projects/test_project/test_project.html#test-project-heading",
+    "href": "projects/test_project/test_project.html#test-project-heading",
+    "title": "Test Project name",
+    "section": "",
+    "text": "Test code"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Max Teicheira",
+    "section": "",
+    "text": "I am an electrical engineering student at University of California, Santa Cruz working at the Radiological Insturments Laboratory(RIL). My research for RIL focuses on positon emission tomography(PET) imaging using edge-on cross-strip CZT.\nI will complete my undergraduate degree in electrical engineering in 2025, then start my PhD immediately to continue my research.\nI am also a part-time employee at Slugworks, a makerspace located in Baskin Engineering at UCSC.\nYou can find a list of my projects here. I write on random topics related to tools and making – look through my notebook here."
+  },
+  {
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
+    "title": "Max Teicheira",
+    "section": "",
+    "text": "I am an electrical engineering student at University of California, Santa Cruz working at the Radiological Insturments Laboratory(RIL). My research for RIL focuses on positon emission tomography(PET) imaging using edge-on cross-strip CZT.\nI will complete my undergraduate degree in electrical engineering in 2025, then start my PhD immediately to continue my research.\nI am also a part-time employee at Slugworks, a makerspace located in Baskin Engineering at UCSC.\nYou can find a list of my projects here. I write on random topics related to tools and making – look through my notebook here."
+  },
+  {
+    "objectID": "index.html#key-research-interests",
+    "href": "index.html#key-research-interests",
+    "title": "Max Teicheira",
+    "section": "Key research interests",
+    "text": "Key research interests\n\nDepth of Interaction in edge-on CZT: Charge carrier movement through CZT\nBuilding Modular CZT devices: For use in larger applications such as whole body scanners\nLow cost open source solutions for experiments: CNC automation of experiments, Custom 3d printed tools, Custom collimator designs"
+  },
+  {
+    "objectID": "index.html#selected-papers",
+    "href": "index.html#selected-papers",
+    "title": "Max Teicheira",
+    "section": "Selected papers",
+    "text": "Selected papers\nSee more here."
+  },
+  {
+    "objectID": "index.html#professional-affiliations",
+    "href": "index.html#professional-affiliations",
+    "title": "Max Teicheira",
+    "section": "Professional affiliations",
+    "text": "Professional affiliations"
+  },
+  {
+    "objectID": "index.html#personal-life",
+    "href": "index.html#personal-life",
+    "title": "Max Teicheira",
+    "section": "Personal life",
+    "text": "Personal life"
+  },
+  {
+    "objectID": "index.html#pronunciation-guide",
+    "href": "index.html#pronunciation-guide",
+    "title": "Max Teicheira",
+    "section": "Pronunciation guide",
+    "text": "Pronunciation guide\nTeicheira sounds like tay-share-uh"
+  },
+  {
+    "objectID": "blog/01.02.25/index.html",
+    "href": "blog/01.02.25/index.html",
+    "title": "Machining Theory",
+    "section": "",
+    "text": "Like any subtractive process you start with a larger piece and remove the parts you don’t want to build your design."
+  },
+  {
+    "objectID": "blog/01.02.25/index.html#machining-history",
+    "href": "blog/01.02.25/index.html#machining-history",
+    "title": "Machining Theory",
+    "section": "",
+    "text": "Like any subtractive process you start with a larger piece and remove the parts you don’t want to build your design."
+  }
+]

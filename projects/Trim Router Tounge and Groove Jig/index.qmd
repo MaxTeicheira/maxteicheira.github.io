@@ -1,0 +1,21 @@
+---
+title: "Trim Router Jig - Tougue and Groove Jointer"
+description: "A jig for a trim router to make tougue and groove joints for glueing up panels"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - Woodworking
+  - Tools
+  - 3d printing
+image: 3d_model.png
+---
+
+## Background
+
+![](3d_model.png)
+
+I wanted to experiment with making custom router jigs after seeing a some amazing Japanese woodworking youtube shorts.
+
+I can't find the video, but it looks nearly identical to the 3d model above except mine is 3d printed instead of make of hardwood. Mine does use a hardwood runner to guide the joint as I find there is often too much flex and variation in 3d prints.
+
+
