@@ -84,20 +84,6 @@
     "text": "3d printed Capsule Packer\n\n\n\nTools\n\n\n3d printing\n\n\n\nCapsule packer\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBackground\n\n\n\nWoodworking\n\n\nTools\n\n\n3d printing\n\n\n\n\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nESP8266-12F Breakout Board\n\n\n\nElectronics\n\n\nPCB design\n\n\n3d printing\n\n\nKicad\n\n\n\nBreaking out an ESP8266 for prototyping and usb programming\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRong Fu 31\n\n\n\nMachining\n\n\nUpgrades\n\n\nTools\n\n\n\nThe maintainance and upgrades for a RF31\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRouter Table V0\n\n\n\nCNC\n\n\nWoodworking\n\n\nTools\n\n\n3d printing\n\n\n\nRouter table build using CNC cut plywood and 3d printed parts\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpiral Featherboard\n\n\n\nWoodworking\n\n\nTools\n\n\n3d printing\n\n\n\nSpiral featherboard inspired by the golden spiral\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nToolpost Grinder - Trim Router\n\n\n\nMachining\n\n\nTools\n\n\n3d printing\n\n\n\nToolpost Grinder made from a trim router with a 3d printed bracket to attach a lathe\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTrim Router Jig - Tougue and Groove Jointer\n\n\n\nWoodworking\n\n\nTools\n\n\n3d printing\n\n\n\nA jig for a trim router to make tongue and groove joints for gluing up panels\n\n\n\nMax Teicheira\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "projects/test_project2/test_project.html",
-    "href": "projects/test_project2/test_project.html",
-    "title": "Test Project name 2",
-    "section": "",
-    "text": "Test code"
-  },
-  {
-    "objectID": "projects/test_project2/test_project.html#test-project-heading",
-    "href": "projects/test_project2/test_project.html#test-project-heading",
-    "title": "Test Project name 2",
-    "section": "",
-    "text": "Test code"
-  },
-  {
     "objectID": "projects/Trim Router Tounge and Groove Jig/index.html",
     "href": "projects/Trim Router Tounge and Groove Jig/index.html",
     "title": "Trim Router Jig - Tongue and Groove Jointer",
@@ -229,20 +215,6 @@
     "title": "Rong Fu 31",
     "section": "Upgrades",
     "text": "Upgrades\n\nDigital Read Out(DRO)\n I was able to find a cheap DRO on AliExpress that seemed to have the correct buttons and screen I wanted. From my research on DRO’s they are usually packaged to match your specific mill, instead I just asked the supplier to give me 3 scales with the correct travel distances from the manual. All aspects of the DRO installation are custom and don’t somewhat on the fly, so I assumed I could just attach it somehow if I got the correct size.\n\nX-Axis Scale\n\n\n\nY-Axis scales"
-  },
-  {
-    "objectID": "projects/test_project/test_project.html",
-    "href": "projects/test_project/test_project.html",
-    "title": "Test Project name",
-    "section": "",
-    "text": "Test code"
-  },
-  {
-    "objectID": "projects/test_project/test_project.html#test-project-heading",
-    "href": "projects/test_project/test_project.html#test-project-heading",
-    "title": "Test Project name",
-    "section": "",
-    "text": "Test code"
   },
   {
     "objectID": "index.html",
