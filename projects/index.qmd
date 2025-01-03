@@ -6,5 +6,5 @@ listing:
   type: grid
   categories: true
   image-placeholder: ../static/logo.png
-  image-height: 200px
+  image-height: 220px
 ---
