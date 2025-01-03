@@ -22,5 +22,29 @@
   },
   "projects/Rong Fu 31/index.qmd": {
     "index.html": "971ec36b"
+  },
+  "projects/Router Table/index.qmd": {
+    "index.html": "2eff61ad"
+  },
+  "projects/Router Table V0/index.qmd": {
+    "index.html": "9d48fa2b"
+  },
+  "projects/Trim Router Tounge and Groove Jig/index.qmd": {
+    "index.html": "edb56fc6"
+  },
+  "projects/Toolpost grinder - Trim Router/index.qmd": {
+    "index.html": "3651e388"
+  },
+  "projects/template/index.qmd": {
+    "index.html": "d2dedbb0"
+  },
+  "projects/ESP32 Breakout Board/index.qmd": {
+    "index.html": "5cb9dcc7"
+  },
+  "projects/3d Printed Capsule Packer/index.qmd": {
+    "index.html": "948cd846"
+  },
+  "projects/Featherboard/index.qmd": {
+    "index.html": "b96e6b6b"
   }
 }

@@ -33,3 +33,5 @@ _site/
 # Others
 *.swp # vim swap files
 *.swo # vim swap files
+
+/.quarto/
