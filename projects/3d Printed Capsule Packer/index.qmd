@@ -1,0 +1,32 @@
+---
+title: "3D Printed Capsule Packer"
+description: "A custom 3D-printed tool for consistent capsule packing"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - 3D Printing
+  - Tools
+  - Design
+image: capsule_packer_3d.png
+---
+
+## The Problem
+
+<!-- TODO: Max - what problem does this solve? What were you packing capsules for? (supplements, experimental samples, etc.) What was the manual process like before this tool? -->
+
+## Design
+
+![Capsule packer assembly](capsule_packer_3d.png)
+
+![Split view showing internal geometry](capsule_packer_3d_split.png)
+
+<!-- TODO: Max - describe the design:
+- What CAD tool did you use?
+- What printer and material? (PLA, PETG, resin?)
+- Any interesting design features? (snap fits, alignment features, tolerances for capsule sizing?)
+- How many iterations did it take?
+-->
+
+## Result
+
+<!-- TODO: Max - how well does it work? How many capsules per batch? Consistency improvements vs. doing it by hand? -->

@@ -1,0 +1,31 @@
+---
+title: "Trim Router Tongue and Groove Jig"
+description: "A simple jig for cutting tongue and groove joints with a trim router"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - Woodworking
+  - Tools
+  - Design
+image: 3d_model.png
+---
+
+## The Problem
+
+Tongue and groove joints are one of the most common joints in woodworking -- used for panels, flooring, and box construction. Dedicated tongue and groove router bit sets exist, but they're expensive and limited to specific stock thicknesses. A simple jig with a standard straight bit is more versatile.
+
+## Design
+
+![3D model of the jig](3d_model.png)
+
+<!-- TODO: Max - describe the jig:
+- How does it reference against the workpiece?
+- What range of stock thicknesses does it handle?
+- Is it adjustable or fixed?
+- What material is it made from? (plywood, MDF, 3D printed?)
+- What bit does it use?
+-->
+
+## Result
+
+<!-- TODO: Max - show some example joints if you have photos. How tight are the fits? -->

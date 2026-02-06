@@ -1,0 +1,30 @@
+---
+title: "Featherboard"
+description: "A shop-made featherboard for safe and consistent cuts at the router table and table saw"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - Woodworking
+  - Tools
+  - Safety
+image: featherboard.png
+---
+
+## The Problem
+
+Featherboards hold stock firmly against the fence and table during routing and sawing operations. They prevent kickback and ensure consistent cuts. Commercial featherboards work fine, but making your own lets you size them precisely for your setup.
+
+## Design
+
+![Featherboard](featherboard.png)
+
+<!-- TODO: Max - describe the design:
+- What material? (hardwood, plywood, 3D printed?)
+- How does it clamp to the table? (T-track, clamp, bolt?)
+- Finger spacing and angle?
+- Did you cut the fingers on the table saw, bandsaw, or mill?
+-->
+
+## Result
+
+<!-- TODO: Max - how does it perform? Does it get used regularly? -->

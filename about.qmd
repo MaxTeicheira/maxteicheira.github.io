@@ -2,7 +2,22 @@
 title: "About Me"
 ---
 
-Hello, I like to build stuff. I'm always looking to find ways to learn new skills and find novel ways to apply them. 
+I'm an electrical engineering student and researcher at UC Santa Cruz, where I work at the Radiological Instruments Laboratory on next-generation PET imaging detectors. I'm also a part-time employee at Slugworks, a makerspace in Baskin Engineering.
 
-I believe that there is no subsitute for experience and that mistakes accelerate learning by forcing us to be critical of our process. Which allows for improvement, small incremental improvement is the goal.
+## How I work
 
+I believe the best engineers operate at every level of abstraction. In the same week I might be simulating charge transport in a CZT crystal, designing a PCB to read out detector signals, and machining an aluminum fixture to hold the whole assembly. Being able to move between theory, electronics, and fabrication means I can go from idea to working prototype without waiting on anyone else.
+
+## My shop
+
+I maintain a small home shop with a Rong Fu 31 milling machine, a lathe, a router table, and a collection of 3D printers. Most of my [projects](projects) start here -- I prototype fixtures, tooling, and enclosures before bringing them into the lab.
+
+## Philosophy
+
+There is no substitute for experience. Mistakes accelerate learning by forcing you to be critical of your process. Small, incremental improvement is the goal.
+
+<!-- TODO: Max - add a photo of your shop here if you'd like -->
+
+## Contact
+
+The best way to reach me is through [LinkedIn](https://www.linkedin.com/in/maxteicheira/) or [GitHub](https://github.com/MaxTeicheira).

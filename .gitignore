@@ -3,8 +3,7 @@
 .Rhistory
 .RData
 
-# Quarto files
-*.qmd
+# Quarto cache/output files
 *.qmd.cache/
 *.qmd.pdf/
 *.qmd.docx/

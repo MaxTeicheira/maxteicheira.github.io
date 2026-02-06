@@ -1,0 +1,44 @@
+---
+title: "ESP32 Breakout Board"
+description: "Custom PCB breakout for rapid prototyping with ESP32 modules"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - Electronics
+  - PCB Design
+  - Prototyping
+image: v0.1_3d.png
+---
+
+## The Problem
+
+The ESP32 is a versatile microcontroller for lab automation and IoT projects, but breadboarding with the raw module is tedious -- the pin spacing doesn't fit standard breadboards cleanly, and wiring up the same support circuitry (voltage regulation, USB-serial, reset/boot buttons) every time wastes hours.
+
+I wanted a reusable breakout board that exposes all the pins I regularly use in a clean, labeled layout.
+
+## Design
+
+![V0.1 3D render](v0.1_3d.png)
+
+![Schematic](v0.1_schem.png)
+
+<!-- TODO: Max - fill in the details below based on your actual design -->
+
+<!-- Key design decisions:
+- What ESP32 module variant did you use? (ESP32-WROOM, WROVER, etc.)
+- What interfaces did you break out? (I2C, SPI, UART, ADC, DAC?)
+- What support circuitry did you include? (voltage regulator, USB-serial chip, buttons, LEDs?)
+- What PCB design tool did you use? (KiCad, Eagle, EasyEDA?)
+- Board specs: layer count, dimensions, trace width/spacing?
+- Where did you fabricate it? (JLCPCB, OSH Park, etc.)
+-->
+
+## Previous revision
+
+![V0 board](v0.png)
+
+<!-- TODO: Max - what changed between V0 and V0.1? What problems did V0 have that you fixed? Revision history shows engineering maturity. -->
+
+## Result
+
+<!-- TODO: Max - how does this board get used? Lab work? Personal projects? What would V0.2 change? -->

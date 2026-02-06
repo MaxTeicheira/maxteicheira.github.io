@@ -1,14 +1,29 @@
 ---
 title: "Machining Theory"
-description: "How machining changes your thinking"
+description: "How understanding subtractive processes changes the way you think about design"
 author: "Max Teicheira"
 date: "1/2/2025"
 categories:
   - Machining
-image: ../../static/logo.png
+image: ../../img/logo.png
 ---
 
+## Machining as a way of thinking
 
-## Machining History
+Like any subtractive process, machining starts with a larger piece of material and removes what you don't want. But the real shift isn't in the process -- it's in how you learn to *think*.
 
-Like any subtractive process you start with a larger piece and remove the parts you don't want to build your design. 
+When you design a part knowing you'll machine it yourself, every feature gets evaluated differently:
+
+- **Can I reach this surface with the tools I have?** Internal corners need a radius at least as large as your endmill. A sharp inside corner on a drawing means a different setup or a different process.
+- **How will I hold this part?** Fixturing is half the battle. A beautiful design that can't be clamped is a design that can't be made.
+- **What order do I cut features in?** Removing material changes the part's rigidity. Cut a thin wall too early and it will flex under the next operation.
+
+This kind of thinking bleeds into everything else. When I design a PCB enclosure, I'm already thinking about how the mill will approach each pocket. When I lay out a 3D print, I'm thinking about support structures the same way I think about fixturing.
+
+The machine teaches you to respect material, to plan operations in sequence, and to think three moves ahead. It's the closest thing engineering has to chess.
+
+<!-- TODO: Max - if you want to expand this, consider adding:
+- A specific example from your shop (a part where operation order mattered)
+- Photos of a setup that illustrates fixturing challenges
+- Your thoughts on when to machine vs. print vs. buy
+-->

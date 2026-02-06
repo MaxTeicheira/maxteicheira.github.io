@@ -1,0 +1,50 @@
+---
+title: "Router Table V0"
+description: "A custom-built router table with dust collection and precision fence"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - Woodworking
+  - Tools
+  - Design
+image: front.png
+---
+
+## The Problem
+
+<!-- TODO: Max - why did you build a router table instead of buying one? What specific requirements did you have that commercial options didn't meet? (size, mounting, dust collection, budget?) -->
+
+## Design and Build
+
+::: {layout-ncol=2}
+![Front view](front.png)
+
+![Back view](back.png)
+:::
+
+### Details
+
+::: {layout-ncol=2}
+![Dovetail detail](closeup_dovetail.png)
+
+![Front detail](closeup_front.png)
+:::
+
+::: {layout-ncol=2}
+![Mounting detail](closeup_mount.png)
+
+![Vacuum/dust collection port](closeup_vac.png)
+:::
+
+<!-- TODO: Max - describe the key design decisions:
+- What material is the table surface? (MDF, phenolic, aluminum plate?)
+- How is the fence designed? Adjustable? Split?
+- What router is mounted underneath?
+- How does the dust collection work? (the vacuum port photo is interesting - explain it)
+- Any joinery details? (the dovetail closeup suggests hand-cut or machined dovetails)
+- What are the overall dimensions?
+-->
+
+## Result
+
+<!-- TODO: Max - how does it perform? What have you used it for? What would V1 change? The "V0" name implies you already have ideas for improvement. -->
