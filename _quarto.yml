@@ -21,6 +21,8 @@ website:
         href: projects
       - text: "Blog"
         href: blog
+      - text: "Interactive"
+        href: interactive.qmd
       - about.qmd
   page-footer:
     left: "&copy; 2025 Max Teicheira"
