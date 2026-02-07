@@ -46,5 +46,8 @@
   },
   "projects/Featherboard/index.qmd": {
     "index.html": "b96e6b6b"
+  },
+  "research.qmd": {
+    "research.html": "c6ec0879"
   }
 }

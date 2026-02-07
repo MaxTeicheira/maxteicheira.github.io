@@ -1,8 +1,6 @@
 {
   "listingMap": {
     "projects/index.qmd": [
-      "*/*.qmd",
-      "./*/*.qmd",
       "*/index.qmd"
     ],
     "blog/index.qmd": [

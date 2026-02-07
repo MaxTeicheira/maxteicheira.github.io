@@ -34,3 +34,5 @@ _site/
 *.swo # vim swap files
 
 /.quarto/
+
+**/*.quarto_ipynb
