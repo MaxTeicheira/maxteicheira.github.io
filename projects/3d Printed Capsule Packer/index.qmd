@@ -1,6 +1,6 @@
 ---
 title: "3D Printed Capsule Packer"
-description: "A custom 3D-printed tool for consistent capsule packing"
+description: "A PLA tool for consistently packing salt pills into capsules"
 author: "Max Teicheira"
 date: "1/2/2025"
 categories:
@@ -12,7 +12,7 @@ image: capsule_packer_3d.png
 
 ## The Problem
 
-<!-- TODO: Max - what problem does this solve? What were you packing capsules for? (supplements, experimental samples, etc.) What was the manual process like before this tool? -->
+Packing salt pills into capsules by hand is slow and inconsistent. Each capsule gets a slightly different fill, and the process is tedious enough that doing a large batch becomes impractical. I needed a simple tool to make capsule packing repeatable and fast.
 
 ## Design
 
@@ -20,13 +20,17 @@ image: capsule_packer_3d.png
 
 ![Split view showing internal geometry](capsule_packer_3d_split.png)
 
-<!-- TODO: Max - describe the design:
-- What CAD tool did you use?
-- What printer and material? (PLA, PETG, resin?)
-- Any interesting design features? (snap fits, alignment features, tolerances for capsule sizing?)
-- How many iterations did it take?
+The packer is printed in PLA and designed to hold multiple capsules in alignment while a press mechanism ensures consistent fill. The geometry is sized to match standard capsule dimensions.
+
+This is the third iteration of the design. The first version had tolerance issues -- the capsules fit too loosely to stay aligned. The second revision tightened the pockets but made insertion difficult. V3 found the right balance between a snug fit and easy loading.
+
+<!-- TODO: Max - add any details:
+- What capsule size does it work with?
+- How many capsules per batch?
+- What printer did you use?
+- Any interesting print settings (layer height, infill) that mattered for the tight tolerances?
 -->
 
 ## Result
 
-<!-- TODO: Max - how well does it work? How many capsules per batch? Consistency improvements vs. doing it by hand? -->
+Three iterations to get it right, but the final version packs capsules consistently and quickly. A good example of how 3D printing lets you iterate through designs cheaply -- each revision was a few hours of print time and a few cents of PLA.

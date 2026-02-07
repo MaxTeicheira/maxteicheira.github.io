@@ -1,30 +1,33 @@
 ---
-title: "Featherboard"
-description: "A shop-made featherboard for safe and consistent cuts at the router table and table saw"
+title: "3D Printed Featherboard"
+description: "A PLA featherboard that uses flex to hold stock against the fence"
 author: "Max Teicheira"
 date: "1/2/2025"
 categories:
   - Woodworking
-  - Tools
+  - 3D Printing
   - Safety
 image: featherboard.png
 ---
 
 ## The Problem
 
-Featherboards hold stock firmly against the fence and table during routing and sawing operations. They prevent kickback and ensure consistent cuts. Commercial featherboards work fine, but making your own lets you size them precisely for your setup.
+Featherboards hold stock firmly against the fence and table during routing and sawing operations. They prevent kickback and ensure consistent, safe cuts. Commercial featherboards work fine, but printing one in PLA lets you size it exactly for your setup and replace it when the fingers wear out.
 
 ## Design
 
-![Featherboard](featherboard.png)
+![3D printed featherboard](featherboard.png)
 
-<!-- TODO: Max - describe the design:
-- What material? (hardwood, plywood, 3D printed?)
-- How does it clamp to the table? (T-track, clamp, bolt?)
-- Finger spacing and angle?
-- Did you cut the fingers on the table saw, bandsaw, or mill?
+The featherboard is printed in PLA, which provides just enough flex in the fingers to apply consistent pressure against the workpiece while guiding it along the fence. The angled fingers deflect as stock feeds through, then spring back -- allowing forward movement while resisting kickback.
+
+PLA works well here because it's stiff enough to apply real pressure but has enough give to avoid marring the workpiece. When the fingers eventually fatigue and lose their spring, printing a replacement takes less than an hour.
+
+<!-- TODO: Max - add any details:
+- How does it clamp to the table? (T-track bolt, C-clamp, etc.)
+- What finger angle and spacing did you use?
+- Print orientation -- fingers printed flat or on edge?
 -->
 
 ## Result
 
-<!-- TODO: Max - how does it perform? Does it get used regularly? -->
+A simple, effective shop tool that costs pennies to make and minutes to replace. It sees regular use at the router table and table saw.

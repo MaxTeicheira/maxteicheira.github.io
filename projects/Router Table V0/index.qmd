@@ -1,6 +1,6 @@
 ---
 title: "Router Table V0"
-description: "A custom-built router table with dust collection and precision fence"
+description: "A modular, low-cost router table built for flexibility"
 author: "Max Teicheira"
 date: "1/2/2025"
 categories:
@@ -12,7 +12,9 @@ image: front.png
 
 ## The Problem
 
-<!-- TODO: Max - why did you build a router table instead of buying one? What specific requirements did you have that commercial options didn't meet? (size, mounting, dust collection, budget?) -->
+Commercial router tables are either cheap and flimsy or expensive and locked into one configuration. I wanted something modular -- a table I could reconfigure, add dust collection to, and adapt as my needs change -- without spending more than the router itself costs.
+
+Building it myself also meant I could size it for my shop and integrate it with my existing workflow.
 
 ## Design and Build
 
@@ -33,18 +35,20 @@ image: front.png
 ::: {layout-ncol=2}
 ![Mounting detail](closeup_mount.png)
 
-![Vacuum/dust collection port](closeup_vac.png)
+![Dust collection port](closeup_vac.png)
 :::
 
-<!-- TODO: Max - describe the key design decisions:
-- What material is the table surface? (MDF, phenolic, aluminum plate?)
-- How is the fence designed? Adjustable? Split?
+The design prioritizes modularity -- the fence, insert plate, and dust collection are all removable or reconfigurable. The dovetail joinery provides rigidity while keeping the table easy to disassemble for modifications.
+
+The dust collection port routes directly from under the table surface, capturing chips at the source rather than relying on a separate hood over the workpiece.
+
+<!-- TODO: Max - add any details you'd like:
+- What's the table surface material?
 - What router is mounted underneath?
-- How does the dust collection work? (the vacuum port photo is interesting - explain it)
-- Any joinery details? (the dovetail closeup suggests hand-cut or machined dovetails)
-- What are the overall dimensions?
+- Overall dimensions?
+- Anything you'd change for V1?
 -->
 
 ## Result
 
-<!-- TODO: Max - how does it perform? What have you used it for? What would V1 change? The "V0" name implies you already have ideas for improvement. -->
+A functional router table that cost a fraction of a commercial equivalent while being fully customizable. The "V0" label reflects the fact that it's a platform I keep improving -- the modularity means upgrades are bolt-on rather than starting over.

@@ -28,18 +28,15 @@ Traditional CZT detectors orient the crystal face-on to incoming radiation. Our 
 
 I work on characterizing charge carrier transport through these edge-on crystals and developing modular detector units that can be tiled into larger imaging arrays.
 
-<!-- TODO: Max - add a diagram of edge-on vs face-on geometry here. Even a simple sketch would help. -->
-
-<!-- TODO: Max - add any relevant figures, data plots, or detector photos from your lab work -->
+<!-- TODO: Max - add a diagram of edge-on vs face-on geometry here if you have one -->
 
 ## Publications and presentations
 
-<!-- TODO: Max - list your papers, conference presentations, or posters here. Format example:
+H. Mirzanezhad, K. Hellier, **M. Teicheira**, and S. Abbaszadeh, "Spectral Performance of Multilayer Amorphous Selenium and Selenium-Tellurium Photodetectors," *ACS Applied Optical Materials*, vol. 3, no. 3, pp. 646--655, 2025. [DOI: 10.1021/acsaom.4c00475](https://doi.org/10.1021/acsaom.4c00475)
 
-- **Teicheira, M.**, et al. "Title of paper." *Journal Name*, vol. X, no. Y, 2025. [DOI link]
-- **Teicheira, M.** "Poster title." Presented at Conference Name, Location, Date.
+**M. Teicheira**, presented at the *IEEE Nuclear Science Symposium and Medical Imaging Conference (NSS/MIC)*, Yokohama, Japan, November 2025.
 
-Even if you're a co-author, include them. -->
+<!-- TODO: Max - fill in the NSS/MIC presentation title and co-authors once the proceedings are published on IEEE Xplore. The 2025 proceedings are typically indexed 3-6 months after the conference. -->
 
 ## Open-source instrumentation
 

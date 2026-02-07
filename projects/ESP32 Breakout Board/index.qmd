@@ -1,6 +1,6 @@
 ---
-title: "ESP32 Breakout Board"
-description: "Custom PCB breakout for rapid prototyping with ESP32 modules"
+title: "ESP8266-12F Breakout Board"
+description: "Custom PCB breakout for rapid prototyping with the ESP8266-12F WiFi module"
 author: "Max Teicheira"
 date: "1/2/2025"
 categories:
@@ -12,33 +12,35 @@ image: v0.1_3d.png
 
 ## The Problem
 
-The ESP32 is a versatile microcontroller for lab automation and IoT projects, but breadboarding with the raw module is tedious -- the pin spacing doesn't fit standard breadboards cleanly, and wiring up the same support circuitry (voltage regulation, USB-serial, reset/boot buttons) every time wastes hours.
+The ESP8266-12F is a cheap, capable WiFi module useful for IoT projects and lab automation, but prototyping with the bare module is a pain. The castellated pads don't fit a breadboard, and every new project means rewiring the same boot circuitry, voltage regulation, and serial interface from scratch.
 
-I wanted a reusable breakout board that exposes all the pins I regularly use in a clean, labeled layout.
+I wanted a breakout board that makes the ESP8266-12F as easy to work with as dropping a dev board into a breadboard -- but without paying for features I don't need.
 
 ## Design
 
 ![V0.1 3D render](v0.1_3d.png)
 
-![Schematic](v0.1_schem.png)
+![V0.1 schematic](v0.1_schem.png)
 
-<!-- TODO: Max - fill in the details below based on your actual design -->
+The board breaks out the ESP8266-12F's GPIO, I2C, SPI, UART, and ADC pins to breadboard-friendly headers with clear labels. Support circuitry handles 3.3V regulation, boot mode selection, and USB-serial for programming.
 
-<!-- Key design decisions:
-- What ESP32 module variant did you use? (ESP32-WROOM, WROVER, etc.)
-- What interfaces did you break out? (I2C, SPI, UART, ADC, DAC?)
-- What support circuitry did you include? (voltage regulator, USB-serial chip, buttons, LEDs?)
+<!-- TODO: Max - add any additional details:
 - What PCB design tool did you use? (KiCad, Eagle, EasyEDA?)
-- Board specs: layer count, dimensions, trace width/spacing?
-- Where did you fabricate it? (JLCPCB, OSH Park, etc.)
+- Board specs: layer count, dimensions?
+- Where did you fab it? (JLCPCB, OSH Park?)
+- Any specific design choices worth mentioning (decoupling, antenna keepout, etc.)?
 -->
 
 ## Previous revision
 
 ![V0 board](v0.png)
 
-<!-- TODO: Max - what changed between V0 and V0.1? What problems did V0 have that you fixed? Revision history shows engineering maturity. -->
+The V0 board was the first attempt. V0.1 addressed issues found during initial testing.
+
+<!-- TODO: Max - what specifically changed between V0 and V0.1? Bad footprint? Routing issue? Missing pull-up? This kind of revision history shows real engineering process. -->
 
 ## Result
 
-<!-- TODO: Max - how does this board get used? Lab work? Personal projects? What would V0.2 change? -->
+The breakout board has become a go-to starting point for quick WiFi-enabled projects, cutting setup time from an hour of wiring to just plugging in a module.
+
+<!-- TODO: Max - what projects have you used this in? Lab work? Home automation? -->
