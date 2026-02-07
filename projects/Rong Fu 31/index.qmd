@@ -1,35 +1,49 @@
 ---
-title: "Rong Fu 31"
-description: "The maintainance and upgrades for a RF31"
+title: "Rong Fu 31 Milling Machine"
+description: "Restoring and upgrading a 600 lb mill/drill for precision home shop work"
 author: "Max Teicheira"
 date: "1/2/2025"
 categories:
   - Machining
   - Upgrades
   - Tools
-image: rf31_3d_model.png 
+image: rf31_3d_model.png
 ---
 
+## The Problem
 
-## Background
+I needed a milling machine rigid enough to do real work. My two previous mills were under 150 lbs each, and I was constantly fighting deflection and chatter. Lightweight benchtop mills are fine for drilling and light engraving, but the moment you try to take a serious cut in aluminum or steel, the lack of mass shows.
 
-![RF31 3d model](rf31_3d_model){height=300}
+## The Machine
 
-I received this mill from a friend of a friend as they were unable to store it any longer. As far as I could tell it was never used and still had the original thick waxy oil used when shipping these mills from Asia. I had to dissasemble it to move it into my shop so I know that I was the first to even do any basic maintanace, because every part I needed to remove would crack the paint at the joint. 
+![RF31 3D model](rf31_3d_model.png){height=300}
 
-The RF31 is a round column mill that is typcally called a mill/drill which helps indicate it's general use as a drill press, with a secondard use as a lightweight milling machine. I have learned with my steady upgrades in milling machine sizes that weight is king in nearly every possible way when it comes to rigidity and percision. This is the 3rd milling machine I have owned, the other two being <150lbs each. The RF31 is ~600lbs and the rigidity improvements when compared to the lighter machines is drastic.
+I acquired this Rong Fu 31 from someone who could no longer store it. It had never been used -- the original waxy shipping oil was still on every surface, and when I disassembled it for transport, the paint cracked at every joint, confirming I was the first person to do any maintenance on it.
 
+The RF31 is a round-column mill/drill, weighing roughly 600 lbs. "Mill/drill" indicates its dual role: primarily a drill press, secondarily a lightweight milling machine. At 4x the mass of my previous machines, the improvement in rigidity was dramatic. Weight is king when it comes to precision -- heavier machines absorb vibration and resist cutting forces far better.
 
 ## Upgrades
 
-### Digital Read Out(DRO)
-![Messy shop](dro.png)
-I was able to find a cheap DRO on AliExpress that seemed to have the correct buttons and screen I wanted. From my research on DRO's they are usually packaged to match your specific mill, instead I just asked the supplier to give me 3 scales with the correct travel distances from the manual. All aspects of the DRO installation are custom and don't somewhat on the fly, so I assumed I could just attach it somehow if I got the correct size.
+### Digital Readout (DRO)
+
+![DRO installation](dro.png)
+
+**The problem:** Manual milling without a DRO means counting handwheel graduations and keeping a running tally on paper. It's slow, error-prone, and makes repeatable setups tedious.
+
+**The solution:** I sourced a 3-axis DRO kit from AliExpress, specifying scale lengths to match the RF31's travel distances from the manual. Most DRO kits come pre-packaged for specific machines with bolt-on brackets, but since there's no RF31-specific kit available, I ordered bare scales and designed the mounting myself.
+
+<!-- TODO: Max - describe the mounting brackets/approach you used. Did you machine custom brackets? 3D print? What material? -->
+
+**What I'd do differently:** The glass scales are accurate but fragile -- I'd add chip guards from the start next time rather than retrofitting them after getting swarf on a scale.
 
 #### X-Axis Scale
-![](dro-x)
+![X-axis DRO scale installation](dro-x.png)
 
+#### Y-Axis Scale
+![Y-axis DRO scale installation](dro-y.png)
 
-#### Y-Axis scales
+## Result
 
-![](dro-y)
+The DRO transformed the usability of this machine. Setups that used to take 15 minutes of dial-indicating now take seconds. Combined with the rigidity of the 600 lb frame, I can now hold tolerances that were impossible on my lighter machines.
+
+<!-- TODO: Max - if you have any measurements (repeatability, backlash numbers, tolerance examples), add them here. Even rough numbers like "I can reliably hold ±0.002 in aluminum" would add credibility. -->

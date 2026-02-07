@@ -1,0 +1,42 @@
+---
+title: "Toolpost Grinder from a Trim Router"
+description: "Repurposing a Makita trim router as a toolpost grinder for lathe work"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - Machining
+  - Tools
+  - Design
+image: 3d.png
+---
+
+## The Problem
+
+Toolpost grinders are used on lathes to grind hardened materials and achieve surface finishes that cutting tools can't match. Commercial toolpost grinders are expensive, and many are oversized for small hobby lathes.
+
+I had an older Makita trim router with a plastic housing -- too worn for precision routing, but still spinning at 25,000+ RPM. That's close to what a small grinding spindle needs. The question was whether I could adapt it into a usable toolpost grinder.
+
+## Design
+
+![3D model of the toolpost grinder adapter](3d.png)
+
+The adapter mounts the Makita trim router to the lathe's toolpost, positioning the collet at center height. The trim router's existing collet accepts standard 1/4" shank grinding points and mounted wheels.
+
+<!-- TODO: Max - add details if you'd like:
+- How does the adapter mount to the toolpost? (custom plate that fits the tool holder slot?)
+- What material is the adapter? (machined aluminum? printed?)
+- Any concerns with vibration or runout at grinding speeds?
+-->
+
+## What I've ground
+
+This grinder has been genuinely useful for work that's impossible with a cutting tool alone:
+
+- **Tungsten carbide tooling** -- Grinding custom profiles on carbide blanks for specialized cuts
+- **Hardened ballscrew shaft ends** -- Precision grinding shaft ends on hardened ballscrews to fit couplers
+
+Both of these materials would destroy a conventional lathe tool. The trim router's high RPM makes short work of them with the right grinding point.
+
+## Result
+
+A functional toolpost grinder built from a retired trim router. It won't replace a proper cylindrical grinder, but for occasional grinding of hard materials on the lathe, it's been a worthwhile addition to the shop. The total cost was essentially just the adapter material and a set of grinding points.

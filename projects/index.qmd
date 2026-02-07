@@ -5,6 +5,9 @@ listing:
     - "*/index.qmd"
   type: grid
   categories: true
-  image-placeholder: ../static/logo.png
+  image-placeholder: ../img/logo.png
   image-height: 251px
+  sort: "date desc"
 ---
+
+A collection of things I've built, from lab instruments to shop tooling. Each project follows a problem-process-result structure -- I'm most interested in the engineering decisions, not just the finished product.

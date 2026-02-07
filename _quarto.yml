@@ -1,28 +1,32 @@
 project:
   type: website
-  resources:
-  - keybase.txt
-  - resume.pdf
-  - cv.pdf
 
 website:
   title: "Max Teicheira"
-  description: "Tools and prototypes"
+  description: "Electrical engineer, researcher, and builder. PET imaging with CZT detectors at UC Santa Cruz."
+  favicon: img/logo.png
+  open-graph:
+    image: img/logo.png
+    description: "Electrical engineer, researcher, and builder. PET imaging with CZT detectors at UC Santa Cruz."
+  twitter-card:
+    image: img/logo.png
+    card-style: summary
   navbar:
     left:
       - href: index.qmd
         text: Home
+      - text: "Research"
+        href: research.qmd
       - text: "Projects"
         href: projects
       - text: "Blog"
         href: blog
       - about.qmd
+  page-footer:
+    center: "Built by Max Teicheira"
 
 format:
   html:
     theme: flatly
     css: styles.css
     toc: true
-
-
-

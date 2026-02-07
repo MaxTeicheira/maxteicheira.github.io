@@ -1,0 +1,36 @@
+---
+title: "3D Printed Capsule Packer"
+description: "A PLA tool for consistently packing salt pills into capsules"
+author: "Max Teicheira"
+date: "1/2/2025"
+categories:
+  - 3D Printing
+  - Tools
+  - Design
+image: capsule_packer_3d.png
+---
+
+## The Problem
+
+Packing salt pills into capsules by hand is slow and inconsistent. Each capsule gets a slightly different fill, and the process is tedious enough that doing a large batch becomes impractical. I needed a simple tool to make capsule packing repeatable and fast.
+
+## Design
+
+![Capsule packer assembly](capsule_packer_3d.png)
+
+![Split view showing internal geometry](capsule_packer_3d_split.png)
+
+The packer is printed in PLA and designed to hold multiple capsules in alignment while a press mechanism ensures consistent fill. The geometry is sized to match standard capsule dimensions.
+
+This is the third iteration of the design. The first version had tolerance issues -- the capsules fit too loosely to stay aligned. The second revision tightened the pockets but made insertion difficult. V3 found the right balance between a snug fit and easy loading.
+
+<!-- TODO: Max - add any details:
+- What capsule size does it work with?
+- How many capsules per batch?
+- What printer did you use?
+- Any interesting print settings (layer height, infill) that mattered for the tight tolerances?
+-->
+
+## Result
+
+Three iterations to get it right, but the final version packs capsules consistently and quickly. A good example of how 3D printing lets you iterate through designs cheaply -- each revision was a few hours of print time and a few cents of PLA.

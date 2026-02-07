@@ -5,6 +5,9 @@ listing:
     - "*/*.qmd"
   type: grid
   categories: true
-  image-placeholder: ../static/logo.png
+  image-placeholder: ../img/logo.png
   image-height: 200px
+  sort: "date desc"
 ---
+
+Notes on tools, processes, and things I'm learning.

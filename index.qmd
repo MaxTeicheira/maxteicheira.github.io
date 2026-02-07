@@ -16,31 +16,15 @@ comments: false
 ## Bio
 
 
-I am an electrical engineering student at University of California, Santa Cruz working at the Radiological Insturments Laboratory(RIL). My research for RIL focuses on positon emission tomography(PET) imaging using edge-on cross-strip CZT. 
+I am an electrical engineering student at the University of California, Santa Cruz, working at the Radiological Instruments Laboratory (RIL). My research focuses on positron emission tomography (PET) imaging using edge-on cross-strip CZT detectors.
 
-I will complete my undergraduate degree in electrical engineering in 2025, then start my PhD immediately to continue my research.
+I build the instruments that make my research possible -- from custom 3D-printed collimators to CNC-automated test fixtures. Browse my [projects](projects), read about my [research](research.qmd), or look through my [notebook](blog).
 
-I am also a part-time employee at Slugworks, a makerspace located in Baskin Engineering at UCSC.
+## Research interests
 
-You can find a [list of my projects here](projects). I write on random topics related to tools and making -- look through my [notebook](blog) here.
-
-## Key research interests
-
-* **Depth of Interaction in edge-on CZT**: Charge carrier movement through CZT
-* **Building Modular CZT devices**: For use in larger applications such as whole body scanners
-* **Low cost open source solutions for experiments**: CNC automation of experiments, Custom 3d printed tools, Custom collimator designs 
-
-## Selected papers
-
-See more [here](papers).
-
-## Professional affiliations
-<!--
-**[IEEE](https://ieee.org)** | Senior Member since 2024
--->
-
-## Personal life
-
+* **Depth of Interaction in edge-on CZT** -- Characterizing charge carrier transport through CZT crystals
+* **Modular CZT detector systems** -- Scalable detector modules for whole-body PET scanners
+* **Open-source lab instrumentation** -- CNC-automated experiments, custom 3D-printed fixtures, and low-cost collimator designs
 
 ## Pronunciation guide
 

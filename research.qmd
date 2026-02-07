@@ -1,0 +1,47 @@
+---
+title: "Research"
+---
+
+## Positron Emission Tomography with CZT Detectors
+
+I work at the [Radiological Instruments Laboratory (RIL)](https://rfrg.soe.ucsc.edu/) at UC Santa Cruz, where my research focuses on improving PET imaging using cadmium zinc telluride (CZT) detectors.
+
+### What is PET imaging?
+
+Positron emission tomography is a medical imaging technique that detects pairs of gamma rays emitted from a radioactive tracer injected into the body. By detecting these gamma ray pairs, we can reconstruct 3D images showing metabolic processes -- this is critical for cancer diagnosis, cardiac imaging, and neurological research.
+
+### Why CZT?
+
+Most PET scanners use scintillator crystals coupled to photomultiplier tubes. CZT is a semiconductor detector that converts gamma rays directly into electrical signals, offering:
+
+- **Better energy resolution** -- sharper distinction between true events and scattered radiation
+- **Room-temperature operation** -- no cryogenic cooling required
+- **Compact form factor** -- enables novel detector geometries
+
+### My work: Edge-on cross-strip CZT
+
+Traditional CZT detectors orient the crystal face-on to incoming radiation. Our lab uses an **edge-on** geometry, where gamma rays enter through the thin edge of the crystal. This gives us:
+
+- A longer interaction path through the detector material
+- The ability to measure **depth of interaction (DOI)** from the charge carrier drift pattern
+- Better spatial resolution for the same crystal volume
+
+I work on characterizing charge carrier transport through these edge-on crystals and developing modular detector units that can be tiled into larger imaging arrays.
+
+<!-- TODO: Max - add a diagram of edge-on vs face-on geometry here if you have one -->
+
+## Publications and presentations
+
+H. Mirzanezhad, K. Hellier, **M. Teicheira**, and S. Abbaszadeh, "Spectral Performance of Multilayer Amorphous Selenium and Selenium-Tellurium Photodetectors," *ACS Applied Optical Materials*, vol. 3, no. 3, pp. 646--655, 2025. [DOI: 10.1021/acsaom.4c00475](https://doi.org/10.1021/acsaom.4c00475)
+
+**M. Teicheira**, "Calibration Methods for Thick Edge-on Crossed-Strip CZT," presented at the *IEEE Nuclear Science Symposium and Medical Imaging Conference (NSS/MIC)*, Yokohama, Japan, November 2025.
+
+## Open-source instrumentation
+
+One of my goals is to make experimental instrumentation more accessible. Projects in this area include:
+
+- **CNC-automated detector scanning** -- Using open-source motion control to automate collimated beam experiments
+- **Custom 3D-printed collimators** -- Low-cost alternatives to machined lead or tungsten collimators
+- **Custom test fixtures** -- Machined and printed fixtures for repeatable detector positioning
+
+See my [projects page](projects) for details on the hardware I've built to support this work.
