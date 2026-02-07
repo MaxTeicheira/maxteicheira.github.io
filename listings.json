@@ -1,21 +1,20 @@
 [
   {
-    "listing": "/blog/index.html",
-    "items": [
-      "/blog/01.02.25/index.html"
-    ]
-  },
-  {
     "listing": "/projects/index.html",
     "items": [
       "/projects/3d Printed Capsule Packer/index.html",
-      "/projects/template_folder/template/index.html",
       "/projects/ESP32 Breakout Board/index.html",
+      "/projects/Featherboard/index.html",
       "/projects/Rong Fu 31/index.html",
       "/projects/Router Table V0/index.html",
-      "/projects/Featherboard/index.html",
       "/projects/Toolpost grinder - Trim Router/index.html",
       "/projects/Trim Router Tounge and Groove Jig/index.html"
+    ]
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": [
+      "/blog/01.02.25/index.html"
     ]
   }
 ]
