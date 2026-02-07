@@ -40,10 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-960d9d362f81d399278ec3e29b622b37.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-960d9d362f81d399278ec3e29b622b37.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-960d9d362f81d399278ec3e29b622b37.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -142,7 +146,169 @@ window.Quarto = {
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -182,6 +348,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -192,9 +359,10 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="M0QlMjBQcmludGluZw==">3D Printing <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RGVzaWdu">Design <span class="quarto-category-count">(4)</span></div><div class="category" data-category="RWxlY3Ryb25pY3M=">Electronics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWFjaGluaW5n">Machining <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UENCJTIwRGVzaWdu">PCB Design <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvdG90eXBpbmc=">Prototyping <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2FmZXR5">Safety <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VG9vbHM=">Tools <span class="quarto-category-count">(5)</span></div><div class="category" data-category="VXBncmFkZXM=">Upgrades <span class="quarto-category-count">(1)</span></div><div class="category" data-category="V29vZHdvcmtpbmc=">Woodworking <span class="quarto-category-count">(3)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="RWxlY3Ryb25pY3M=">Electronics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFicmljYXRpb24=">Fabrication <span class="quarto-category-count">(4)</span></div><div class="category" data-category="TWFjaGluaW5n">Machining <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -222,7 +390,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="M0QlMjBQcmludGluZyUyQ1Rvb2xzJTJDRGVzaWdu" data-listing-date-sort="1735776000000" data-listing-file-modified-sort="1770427837452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
+<div class="g-col-1" data-index="0" data-categories="RmFicmljYXRpb24=" data-listing-date-sort="1724284800000" data-listing-file-modified-sort="1770441003004" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
 <a href="../projects/3d Printed Capsule Packer/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -234,11 +402,7 @@ window.Quarto = {
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('M0QlMjBQcmludGluZw=='); return false;">3D Printing</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VG9vbHM='); return false;">Tools</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVzaWdu'); return false;">Design</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmFicmljYXRpb24='); return false;">Fabrication</div>
 
 </div>
 <div class="card-text listing-description delink">
@@ -249,13 +413,13 @@ window.Quarto = {
 Max Teicheira
 </div>
 <div class="listing-date">
-Jan 2, 2025
+Aug 22, 2024
 </div>
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RWxlY3Ryb25pY3MlMkNQQ0IlMjBEZXNpZ24lMkNQcm90b3R5cGluZw==" data-listing-date-sort="1735776000000" data-listing-file-modified-sort="1770427837452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="202">
+<div class="g-col-1" data-index="1" data-categories="RWxlY3Ryb25pY3M=" data-listing-date-sort="1707868800000" data-listing-file-modified-sort="1770441003004" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="202">
 <a href="../projects/ESP32 Breakout Board/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -269,10 +433,6 @@ ESP8266-12F Breakout Board
 
 <div class="listing-category" onclick="window.quartoListingCategory('RWxlY3Ryb25pY3M='); return false;">Electronics</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UENCJTIwRGVzaWdu'); return false;">PCB Design</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvdG90eXBpbmc='); return false;">Prototyping</div>
-
 </div>
 <div class="card-text listing-description delink">
 <p>Custom PCB breakout for rapid prototyping with the ESP8266-12F WiFi module</p>
@@ -282,112 +442,13 @@ ESP8266-12F Breakout Board
 Max Teicheira
 </div>
 <div class="listing-date">
-Jan 2, 2025
+Feb 14, 2024
 </div>
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="V29vZHdvcmtpbmclMkMzRCUyMFByaW50aW5nJTJDU2FmZXR5" data-listing-date-sort="1735776000000" data-listing-file-modified-sort="1770427837458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="190">
-<a href="../projects/Featherboard/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../projects/Featherboard/featherboard.png" class="thumbnail-image card-img" style="height: 251px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-3D Printed Featherboard
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V29vZHdvcmtpbmc='); return false;">Woodworking</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('M0QlMjBQcmludGluZw=='); return false;">3D Printing</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U2FmZXR5'); return false;">Safety</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A PLA featherboard that uses flex to hold stock against the fence</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Max Teicheira
-</div>
-<div class="listing-date">
-Jan 2, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="TWFjaGluaW5nJTJDVXBncmFkZXMlMkNUb29scw==" data-listing-date-sort="1735776000000" data-listing-file-modified-sort="1770427837462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="380">
-<a href="../projects/Rong Fu 31/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../projects/Rong Fu 31/rf31_3d_model.png" class="thumbnail-image card-img" style="height: 251px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Rong Fu 31 Milling Machine
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluaW5n'); return false;">Machining</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VXBncmFkZXM='); return false;">Upgrades</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VG9vbHM='); return false;">Tools</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Restoring and upgrading a 600 lb mill/drill for precision home shop work</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Max Teicheira
-</div>
-<div class="listing-date">
-Jan 2, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="V29vZHdvcmtpbmclMkNUb29scyUyQ0Rlc2lnbg==" data-listing-date-sort="1735776000000" data-listing-file-modified-sort="1770427837472" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="196">
-<a href="../projects/Router Table V0/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../projects/Router Table V0/front.png" class="thumbnail-image card-img" style="height: 251px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Router Table V0
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V29vZHdvcmtpbmc='); return false;">Woodworking</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VG9vbHM='); return false;">Tools</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVzaWdu'); return false;">Design</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A modular, low-cost router table built for flexibility</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Max Teicheira
-</div>
-<div class="listing-date">
-Jan 2, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="TWFjaGluaW5nJTJDVG9vbHMlMkNEZXNpZ24=" data-listing-date-sort="1735776000000" data-listing-file-modified-sort="1770427837474" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273">
+<div class="g-col-1" data-index="2" data-categories="TWFjaGluaW5n" data-listing-date-sort="1699401600000" data-listing-file-modified-sort="1770441003026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273">
 <a href="../projects/Toolpost grinder - Trim Router/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -401,10 +462,6 @@ Toolpost Grinder from a Trim Router
 
 <div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluaW5n'); return false;">Machining</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('VG9vbHM='); return false;">Tools</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVzaWdu'); return false;">Design</div>
-
 </div>
 <div class="card-text listing-description delink">
 <p>Repurposing a Makita trim router as a toolpost grinder for lathe work</p>
@@ -414,13 +471,42 @@ Toolpost Grinder from a Trim Router
 Max Teicheira
 </div>
 <div class="listing-date">
-Jan 2, 2025
+Nov 8, 2023
 </div>
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="V29vZHdvcmtpbmclMkNUb29scyUyQ0Rlc2lnbg==" data-listing-date-sort="1735776000000" data-listing-file-modified-sort="1770427837475" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="113">
+<div class="g-col-1" data-index="3" data-categories="TWFjaGluaW5n" data-listing-date-sort="1686787200000" data-listing-file-modified-sort="1770441003014" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="380">
+<a href="../projects/Rong Fu 31/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../projects/Rong Fu 31/rf31_3d_model.png" class="thumbnail-image card-img" style="height: 251px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Rong Fu 31 Milling Machine
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluaW5n'); return false;">Machining</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Restoring and upgrading a 600 lb mill/drill for precision home shop work</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Max Teicheira
+</div>
+<div class="listing-date">
+Jun 15, 2023
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="RmFicmljYXRpb24=" data-listing-date-sort="1684540800000" data-listing-file-modified-sort="1770441003027" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="113">
 <a href="../projects/Trim Router Tounge and Groove Jig/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -432,11 +518,7 @@ Trim Router Tongue and Groove Jig
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('V29vZHdvcmtpbmc='); return false;">Woodworking</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VG9vbHM='); return false;">Tools</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVzaWdu'); return false;">Design</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RmFicmljYXRpb24='); return false;">Fabrication</div>
 
 </div>
 <div class="card-text listing-description delink">
@@ -447,7 +529,65 @@ Trim Router Tongue and Groove Jig
 Max Teicheira
 </div>
 <div class="listing-date">
-Jan 2, 2025
+May 20, 2023
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="RmFicmljYXRpb24=" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1770441003010" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="190">
+<a href="../projects/Featherboard/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../projects/Featherboard/featherboard.png" class="thumbnail-image card-img" style="height: 251px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+3D Printed Featherboard
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RmFicmljYXRpb24='); return false;">Fabrication</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A PLA featherboard that uses flex to hold stock against the fence</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Max Teicheira
+</div>
+<div class="listing-date">
+Apr 5, 2023
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="RmFicmljYXRpb24=" data-listing-date-sort="1678406400000" data-listing-file-modified-sort="1770441003024" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="196">
+<a href="../projects/Router Table V0/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../projects/Router Table V0/front.png" class="thumbnail-image card-img" style="height: 251px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Router Table V0
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RmFicmljYXRpb24='); return false;">Fabrication</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A modular, low-cost router table built for flexibility</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Max Teicheira
+</div>
+<div class="listing-date">
+Mar 10, 2023
 </div>
 </div>
 </div>
@@ -458,6 +598,19 @@ Jan 2, 2025
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -860,14 +1013,27 @@ Jan 2, 2025
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2025 Max Teicheira</p>
+</div>   
     <div class="nav-footer-center">
-<p>Built by Max Teicheira</p>
-</div>
-    <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/maxteicheira/">
+      <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MaxTeicheira">
+      <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+    </a>
+  </li>  
+</ul>
     </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
   </div>
 </footer>
 
