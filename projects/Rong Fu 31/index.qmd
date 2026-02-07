@@ -2,11 +2,9 @@
 title: "Rong Fu 31 Milling Machine"
 description: "Restoring and upgrading a 600 lb mill/drill for precision home shop work"
 author: "Max Teicheira"
-date: "1/2/2025"
+date: "6/15/2023"
 categories:
   - Machining
-  - Upgrades
-  - Tools
 image: rf31_3d_model.png
 ---
 

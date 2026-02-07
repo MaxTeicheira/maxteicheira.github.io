@@ -2,11 +2,9 @@
 title: "Trim Router Tongue and Groove Jig"
 description: "A simple jig for cutting tongue and groove joints with a trim router"
 author: "Max Teicheira"
-date: "1/2/2025"
+date: "5/20/2023"
 categories:
-  - Woodworking
-  - Tools
-  - Design
+  - Fabrication
 image: 3d_model.png
 ---
 

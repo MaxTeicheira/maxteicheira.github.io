@@ -2,11 +2,9 @@
 title: "Toolpost Grinder from a Trim Router"
 description: "Repurposing a Makita trim router as a toolpost grinder for lathe work"
 author: "Max Teicheira"
-date: "1/2/2025"
+date: "11/8/2023"
 categories:
   - Machining
-  - Tools
-  - Design
 image: 3d.png
 ---
 
