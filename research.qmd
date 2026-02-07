@@ -34,9 +34,7 @@ I work on characterizing charge carrier transport through these edge-on crystals
 
 H. Mirzanezhad, K. Hellier, **M. Teicheira**, and S. Abbaszadeh, "Spectral Performance of Multilayer Amorphous Selenium and Selenium-Tellurium Photodetectors," *ACS Applied Optical Materials*, vol. 3, no. 3, pp. 646--655, 2025. [DOI: 10.1021/acsaom.4c00475](https://doi.org/10.1021/acsaom.4c00475)
 
-**M. Teicheira**, presented at the *IEEE Nuclear Science Symposium and Medical Imaging Conference (NSS/MIC)*, Yokohama, Japan, November 2025.
-
-<!-- TODO: Max - fill in the NSS/MIC presentation title and co-authors once the proceedings are published on IEEE Xplore. The 2025 proceedings are typically indexed 3-6 months after the conference. -->
+**M. Teicheira**, "Calibration Methods for Thick Edge-on Crossed-Strip CZT," presented at the *IEEE Nuclear Science Symposium and Medical Imaging Conference (NSS/MIC)*, Yokohama, Japan, November 2025.
 
 ## Open-source instrumentation
 

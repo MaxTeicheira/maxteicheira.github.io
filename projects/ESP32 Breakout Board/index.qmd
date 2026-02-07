@@ -24,12 +24,7 @@ I wanted a breakout board that makes the ESP8266-12F as easy to work with as dro
 
 The board breaks out the ESP8266-12F's GPIO, I2C, SPI, UART, and ADC pins to breadboard-friendly headers with clear labels. Support circuitry handles 3.3V regulation, boot mode selection, and USB-serial for programming.
 
-<!-- TODO: Max - add any additional details:
-- What PCB design tool did you use? (KiCad, Eagle, EasyEDA?)
-- Board specs: layer count, dimensions?
-- Where did you fab it? (JLCPCB, OSH Park?)
-- Any specific design choices worth mentioning (decoupling, antenna keepout, etc.)?
--->
+Designed in **KiCad** and fabricated by **PCBWay**.
 
 ## Previous revision
 
