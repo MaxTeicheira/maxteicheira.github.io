@@ -9,7 +9,7 @@ about:
         - icon: github
           text: Github
           url: https://github.com/*****
-image: img/bamboo_smile.png
+image: img/00-1.jpg
 comments: false
 ---
 

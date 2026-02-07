@@ -10,13 +10,13 @@ I believe the best engineers operate at every level of abstraction. In the same 
 
 ## My shop
 
+![Working at the mill](img/00-57.jpg)
+
 I maintain a small home shop with a Rong Fu 31 milling machine, a lathe, a router table, and a collection of 3D printers. Most of my [projects](projects) start here -- I prototype fixtures, tooling, and enclosures before bringing them into the lab.
 
 ## Philosophy
 
 There is no substitute for experience. Mistakes accelerate learning by forcing you to be critical of your process. Small, incremental improvement is the goal.
-
-<!-- TODO: Max - add a photo of your shop here if you'd like -->
 
 ## Contact
 

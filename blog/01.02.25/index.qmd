@@ -5,8 +5,10 @@ author: "Max Teicheira"
 date: "1/2/2025"
 categories:
   - Machining
-image: ../../img/logo.png
+image: ../../img/00-59.jpg
 ---
+
+![Milling on a Tree knee mill](../../img/00-59.jpg)
 
 ## Machining as a way of thinking
 
