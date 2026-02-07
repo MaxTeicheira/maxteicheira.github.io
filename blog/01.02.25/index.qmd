@@ -22,7 +22,9 @@ When you design a part knowing you'll machine it yourself, every feature gets ev
 
 This kind of thinking bleeds into everything else. When I design a PCB enclosure, I'm already thinking about how the mill will approach each pocket. When I lay out a 3D print, I'm thinking about support structures the same way I think about fixturing.
 
-The machine teaches you to respect material, to plan operations in sequence, and to think three moves ahead. It's the closest thing engineering has to chess.
+Machining teaches you to respect material, to plan operations in sequence, and to think three moves ahead.
+
+
 
 <!-- TODO: Max - if you want to expand this, consider adding:
 - A specific example from your shop (a part where operation order mattered)
