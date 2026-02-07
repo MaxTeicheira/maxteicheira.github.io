@@ -6,11 +6,12 @@ I'm an electrical engineering student and researcher at UC Santa Cruz, where I w
 
 ## How I work
 
-I believe the best engineers operate at every level of abstraction. In the same week I might be simulating charge transport in a CZT crystal, designing a PCB to read out detector signals, and machining an aluminum fixture to hold the whole assembly. Being able to move between theory, electronics, and fabrication means I can go from idea to working prototype without waiting on anyone else.
+The best engineers operate at many levels of abstraction. In the same week I might be simulating charge transport in a CZT crystal, designing a PCB to read out detector signals, and machining an aluminum fixture to hold the whole assembly. Being able to move between theory, electronics, and fabrication means I can go from idea to working prototype without waiting for help.
 
 ## My shop
 
-![Working at the mill](img/00-57.jpg)
+![Working at the mill at UCSC](img/00-57.jpg)
+
 
 I maintain a small home shop with a Rong Fu 31 milling machine, a lathe, a router table, and a collection of 3D printers. Most of my [projects](projects) start here -- I prototype fixtures, tooling, and enclosures before bringing them into the lab.
 
