@@ -4,14 +4,14 @@
     "href": "blog/01.02.25/index.html",
     "title": "Machining Theory",
     "section": "",
-    "text": "Like any subtractive process, machining starts with a larger piece of material and removes what you don’t want. But the real shift isn’t in the process – it’s in how you learn to think.\nWhen you design a part knowing you’ll machine it yourself, every feature gets evaluated differently:\n\nCan I reach this surface with the tools I have? Internal corners need a radius at least as large as your endmill. A sharp inside corner on a drawing means a different setup or a different process.\nHow will I hold this part? Fixturing is half the battle. A beautiful design that can’t be clamped is a design that can’t be made.\nWhat order do I cut features in? Removing material changes the part’s rigidity. Cut a thin wall too early and it will flex under the next operation.\n\nThis kind of thinking bleeds into everything else. When I design a PCB enclosure, I’m already thinking about how the mill will approach each pocket. When I lay out a 3D print, I’m thinking about support structures the same way I think about fixturing.\nThe machine teaches you to respect material, to plan operations in sequence, and to think three moves ahead. It’s the closest thing engineering has to chess."
+    "text": "Milling on a Tree knee mill"
   },
   {
     "objectID": "blog/01.02.25/index.html#machining-as-a-way-of-thinking",
     "href": "blog/01.02.25/index.html#machining-as-a-way-of-thinking",
     "title": "Machining Theory",
-    "section": "",
-    "text": "Like any subtractive process, machining starts with a larger piece of material and removes what you don’t want. But the real shift isn’t in the process – it’s in how you learn to think.\nWhen you design a part knowing you’ll machine it yourself, every feature gets evaluated differently:\n\nCan I reach this surface with the tools I have? Internal corners need a radius at least as large as your endmill. A sharp inside corner on a drawing means a different setup or a different process.\nHow will I hold this part? Fixturing is half the battle. A beautiful design that can’t be clamped is a design that can’t be made.\nWhat order do I cut features in? Removing material changes the part’s rigidity. Cut a thin wall too early and it will flex under the next operation.\n\nThis kind of thinking bleeds into everything else. When I design a PCB enclosure, I’m already thinking about how the mill will approach each pocket. When I lay out a 3D print, I’m thinking about support structures the same way I think about fixturing.\nThe machine teaches you to respect material, to plan operations in sequence, and to think three moves ahead. It’s the closest thing engineering has to chess."
+    "section": "Machining as a way of thinking",
+    "text": "Machining as a way of thinking\nLike any subtractive process, machining starts with a larger piece of material and removes what you don’t want. But the real shift isn’t in the process – it’s in how you learn to think.\nWhen you design a part knowing you’ll machine it yourself, every feature gets evaluated differently:\n\nCan I reach this surface with the tools I have? Internal corners need a radius at least as large as your endmill. A sharp inside corner on a drawing means a different setup or a different process.\nHow will I hold this part? Fixturing is half the battle. A beautiful design that can’t be clamped is a design that can’t be made.\nWhat order do I cut features in? Removing material changes the part’s rigidity. Cut a thin wall too early and it will flex under the next operation.\n\nThis kind of thinking bleeds into everything else. When I design a PCB enclosure, I’m already thinking about how the mill will approach each pocket. When I lay out a 3D print, I’m thinking about support structures the same way I think about fixturing.\nThe machine teaches you to respect material, to plan operations in sequence, and to think three moves ahead. It’s the closest thing engineering has to chess."
   },
   {
     "objectID": "research.html",
@@ -312,7 +312,7 @@
     "href": "about.html#my-shop",
     "title": "About Me",
     "section": "My shop",
-    "text": "My shop\nI maintain a small home shop with a Rong Fu 31 milling machine, a lathe, a router table, and a collection of 3D printers. Most of my projects start here – I prototype fixtures, tooling, and enclosures before bringing them into the lab."
+    "text": "My shop\n\n\n\nWorking at the mill\n\n\nI maintain a small home shop with a Rong Fu 31 milling machine, a lathe, a router table, and a collection of 3D printers. Most of my projects start here – I prototype fixtures, tooling, and enclosures before bringing them into the lab."
   },
   {
     "objectID": "about.html#philosophy",
