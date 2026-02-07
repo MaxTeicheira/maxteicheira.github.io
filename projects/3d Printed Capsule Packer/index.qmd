@@ -2,11 +2,9 @@
 title: "3D Printed Capsule Packer"
 description: "A PLA tool for consistently packing salt pills into capsules"
 author: "Max Teicheira"
-date: "1/2/2025"
+date: "8/22/2024"
 categories:
-  - 3D Printing
-  - Tools
-  - Design
+  - Fabrication
 image: capsule_packer_3d.png
 ---
 

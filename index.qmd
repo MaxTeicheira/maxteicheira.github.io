@@ -18,14 +18,10 @@ comments: false
 
 I am an electrical engineering student at the University of California, Santa Cruz, working at the Radiological Instruments Laboratory (RIL). My research focuses on positron emission tomography (PET) imaging using edge-on cross-strip CZT detectors.
 
-I build the instruments that make my research possible -- from custom 3D-printed collimators to CNC-automated test fixtures. Browse my [projects](projects), read about my [research](research.qmd), or look through my [notebook](blog).
+I build the instruments that make my research possible -- from custom 3D-printed collimators to CNC-automated test fixtures. Browse my [projects](projects), read about my [research](research.qmd), or look through my [blog](blog).
 
 ## Research interests
 
 * **Depth of Interaction in edge-on CZT** -- Characterizing charge carrier transport through CZT crystals
 * **Modular CZT detector systems** -- Scalable detector modules for whole-body PET scanners
 * **Open-source lab instrumentation** -- CNC-automated experiments, custom 3D-printed fixtures, and low-cost collimator designs
-
-## Pronunciation guide
-
-Teicheira sounds like tay-share-uh

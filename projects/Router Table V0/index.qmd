@@ -2,11 +2,9 @@
 title: "Router Table V0"
 description: "A modular, low-cost router table built for flexibility"
 author: "Max Teicheira"
-date: "1/2/2025"
+date: "3/10/2023"
 categories:
-  - Woodworking
-  - Tools
-  - Design
+  - Fabrication
 image: front.png
 ---
 

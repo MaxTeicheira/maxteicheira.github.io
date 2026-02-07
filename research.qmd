@@ -28,7 +28,46 @@ Traditional CZT detectors orient the crystal face-on to incoming radiation. Our 
 
 I work on characterizing charge carrier transport through these edge-on crystals and developing modular detector units that can be tiled into larger imaging arrays.
 
-<!-- TODO: Max - add a diagram of edge-on vs face-on geometry here if you have one -->
+### Detector geometry comparison
+
+```{=html}
+<div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin: 2rem 0;">
+  <div style="text-align: center; flex: 1; min-width: 250px;">
+    <svg viewBox="0 0 200 180" width="200" height="180" style="background: #f7f8fa; border-radius: 8px; border: 1px solid #dce3e8;">
+      <rect x="60" y="40" width="80" height="20" rx="2" fill="#4a6b7a" opacity="0.8"/>
+      <text x="100" y="54" text-anchor="middle" fill="white" font-size="9" font-weight="bold">CZT</text>
+      <line x1="80" y1="5" x2="80" y2="38" stroke="#c0392b" stroke-width="2" marker-end="url(#af)"/>
+      <line x1="100" y1="5" x2="100" y2="38" stroke="#c0392b" stroke-width="2" marker-end="url(#af)"/>
+      <line x1="120" y1="5" x2="120" y2="38" stroke="#c0392b" stroke-width="2" marker-end="url(#af)"/>
+      <text x="100" y="15" text-anchor="middle" fill="#c0392b" font-size="8">γ rays</text>
+      <rect x="60" y="62" width="80" height="4" rx="1" fill="#8b6914"/>
+      <text x="100" y="80" text-anchor="middle" fill="#4a4a6a" font-size="8">Electrodes</text>
+      <text x="100" y="110" text-anchor="middle" fill="#1a1a2e" font-size="11" font-weight="600">Face-on</text>
+      <text x="100" y="125" text-anchor="middle" fill="#4a4a6a" font-size="8">Short interaction path</text>
+      <text x="100" y="137" text-anchor="middle" fill="#4a4a6a" font-size="8">Limited DOI info</text>
+      <defs><marker id="af" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto"><path d="M0,0 L6,2 L0,4 Z" fill="#c0392b"/></marker></defs>
+    </svg>
+  </div>
+  <div style="text-align: center; flex: 1; min-width: 250px;">
+    <svg viewBox="0 0 200 180" width="200" height="180" style="background: #f7f8fa; border-radius: 8px; border: 1px solid #dce3e8;">
+      <rect x="85" y="20" width="20" height="100" rx="2" fill="#4a6b7a" opacity="0.8"/>
+      <text x="95" y="75" text-anchor="middle" fill="white" font-size="9" font-weight="bold" transform="rotate(-90 95 75)">CZT</text>
+      <line x1="20" y1="50" x2="83" y2="50" stroke="#c0392b" stroke-width="2" marker-end="url(#ae)"/>
+      <line x1="20" y1="70" x2="83" y2="70" stroke="#c0392b" stroke-width="2" marker-end="url(#ae)"/>
+      <line x1="20" y1="90" x2="83" y2="90" stroke="#c0392b" stroke-width="2" marker-end="url(#ae)"/>
+      <text x="50" y="42" text-anchor="middle" fill="#c0392b" font-size="8">γ rays</text>
+      <rect x="107" y="20" width="4" height="100" rx="1" fill="#8b6914"/>
+      <text x="130" y="75" text-anchor="middle" fill="#4a4a6a" font-size="8" transform="rotate(-90 130 75)">Strips</text>
+      <text x="100" y="140" text-anchor="middle" fill="#1a1a2e" font-size="11" font-weight="600">Edge-on</text>
+      <text x="100" y="155" text-anchor="middle" fill="#4a4a6a" font-size="8">Long interaction path</text>
+      <text x="100" y="167" text-anchor="middle" fill="#4a4a6a" font-size="8">DOI from drift pattern</text>
+      <defs><marker id="ae" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto"><path d="M0,0 L6,2 L0,4 Z" fill="#c0392b"/></marker></defs>
+    </svg>
+  </div>
+</div>
+```
+
+In the edge-on configuration, gamma rays travel through a much longer path of CZT crystal material, increasing detection efficiency. The cross-strip electrode pattern on the crystal faces lets us reconstruct both the position and depth of each interaction event.
 
 ## Publications and presentations
 

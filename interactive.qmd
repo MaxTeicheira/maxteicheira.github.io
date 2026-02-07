@@ -1,0 +1,117 @@
+---
+title: "Interactive Tools"
+---
+
+This page demonstrates interactive widgets that can be embedded in any project or blog post on this site.
+
+## Embedding 3D Models from Onshape
+
+Onshape doesn't support direct iframe embedding, but you can export models as `.glb` files and display them with Google's `<model-viewer>` web component. The viewer supports rotate, zoom, and pan.
+
+To add a 3D model to any project page:
+
+1. In Onshape: right-click part/assembly > Export > choose **GLTF** format
+2. Place the `.glb` file alongside your `.qmd` file
+3. Add this HTML block to your `.qmd`:
+
+```html
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+<model-viewer
+  src="your-model.glb"
+  alt="Description of the model"
+  camera-controls
+  auto-rotate
+  shadow-intensity="1"
+  style="width: 100%; height: 500px;">
+</model-viewer>
+```
+
+Or link directly to a public Onshape document:
+
+```markdown
+[View this model in 3D on Onshape](https://cad.onshape.com/documents/YOUR_DOC_ID/w/YOUR_WORKSPACE_ID/e/YOUR_ELEMENT_ID)
+```
+
+## Interactive Python with Observable JS
+
+Quarto has built-in support for [Observable JS](https://quarto.org/docs/interactive/ojs/), which lets you create interactive charts and inputs that run in the browser with no server.
+
+```{ojs}
+viewof frequency = Inputs.range([0.5, 5], {value: 1, step: 0.1, label: "Frequency:"})
+viewof amplitude = Inputs.range([0.1, 2], {value: 1, step: 0.1, label: "Amplitude:"})
+viewof phase = Inputs.range([0, 6.28], {value: 0, step: 0.1, label: "Phase shift:"})
+```
+
+```{ojs}
+{
+  const width = 600;
+  const height = 300;
+  const margin = {top: 20, right: 20, bottom: 30, left: 40};
+
+  const x = d3.scaleLinear()
+    .domain([0, 2 * Math.PI])
+    .range([margin.left, width - margin.right]);
+
+  const y = d3.scaleLinear()
+    .domain([-2.5, 2.5])
+    .range([height - margin.bottom, margin.top]);
+
+  const points = d3.range(0, 2 * Math.PI, 0.02);
+
+  const line = d3.line()
+    .x(d => x(d))
+    .y(d => y(amplitude * Math.sin(frequency * d + phase)));
+
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("width", width)
+    .attr("height", height)
+    .style("max-width", "100%");
+
+  svg.append("g")
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(d3.axisBottom(x).ticks(5).tickFormat(d => `${(d / Math.PI).toFixed(1)}π`));
+
+  svg.append("g")
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(y));
+
+  svg.append("path")
+    .datum(points)
+    .attr("fill", "none")
+    .attr("stroke", "#4a6b7a")
+    .attr("stroke-width", 2)
+    .attr("d", line);
+
+  svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", margin.top)
+    .attr("text-anchor", "middle")
+    .attr("fill", "#1a1a2e")
+    .attr("font-size", "12px")
+    .text(`y = ${amplitude.toFixed(1)} sin(${frequency.toFixed(1)}x + ${phase.toFixed(1)})`);
+
+  return svg.node();
+}
+```
+
+This sine wave plot is fully interactive -- drag the sliders above to change the waveform in real time. All computation happens in the browser.
+
+## Using these tools in project pages
+
+Any project page can include these interactive elements. For example:
+
+- **RF31 DRO project**: An interactive backlash calculator
+- **ESP8266 board**: An interactive schematic viewer
+- **Research**: Interactive charge transport simulations
+
+To add Observable JS to any `.qmd` file, just use ` ```{ojs} ` code blocks -- no extensions or installs needed.
+
+For full Python-in-the-browser support (editable code cells), install the [quarto-pyodide extension](https://github.com/coatless-quarto/pyodide):
+
+```bash
+quarto add coatless-quarto/pyodide
+```
+
+Then use ` ```{pyodide-python} ` blocks for live, editable Python cells.

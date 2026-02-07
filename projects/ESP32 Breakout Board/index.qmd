@@ -2,11 +2,9 @@
 title: "ESP8266-12F Breakout Board"
 description: "Custom PCB breakout for rapid prototyping with the ESP8266-12F WiFi module"
 author: "Max Teicheira"
-date: "1/2/2025"
+date: "2/14/2024"
 categories:
   - Electronics
-  - PCB Design
-  - Prototyping
 image: v0.1_3d.png
 ---
 

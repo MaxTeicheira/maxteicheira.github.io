@@ -18,6 +18,10 @@ I maintain a small home shop with a Rong Fu 31 milling machine, a lathe, a route
 
 There is no substitute for experience. Mistakes accelerate learning by forcing you to be critical of your process. Small, incremental improvement is the goal.
 
+## Pronunciation guide
+
+Teicheira sounds like tay-share-uh.
+
 ## Contact
 
 The best way to reach me is through [LinkedIn](https://www.linkedin.com/in/maxteicheira/) or [GitHub](https://github.com/MaxTeicheira).

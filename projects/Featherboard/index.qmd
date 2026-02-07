@@ -2,11 +2,9 @@
 title: "3D Printed Featherboard"
 description: "A PLA featherboard that uses flex to hold stock against the fence"
 author: "Max Teicheira"
-date: "1/2/2025"
+date: "4/5/2023"
 categories:
-  - Woodworking
-  - 3D Printing
-  - Safety
+  - Fabrication
 image: featherboard.png
 ---
 

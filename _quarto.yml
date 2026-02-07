@@ -23,10 +23,20 @@ website:
         href: blog
       - about.qmd
   page-footer:
-    center: "Built by Max Teicheira"
+    left: "&copy; 2025 Max Teicheira"
+    center:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/maxteicheira/
+        aria-label: LinkedIn
+      - icon: github
+        href: https://github.com/MaxTeicheira
+        aria-label: GitHub
+    right: "Built with [Quarto](https://quarto.org)"
 
 format:
   html:
-    theme: flatly
+    theme:
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
