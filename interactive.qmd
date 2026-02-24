@@ -1,8 +1,455 @@
 ---
-title: "Interactive Tools"
+title: "Interactive Signal Processing"
 ---
 
-This page demonstrates interactive widgets that can be embedded in any project or blog post on this site.
+An interactive workbench for exploring signal generation, spectral analysis, digital filtering, and nuclear detector pulse shaping --- all running in the browser.
+
+## Signal Generator
+
+Build a test signal from two sine components plus Gaussian noise.
+
+```{ojs}
+viewof sig_freq1 = Inputs.range([1, 50], {value: 5, step: 1, label: "Frequency 1 (Hz)"})
+viewof sig_amp1 = Inputs.range([0, 2], {value: 1.0, step: 0.05, label: "Amplitude 1"})
+viewof sig_freq2 = Inputs.range([1, 100], {value: 25, step: 1, label: "Frequency 2 (Hz)"})
+viewof sig_amp2 = Inputs.range([0, 2], {value: 0.5, step: 0.05, label: "Amplitude 2"})
+viewof noise_amp = Inputs.range([0, 1], {value: 0.2, step: 0.02, label: "Noise amplitude"})
+viewof sample_rate = Inputs.range([256, 4096], {value: 1024, step: 256, label: "Sample rate"})
+```
+
+```{ojs}
+N = 1024
+```
+
+```{ojs}
+signal = {
+  const arr = new Float64Array(N);
+  for (let i = 0; i < N; i++) {
+    const t = i / sample_rate;
+    arr[i] = sig_amp1 * Math.sin(2 * Math.PI * sig_freq1 * t)
+           + sig_amp2 * Math.sin(2 * Math.PI * sig_freq2 * t)
+           + noise_amp * gaussRandom();
+  }
+  return arr;
+}
+```
+
+```{ojs}
+function gaussRandom() {
+  let u = 0, v = 0;
+  while (u === 0) u = Math.random();
+  while (v === 0) v = Math.random();
+  return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+}
+```
+
+```{ojs}
+time_data = Array.from(signal, (v, i) => ({t: i / sample_rate * 1000, v}))
+```
+
+```{ojs}
+Plot.plot({
+  width: 800,
+  height: 280,
+  x: {label: "Time (ms)"},
+  y: {label: "Amplitude", domain: [-4, 4]},
+  marks: [
+    Plot.ruleY([0], {stroke: "#ccc"}),
+    Plot.line(time_data, {x: "t", y: "v", stroke: "#4a6b7a", strokeWidth: 1.2})
+  ]
+})
+```
+
+## Frequency Spectrum (FFT)
+
+Magnitude spectrum computed via FFT. Peaks appear at the frequencies set by the sliders above.
+
+```{ojs}
+fftjs = {
+  // Inline radix-2 FFT — no external dependency
+  function fft(re, im) {
+    const n = re.length;
+    if (n === 1) return [re, im];
+    // Bit-reversal permutation
+    const bits = Math.log2(n);
+    for (let i = 0; i < n; i++) {
+      let j = 0;
+      for (let b = 0; b < bits; b++) j |= ((i >> b) & 1) << (bits - 1 - b);
+      if (j > i) {
+        [re[i], re[j]] = [re[j], re[i]];
+        [im[i], im[j]] = [im[j], im[i]];
+      }
+    }
+    // Cooley-Tukey butterflies
+    for (let size = 2; size <= n; size *= 2) {
+      const half = size / 2;
+      const angle = -2 * Math.PI / size;
+      for (let i = 0; i < n; i += size) {
+        for (let k = 0; k < half; k++) {
+          const cos = Math.cos(angle * k);
+          const sin = Math.sin(angle * k);
+          const tpRe = re[i + k + half] * cos - im[i + k + half] * sin;
+          const tpIm = re[i + k + half] * sin + im[i + k + half] * cos;
+          re[i + k + half] = re[i + k] - tpRe;
+          im[i + k + half] = im[i + k] - tpIm;
+          re[i + k] += tpRe;
+          im[i + k] += tpIm;
+        }
+      }
+    }
+    return [re, im];
+  }
+  return {fft};
+}
+```
+
+```{ojs}
+spectrum = {
+  const re = Float64Array.from(signal);
+  const im = new Float64Array(N);
+  fftjs.fft(re, im);
+  const halfN = N / 2;
+  const result = [];
+  for (let i = 0; i < halfN; i++) {
+    const mag = Math.sqrt(re[i] * re[i] + im[i] * im[i]) / N;
+    const dB = 20 * Math.log10(Math.max(mag, 1e-10));
+    result.push({freq: i * sample_rate / N, mag, dB});
+  }
+  return result;
+}
+```
+
+```{ojs}
+Plot.plot({
+  width: 800,
+  height: 280,
+  x: {label: "Frequency (Hz)"},
+  y: {label: "Magnitude (dB)", domain: [-60, 10]},
+  marks: [
+    Plot.ruleY([-60], {stroke: "#ccc"}),
+    Plot.line(spectrum, {x: "freq", y: "dB", stroke: "#4a6b7a", strokeWidth: 1.5})
+  ]
+})
+```
+
+## Digital Filtering (Butterworth IIR)
+
+Apply a Butterworth IIR filter to the signal. Compare the original and filtered signals in both time and frequency domains.
+
+```{ojs}
+viewof filter_type = Inputs.select(["lowpass", "highpass", "bandpass"], {value: "lowpass", label: "Filter type"})
+viewof filter_cutoff = Inputs.range([1, 200], {value: 15, step: 1, label: "Cutoff frequency (Hz)"})
+viewof filter_order = Inputs.range([1, 8], {value: 4, step: 1, label: "Filter order"})
+```
+
+```{ojs}
+// Butterworth IIR filter implementation (biquad cascade)
+butterworth = {
+  function designLP(fc, fs, order) {
+    const sections = [];
+    const n = Math.floor(order / 2);
+    const wc = Math.tan(Math.PI * fc / fs);
+    for (let k = 0; k < n; k++) {
+      const theta = Math.PI * (2 * k + 1) / (2 * order);
+      const alpha = -2 * Math.cos(theta);
+      const w2 = wc * wc;
+      const a0 = 1 + wc * (-alpha) + w2;
+      sections.push({
+        b: [w2 / a0, 2 * w2 / a0, w2 / a0],
+        a: [1, (2 * w2 - 2) / a0, (1 + wc * alpha + w2) / a0]
+      });
+    }
+    // Odd order: add first-order section
+    if (order % 2 === 1) {
+      const a0 = 1 + wc;
+      sections.push({
+        b: [wc / a0, wc / a0, 0],
+        a: [1, (wc - 1) / a0, 0]
+      });
+    }
+    return sections;
+  }
+
+  function designHP(fc, fs, order) {
+    const sections = [];
+    const n = Math.floor(order / 2);
+    const wc = Math.tan(Math.PI * fc / fs);
+    for (let k = 0; k < n; k++) {
+      const theta = Math.PI * (2 * k + 1) / (2 * order);
+      const alpha = -2 * Math.cos(theta);
+      const w2 = wc * wc;
+      const a0 = 1 + wc * (-alpha) + w2;
+      sections.push({
+        b: [1 / a0, -2 / a0, 1 / a0],
+        a: [1, (2 * w2 - 2) / a0, (1 + wc * alpha + w2) / a0]
+      });
+    }
+    if (order % 2 === 1) {
+      const a0 = 1 + wc;
+      sections.push({
+        b: [1 / a0, -1 / a0, 0],
+        a: [1, (wc - 1) / a0, 0]
+      });
+    }
+    return sections;
+  }
+
+  function applyBiquad(sections, x) {
+    let y = Float64Array.from(x);
+    for (const sec of sections) {
+      const out = new Float64Array(y.length);
+      let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+      for (let i = 0; i < y.length; i++) {
+        out[i] = sec.b[0] * y[i] + sec.b[1] * x1 + sec.b[2] * x2
+               - sec.a[1] * y1 - sec.a[2] * y2;
+        x2 = x1; x1 = y[i];
+        y2 = y1; y1 = out[i];
+      }
+      y = out;
+    }
+    return y;
+  }
+
+  return {designLP, designHP, applyBiquad};
+}
+```
+
+```{ojs}
+filtered_signal = {
+  let sections;
+  if (filter_type === "lowpass") {
+    sections = butterworth.designLP(filter_cutoff, sample_rate, filter_order);
+  } else if (filter_type === "highpass") {
+    sections = butterworth.designHP(filter_cutoff, sample_rate, filter_order);
+  } else {
+    // Bandpass: cascade lowpass at cutoff+20 with highpass at cutoff
+    const lp = butterworth.designLP(Math.min(filter_cutoff + 20, sample_rate / 2 - 1), sample_rate, filter_order);
+    const hp = butterworth.designHP(filter_cutoff, sample_rate, filter_order);
+    sections = [...lp, ...hp];
+  }
+  return butterworth.applyBiquad(sections, signal);
+}
+```
+
+```{ojs}
+filter_time_data = {
+  const orig = Array.from(signal, (v, i) => ({t: i / sample_rate * 1000, v, series: "Original"}));
+  const filt = Array.from(filtered_signal, (v, i) => ({t: i / sample_rate * 1000, v, series: "Filtered"}));
+  return [...orig, ...filt];
+}
+```
+
+```{ojs}
+Plot.plot({
+  width: 800,
+  height: 300,
+  color: {domain: ["Original", "Filtered"], range: ["#b0c4d080", "#c0392b"]},
+  x: {label: "Time (ms)"},
+  y: {label: "Amplitude", domain: [-4, 4]},
+  marks: [
+    Plot.ruleY([0], {stroke: "#eee"}),
+    Plot.line(filter_time_data, {x: "t", y: "v", stroke: "series", strokeWidth: d => d.series === "Filtered" ? 1.8 : 1})
+  ]
+})
+```
+
+```{ojs}
+filtered_spectrum = {
+  const re = Float64Array.from(filtered_signal);
+  const im = new Float64Array(N);
+  fftjs.fft(re, im);
+  const halfN = N / 2;
+  const result = [];
+  for (let i = 0; i < halfN; i++) {
+    const mag = Math.sqrt(re[i] * re[i] + im[i] * im[i]) / N;
+    const dB = 20 * Math.log10(Math.max(mag, 1e-10));
+    result.push({freq: i * sample_rate / N, dB, series: "Filtered"});
+  }
+  // Add original spectrum for comparison
+  const origSpectrum = spectrum.map(d => ({freq: d.freq, dB: d.dB, series: "Original"}));
+  return [...origSpectrum, ...result];
+}
+```
+
+```{ojs}
+Plot.plot({
+  width: 800,
+  height: 280,
+  color: {domain: ["Original", "Filtered"], range: ["#b0c4d080", "#c0392b"]},
+  x: {label: "Frequency (Hz)"},
+  y: {label: "Magnitude (dB)", domain: [-60, 10]},
+  marks: [
+    Plot.line(filtered_spectrum, {x: "freq", y: "dB", stroke: "series", strokeWidth: d => d.series === "Filtered" ? 1.8 : 1})
+  ]
+})
+```
+
+## Detector Pulse Shaping
+
+Simulates a radiation detector charge pulse and applies the **Jordanov-Knoll trapezoidal filter** --- the standard pulse-shaping algorithm used in nuclear spectroscopy (including CZT detectors for PET imaging).
+
+The trapezoidal filter converts an exponentially-decaying detector pulse into a flat-top trapezoid whose height is proportional to the deposited energy.
+
+### Simulated Detector Pulse
+
+```{ojs}
+viewof pulse_rise = Inputs.range([1, 20], {value: 5, step: 1, label: "Pulse rise time (samples)"})
+viewof pulse_decay = Inputs.range([20, 500], {value: 150, step: 5, label: "Decay time constant (samples)"})
+viewof pulse_amplitude = Inputs.range([0.1, 5], {value: 2.0, step: 0.1, label: "Pulse amplitude"})
+viewof pulse_noise = Inputs.range([0, 0.3], {value: 0.05, step: 0.01, label: "Noise level"})
+```
+
+```{ojs}
+Npulse = 512
+```
+
+```{ojs}
+detector_pulse = {
+  const arr = new Float64Array(Npulse);
+  const onset = 50; // pulse starts at sample 50
+  for (let i = 0; i < Npulse; i++) {
+    if (i >= onset) {
+      const dt = i - onset;
+      const rise = 1 - Math.exp(-dt / pulse_rise);
+      const decay = Math.exp(-dt / pulse_decay);
+      arr[i] = pulse_amplitude * rise * decay;
+    }
+    arr[i] += pulse_noise * gaussRandom();
+  }
+  return arr;
+}
+```
+
+### Trapezoidal Filter Parameters
+
+```{ojs}
+viewof trap_k = Inputs.range([2, 60], {value: 20, step: 1, label: "Rise time k (samples)"})
+viewof trap_l = Inputs.range([0, 40], {value: 10, step: 1, label: "Flat-top l (samples)"})
+viewof trap_M = Inputs.range([10, 500], {value: 150, step: 5, label: "Decay constant M"})
+```
+
+```{ojs}
+trapezoidal_output = {
+  const x = detector_pulse;
+  const n = x.length;
+  const d = new Float64Array(n);
+  const p = new Float64Array(n);
+  const r = new Float64Array(n);
+  const s = new Float64Array(n);
+
+  const k = trap_k;
+  const l = trap_l;
+  const kl = k + l;
+
+  for (let i = 0; i < n; i++) {
+    // d[n] = x[n] - x[n-k] - x[n-l] + x[n-k-l]
+    d[i] = x[i]
+         - (i >= k ? x[i - k] : 0)
+         - (i >= l ? x[i - l] : 0)
+         + (i >= kl ? x[i - kl] : 0);
+
+    // p[n] = p[n-1] + d[n]
+    p[i] = (i > 0 ? p[i - 1] : 0) + d[i];
+
+    // r[n] = p[n] + M * d[n]
+    r[i] = p[i] + trap_M * d[i];
+
+    // s[n] = s[n-1] + r[n]
+    s[i] = (i > 0 ? s[i - 1] : 0) + r[i];
+  }
+
+  return s;
+}
+```
+
+```{ojs}
+pulse_plot_data = {
+  const raw = Array.from(detector_pulse, (v, i) => ({i, v, series: "Raw pulse"}));
+  // Normalize shaped output for visual comparison
+  const maxS = Math.max(...trapezoidal_output.map(Math.abs));
+  const maxR = Math.max(...detector_pulse.map(Math.abs));
+  const scale = maxS > 0 ? maxR / maxS : 1;
+  const shaped = Array.from(trapezoidal_output, (v, i) => ({i, v: v * scale, series: "Shaped (trapezoid)"}));
+  return [...raw, ...shaped];
+}
+```
+
+```{ojs}
+Plot.plot({
+  width: 800,
+  height: 320,
+  color: {domain: ["Raw pulse", "Shaped (trapezoid)"], range: ["#4a6b7a", "#c0392b"]},
+  x: {label: "Sample"},
+  y: {label: "Amplitude (normalized)"},
+  marks: [
+    Plot.ruleY([0], {stroke: "#ddd"}),
+    Plot.line(pulse_plot_data, {x: "i", y: "v", stroke: "series", strokeWidth: 1.8})
+  ]
+})
+```
+
+A good trapezoidal shaping result shows a flat top at the pulse peak --- the height of that flat region corresponds to the energy deposited in the detector. Adjust **k** (rise time) to match the charge collection time, **l** (flat top) for ballistic deficit compensation, and **M** to match the preamplifier decay constant.
+
+## CR-RC Shaping
+
+A simpler analog pulse-shaping approach: a high-pass CR stage (differentiator) followed by a low-pass RC stage (integrator). This produces a semi-Gaussian peaked output from the exponential detector pulse.
+
+```{ojs}
+viewof crrc_tau = Inputs.range([2, 80], {value: 20, step: 1, label: "Shaping time τ (samples)"})
+```
+
+```{ojs}
+crrc_output = {
+  const x = detector_pulse;
+  const n = x.length;
+  const tau = crrc_tau;
+  const alpha = tau / (tau + 1);
+
+  // CR stage (high-pass)
+  const hp = new Float64Array(n);
+  for (let i = 1; i < n; i++) {
+    hp[i] = alpha * (hp[i - 1] + x[i] - x[i - 1]);
+  }
+
+  // RC stage (low-pass)
+  const lp = new Float64Array(n);
+  const beta = 1 / (tau + 1);
+  for (let i = 1; i < n; i++) {
+    lp[i] = lp[i - 1] + beta * (hp[i] - lp[i - 1]);
+  }
+
+  return lp;
+}
+```
+
+```{ojs}
+crrc_plot_data = {
+  const raw = Array.from(detector_pulse, (v, i) => ({i, v, series: "Raw pulse"}));
+  const maxC = Math.max(...crrc_output.map(Math.abs));
+  const maxR = Math.max(...detector_pulse.map(Math.abs));
+  const scale = maxC > 0 ? maxR / maxC : 1;
+  const shaped = Array.from(crrc_output, (v, i) => ({i, v: v * scale, series: "CR-RC shaped"}));
+  return [...raw, ...shaped];
+}
+```
+
+```{ojs}
+Plot.plot({
+  width: 800,
+  height: 300,
+  color: {domain: ["Raw pulse", "CR-RC shaped"], range: ["#4a6b7a", "#27ae60"]},
+  x: {label: "Sample"},
+  y: {label: "Amplitude (normalized)"},
+  marks: [
+    Plot.ruleY([0], {stroke: "#ddd"}),
+    Plot.line(crrc_plot_data, {x: "i", y: "v", stroke: "series", strokeWidth: 1.8})
+  ]
+})
+```
+
+The shaping time **τ** controls the trade-off between noise filtering (larger τ) and pulse pile-up rejection (smaller τ). In CZT detectors for PET, typical shaping times are tuned to the charge collection characteristics of the crystal.
+
+---
 
 ## Embedding 3D Models from Onshape
 
@@ -27,91 +474,6 @@ To add a 3D model to any project page:
 </model-viewer>
 ```
 
-Or link directly to a public Onshape document:
+## Using Observable JS in Project Pages
 
-```markdown
-[View this model in 3D on Onshape](https://cad.onshape.com/documents/YOUR_DOC_ID/w/YOUR_WORKSPACE_ID/e/YOUR_ELEMENT_ID)
-```
-
-## Interactive Python with Observable JS
-
-Quarto has built-in support for [Observable JS](https://quarto.org/docs/interactive/ojs/), which lets you create interactive charts and inputs that run in the browser with no server.
-
-```{ojs}
-viewof frequency = Inputs.range([0.5, 5], {value: 1, step: 0.1, label: "Frequency:"})
-viewof amplitude = Inputs.range([0.1, 2], {value: 1, step: 0.1, label: "Amplitude:"})
-viewof phase = Inputs.range([0, 6.28], {value: 0, step: 0.1, label: "Phase shift:"})
-```
-
-```{ojs}
-{
-  const width = 600;
-  const height = 300;
-  const margin = {top: 20, right: 20, bottom: 30, left: 40};
-
-  const x = d3.scaleLinear()
-    .domain([0, 2 * Math.PI])
-    .range([margin.left, width - margin.right]);
-
-  const y = d3.scaleLinear()
-    .domain([-2.5, 2.5])
-    .range([height - margin.bottom, margin.top]);
-
-  const points = d3.range(0, 2 * Math.PI, 0.02);
-
-  const line = d3.line()
-    .x(d => x(d))
-    .y(d => y(amplitude * Math.sin(frequency * d + phase)));
-
-  const svg = d3.create("svg")
-    .attr("viewBox", [0, 0, width, height])
-    .attr("width", width)
-    .attr("height", height)
-    .style("max-width", "100%");
-
-  svg.append("g")
-    .attr("transform", `translate(0,${height - margin.bottom})`)
-    .call(d3.axisBottom(x).ticks(5).tickFormat(d => `${(d / Math.PI).toFixed(1)}π`));
-
-  svg.append("g")
-    .attr("transform", `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y));
-
-  svg.append("path")
-    .datum(points)
-    .attr("fill", "none")
-    .attr("stroke", "#4a6b7a")
-    .attr("stroke-width", 2)
-    .attr("d", line);
-
-  svg.append("text")
-    .attr("x", width / 2)
-    .attr("y", margin.top)
-    .attr("text-anchor", "middle")
-    .attr("fill", "#1a1a2e")
-    .attr("font-size", "12px")
-    .text(`y = ${amplitude.toFixed(1)} sin(${frequency.toFixed(1)}x + ${phase.toFixed(1)})`);
-
-  return svg.node();
-}
-```
-
-This sine wave plot is fully interactive -- drag the sliders above to change the waveform in real time. All computation happens in the browser.
-
-## Using these tools in project pages
-
-Any project page can include these interactive elements. For example:
-
-- **RF31 DRO project**: An interactive backlash calculator
-- **ESP8266 board**: An interactive schematic viewer
-- **Research**: Interactive charge transport simulations
-
-To add Observable JS to any `.qmd` file, just use ` ```{ojs} ` code blocks -- no extensions or installs needed.
-
-For full Python-in-the-browser support (editable code cells), install the [quarto-pyodide extension](https://github.com/coatless-quarto/pyodide):
-
-```bash
-quarto add coatless-quarto/pyodide
-```
-
-Then use ` ```{pyodide-python} ` blocks for live, editable Python cells.
+Any project page can include interactive elements. Use ` ```{ojs} ` code blocks --- no extensions or installs needed. For full Python-in-the-browser support, install the [quarto-pyodide extension](https://github.com/coatless-quarto/pyodide) and use ` ```{pyodide-python} ` blocks.
