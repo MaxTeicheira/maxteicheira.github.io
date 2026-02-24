@@ -1,5 +1,7 @@
 ---
 title: "Interactive Signal Processing"
+execute:
+  echo: false
 ---
 
 An interactive workbench for exploring signal generation, spectral analysis, digital filtering, and nuclear detector pulse shaping --- all running in the browser.
