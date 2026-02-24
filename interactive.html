@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Interactive Tools – Max Teicheira</title>
+<title>Interactive Signal Processing – Max Teicheira</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,13 +113,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Interactive Tools – Max Teicheira">
+<meta property="og:title" content="Interactive Signal Processing – Max Teicheira">
 <meta property="og:description" content="Electrical engineer, researcher, and builder. PET imaging with CZT detectors at UC Santa Cruz.">
 <meta property="og:image" content="https://MaxTeicheira.github.io/maxteicheira.github.io/img/logo.png">
 <meta property="og:site_name" content="Max Teicheira">
 <meta property="og:image:height" content="512">
 <meta property="og:image:width" content="512">
-<meta name="twitter:title" content="Interactive Tools – Max Teicheira">
+<meta name="twitter:title" content="Interactive Signal Processing – Max Teicheira">
 <meta name="twitter:description" content="Electrical engineer, researcher, and builder. PET imaging with CZT detectors at UC Santa Cruz.">
 <meta name="twitter:image" content="https://MaxTeicheira.github.io/maxteicheira.github.io/img/logo.png">
 <meta name="twitter:card" content="summary">
@@ -347,9 +347,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#embedding-3d-models-from-onshape" id="toc-embedding-3d-models-from-onshape" class="nav-link active" data-scroll-target="#embedding-3d-models-from-onshape">Embedding 3D Models from Onshape</a></li>
-  <li><a href="#interactive-python-with-observable-js" id="toc-interactive-python-with-observable-js" class="nav-link" data-scroll-target="#interactive-python-with-observable-js">Interactive Python with Observable JS</a></li>
-  <li><a href="#using-these-tools-in-project-pages" id="toc-using-these-tools-in-project-pages" class="nav-link" data-scroll-target="#using-these-tools-in-project-pages">Using these tools in project pages</a></li>
+  <li><a href="#signal-generator" id="toc-signal-generator" class="nav-link active" data-scroll-target="#signal-generator">Signal Generator</a></li>
+  <li><a href="#frequency-spectrum-fft" id="toc-frequency-spectrum-fft" class="nav-link" data-scroll-target="#frequency-spectrum-fft">Frequency Spectrum (FFT)</a></li>
+  <li><a href="#digital-filtering-butterworth-iir" id="toc-digital-filtering-butterworth-iir" class="nav-link" data-scroll-target="#digital-filtering-butterworth-iir">Digital Filtering (Butterworth IIR)</a></li>
+  <li><a href="#detector-pulse-shaping" id="toc-detector-pulse-shaping" class="nav-link" data-scroll-target="#detector-pulse-shaping">Detector Pulse Shaping</a>
+  <ul class="collapse">
+  <li><a href="#simulated-detector-pulse" id="toc-simulated-detector-pulse" class="nav-link" data-scroll-target="#simulated-detector-pulse">Simulated Detector Pulse</a></li>
+  <li><a href="#trapezoidal-filter-parameters" id="toc-trapezoidal-filter-parameters" class="nav-link" data-scroll-target="#trapezoidal-filter-parameters">Trapezoidal Filter Parameters</a></li>
+  </ul></li>
+  <li><a href="#cr-rc-shaping" id="toc-cr-rc-shaping" class="nav-link" data-scroll-target="#cr-rc-shaping">CR-RC Shaping</a></li>
+  <li><a href="#embedding-3d-models-from-onshape" id="toc-embedding-3d-models-from-onshape" class="nav-link" data-scroll-target="#embedding-3d-models-from-onshape">Embedding 3D Models from Onshape</a></li>
+  <li><a href="#using-observable-js-in-project-pages" id="toc-using-observable-js-in-project-pages" class="nav-link" data-scroll-target="#using-observable-js-in-project-pages">Using Observable JS in Project Pages</a></li>
   </ul>
 </nav>
     </div>
@@ -359,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Interactive Tools</h1>
+<h1 class="title">Interactive Signal Processing</h1>
 </div>
 
 
@@ -376,36 +384,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page demonstrates interactive widgets that can be embedded in any project or blog post on this site.</p>
-<section id="embedding-3d-models-from-onshape" class="level2">
-<h2 class="anchored" data-anchor-id="embedding-3d-models-from-onshape">Embedding 3D Models from Onshape</h2>
-<p>Onshape doesn’t support direct iframe embedding, but you can export models as <code>.glb</code> files and display them with Google’s <code>&lt;model-viewer&gt;</code> web component. The viewer supports rotate, zoom, and pan.</p>
-<p>To add a 3D model to any project page:</p>
-<ol type="1">
-<li>In Onshape: right-click part/assembly &gt; Export &gt; choose <strong>GLTF</strong> format</li>
-<li>Place the <code>.glb</code> file alongside your <code>.qmd</code> file</li>
-<li>Add this HTML block to your <code>.qmd</code>:</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">"module"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">model-viewer</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  src</span><span class="op">=</span><span class="st">"your-model.glb"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  alt</span><span class="op">=</span><span class="st">"Description of the model"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  camera-controls</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  auto-rotate</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  shadow-intensity</span><span class="op">=</span><span class="st">"1"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  style</span><span class="op">=</span><span class="st">"width: 100%; height: 500px;"</span><span class="dt">&gt;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">model-viewer</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Or link directly to a public Onshape document:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">View this model in 3D on Onshape</span><span class="co">](https://cad.onshape.com/documents/YOUR_DOC_ID/w/YOUR_WORKSPACE_ID/e/YOUR_ELEMENT_ID)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="interactive-python-with-observable-js" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-python-with-observable-js">Interactive Python with Observable JS</h2>
-<p>Quarto has built-in support for <a href="https://quarto.org/docs/interactive/ojs/">Observable JS</a>, which lets you create interactive charts and inputs that run in the browser with no server.</p>
+<p>An interactive workbench for exploring signal generation, spectral analysis, digital filtering, and nuclear detector pulse shaping — all running in the browser.</p>
+<section id="signal-generator" class="level2">
+<h2 class="anchored" data-anchor-id="signal-generator">Signal Generator</h2>
+<p>Build a test signal from two sine components plus Gaussian noise.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-startfrom="41" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 40;"><span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>viewof frequency <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.5</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Frequency:"</span>})</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>viewof amplitude <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.1</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Amplitude:"</span>})</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>viewof phase <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">6.28</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Phase shift:"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="12" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 11;"><span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>viewof sig_freq1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Frequency 1 (Hz)"</span>})</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>viewof sig_amp1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">1.0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Amplitude 1"</span>})</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>viewof sig_freq2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Frequency 2 (Hz)"</span>})</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>viewof sig_amp2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Amplitude 2"</span>})</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>viewof noise_amp <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.02</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Noise amplitude"</span>})</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>viewof sample_rate <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">256</span><span class="op">,</span> <span class="dv">4096</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1024</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">256</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Sample rate"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -427,85 +416,650 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-startfrom="46" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 45;"><span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">600</span><span class="op">;</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">300</span><span class="op">;</span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> margin <span class="op">=</span> {<span class="dt">top</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">right</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">40</span>}<span class="op">;</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>])</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span><span class="op">,</span> width <span class="op">-</span> margin<span class="op">.</span><span class="at">right</span>])<span class="op">;</span></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="fl">2.5</span><span class="op">,</span> <span class="fl">2.5</span>])</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">range</span>([height <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> margin<span class="op">.</span><span class="at">top</span>])<span class="op">;</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> points <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">,</span> <span class="fl">0.02</span>)<span class="op">;</span></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d))</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(amplitude <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(frequency <span class="op">*</span> d <span class="op">+</span> phase)))<span class="op">;</span></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">create</span>(<span class="st">"svg"</span>)</span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"viewBox"</span><span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> width<span class="op">,</span> height])</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> width)</span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> height)</span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"max-width"</span><span class="op">,</span> <span class="st">"100%"</span>)<span class="op">;</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0,</span><span class="sc">${</span>height <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="sc">}</span><span class="vs">)`</span>)</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">call</span>(d3<span class="op">.</span><span class="fu">axisBottom</span>(x)<span class="op">.</span><span class="fu">ticks</span>(<span class="dv">5</span>)<span class="op">.</span><span class="fu">tickFormat</span>(d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>(d <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">π`</span>))<span class="op">;</span></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span>margin<span class="op">.</span><span class="at">left</span><span class="sc">}</span><span class="vs">,0)`</span>)</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">call</span>(d3<span class="op">.</span><span class="fu">axisLeft</span>(y))<span class="op">;</span></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">datum</span>(points)</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"#4a6b7a"</span>)</span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> line)<span class="op">;</span></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> margin<span class="op">.</span><span class="at">top</span>)</span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"#1a1a2e"</span>)</span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"12px"</span>)</span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="vs">`y = </span><span class="sc">${</span>amplitude<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> sin(</span><span class="sc">${</span>frequency<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">x + </span><span class="sc">${</span>phase<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">)`</span>)<span class="op">;</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-2" data-nodetype="expression">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<p>This sine wave plot is fully interactive – drag the sliders above to change the waveform in real time. All computation happens in the browser.</p>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-startfrom="20" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 19;"><span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1024</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-startfrom="24" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 23;"><span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> {</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> arr <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(N)<span class="op">;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> N<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> t <span class="op">=</span> i <span class="op">/</span> sample_rate<span class="op">;</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    arr[i] <span class="op">=</span> sig_amp1 <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> sig_freq1 <span class="op">*</span> t)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>           <span class="op">+</span> sig_amp2 <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> sig_freq2 <span class="op">*</span> t)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>           <span class="op">+</span> noise_amp <span class="op">*</span> <span class="fu">gaussRandom</span>()<span class="op">;</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> arr<span class="op">;</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-startfrom="37" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 36;"><span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gaussRandom</span>() {</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> u <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> v <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (u <span class="op">===</span> <span class="dv">0</span>) u <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">;</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (v <span class="op">===</span> <span class="dv">0</span>) v <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">;</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="op">-</span><span class="fl">2.0</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(u)) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(<span class="fl">2.0</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> v)<span class="op">;</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-startfrom="46" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 45;"><span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>time_data <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(signal<span class="op">,</span> (v<span class="op">,</span> i) <span class="kw">=&gt;</span> ({<span class="dt">t</span><span class="op">:</span> i <span class="op">/</span> sample_rate <span class="op">*</span> <span class="dv">1000</span><span class="op">,</span> v}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-startfrom="50" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 49;"><span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">280</span><span class="op">,</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Time (ms)"</span>}<span class="op">,</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Amplitude"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span>]}<span class="op">,</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(time_data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#4a6b7a"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.2</span>})</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
 </section>
-<section id="using-these-tools-in-project-pages" class="level2">
-<h2 class="anchored" data-anchor-id="using-these-tools-in-project-pages">Using these tools in project pages</h2>
-<p>Any project page can include these interactive elements. For example:</p>
-<ul>
-<li><strong>RF31 DRO project</strong>: An interactive backlash calculator</li>
-<li><strong>ESP8266 board</strong>: An interactive schematic viewer</li>
-<li><strong>Research</strong>: Interactive charge transport simulations</li>
-</ul>
-<p>To add Observable JS to any <code>.qmd</code> file, just use <code>```{ojs}</code> code blocks – no extensions or installs needed.</p>
-<p>For full Python-in-the-browser support (editable code cells), install the <a href="https://github.com/coatless-quarto/pyodide">quarto-pyodide extension</a>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add coatless-quarto/pyodide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then use <code>```{pyodide-python}</code> blocks for live, editable Python cells.</p>
+<section id="frequency-spectrum-fft" class="level2">
+<h2 class="anchored" data-anchor-id="frequency-spectrum-fft">Frequency Spectrum (FFT)</h2>
+<p>Magnitude spectrum computed via FFT. Peaks appear at the frequencies set by the sliders above.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-startfrom="67" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 66;"><span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>fftjs <span class="op">=</span> {</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Inline radix-2 FFT — no external dependency</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">fft</span>(re<span class="op">,</span> im) {</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> n <span class="op">=</span> re<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (n <span class="op">===</span> <span class="dv">1</span>) <span class="cf">return</span> [re<span class="op">,</span> im]<span class="op">;</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Bit-reversal permutation</span></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> bits <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log2</span>(n)<span class="op">;</span></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (<span class="kw">let</span> b <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> b <span class="op">&lt;</span> bits<span class="op">;</span> b<span class="op">++</span>) j <span class="op">|=</span> ((i <span class="op">&gt;&gt;</span> b) <span class="op">&amp;</span> <span class="dv">1</span>) <span class="op">&lt;&lt;</span> (bits <span class="op">-</span> <span class="dv">1</span> <span class="op">-</span> b)<span class="op">;</span></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (j <span class="op">&gt;</span> i) {</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>        [re[i]<span class="op">,</span> re[j]] <span class="op">=</span> [re[j]<span class="op">,</span> re[i]]<span class="op">;</span></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>        [im[i]<span class="op">,</span> im[j]] <span class="op">=</span> [im[j]<span class="op">,</span> im[i]]<span class="op">;</span></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Cooley-Tukey butterflies</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> size <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> size <span class="op">&lt;=</span> n<span class="op">;</span> size <span class="op">*=</span> <span class="dv">2</span>) {</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> half <span class="op">=</span> size <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> angle <span class="op">=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> size<span class="op">;</span></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i <span class="op">+=</span> size) {</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> half<span class="op">;</span> k<span class="op">++</span>) {</span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> cos <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(angle <span class="op">*</span> k)<span class="op">;</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> sin <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(angle <span class="op">*</span> k)<span class="op">;</span></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> tpRe <span class="op">=</span> re[i <span class="op">+</span> k <span class="op">+</span> half] <span class="op">*</span> cos <span class="op">-</span> im[i <span class="op">+</span> k <span class="op">+</span> half] <span class="op">*</span> sin<span class="op">;</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> tpIm <span class="op">=</span> re[i <span class="op">+</span> k <span class="op">+</span> half] <span class="op">*</span> sin <span class="op">+</span> im[i <span class="op">+</span> k <span class="op">+</span> half] <span class="op">*</span> cos<span class="op">;</span></span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>          re[i <span class="op">+</span> k <span class="op">+</span> half] <span class="op">=</span> re[i <span class="op">+</span> k] <span class="op">-</span> tpRe<span class="op">;</span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>          im[i <span class="op">+</span> k <span class="op">+</span> half] <span class="op">=</span> im[i <span class="op">+</span> k] <span class="op">-</span> tpIm<span class="op">;</span></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>          re[i <span class="op">+</span> k] <span class="op">+=</span> tpRe<span class="op">;</span></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>          im[i <span class="op">+</span> k] <span class="op">+=</span> tpIm<span class="op">;</span></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [re<span class="op">,</span> im]<span class="op">;</span></span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {fft}<span class="op">;</span></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-startfrom="106" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 105;"><span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>spectrum <span class="op">=</span> {</span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> re <span class="op">=</span> <span class="bu">Float64Array</span><span class="op">.</span><span class="fu">from</span>(signal)<span class="op">;</span></span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> im <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(N)<span class="op">;</span></span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>  fftjs<span class="op">.</span><span class="fu">fft</span>(re<span class="op">,</span> im)<span class="op">;</span></span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> halfN <span class="op">=</span> N <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> halfN<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> mag <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(re[i] <span class="op">*</span> re[i] <span class="op">+</span> im[i] <span class="op">*</span> im[i]) <span class="op">/</span> N<span class="op">;</span></span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> dB <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log10</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(mag<span class="op">,</span> <span class="fl">1e-10</span>))<span class="op">;</span></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>    result<span class="op">.</span><span class="fu">push</span>({<span class="dt">freq</span><span class="op">:</span> i <span class="op">*</span> sample_rate <span class="op">/</span> N<span class="op">,</span> mag<span class="op">,</span> dB})<span class="op">;</span></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-startfrom="122" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">280</span><span class="op">,</span></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Frequency (Hz)"</span>}<span class="op">,</span></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Magnitude (dB)"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">60</span><span class="op">,</span> <span class="dv">10</span>]}<span class="op">,</span></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="op">-</span><span class="dv">60</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ccc"</span>})<span class="op">,</span></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(spectrum<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"freq"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"dB"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#4a6b7a"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span>})</span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-9" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="digital-filtering-butterworth-iir" class="level2">
+<h2 class="anchored" data-anchor-id="digital-filtering-butterworth-iir">Digital Filtering (Butterworth IIR)</h2>
+<p>Apply a Butterworth IIR filter to the signal. Compare the original and filtered signals in both time and frequency domains.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-startfrom="140" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 139;"><span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a>viewof filter_type <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"lowpass"</span><span class="op">,</span> <span class="st">"highpass"</span><span class="op">,</span> <span class="st">"bandpass"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"lowpass"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Filter type"</span>})</span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>viewof filter_cutoff <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">200</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Cutoff frequency (Hz)"</span>})</span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>viewof filter_order <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Filter order"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-startfrom="145" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 144;"><span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a><span class="co">// Butterworth IIR filter implementation (biquad cascade)</span></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>butterworth <span class="op">=</span> {</span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">designLP</span>(fc<span class="op">,</span> fs<span class="op">,</span> order) {</span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> sections <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> n <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(order <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> wc <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">tan</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> fc <span class="op">/</span> fs)<span class="op">;</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> n<span class="op">;</span> k<span class="op">++</span>) {</span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> theta <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> (<span class="dv">2</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> order)<span class="op">;</span></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> alpha <span class="op">=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(theta)<span class="op">;</span></span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> w2 <span class="op">=</span> wc <span class="op">*</span> wc<span class="op">;</span></span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> a0 <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> wc <span class="op">*</span> (<span class="op">-</span>alpha) <span class="op">+</span> w2<span class="op">;</span></span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>      sections<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>        <span class="dt">b</span><span class="op">:</span> [w2 <span class="op">/</span> a0<span class="op">,</span> <span class="dv">2</span> <span class="op">*</span> w2 <span class="op">/</span> a0<span class="op">,</span> w2 <span class="op">/</span> a0]<span class="op">,</span></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a>        <span class="dt">a</span><span class="op">:</span> [<span class="dv">1</span><span class="op">,</span> (<span class="dv">2</span> <span class="op">*</span> w2 <span class="op">-</span> <span class="dv">2</span>) <span class="op">/</span> a0<span class="op">,</span> (<span class="dv">1</span> <span class="op">+</span> wc <span class="op">*</span> alpha <span class="op">+</span> w2) <span class="op">/</span> a0]</span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Odd order: add first-order section</span></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (order <span class="op">%</span> <span class="dv">2</span> <span class="op">===</span> <span class="dv">1</span>) {</span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> a0 <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> wc<span class="op">;</span></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a>      sections<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>        <span class="dt">b</span><span class="op">:</span> [wc <span class="op">/</span> a0<span class="op">,</span> wc <span class="op">/</span> a0<span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>        <span class="dt">a</span><span class="op">:</span> [<span class="dv">1</span><span class="op">,</span> (wc <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> a0<span class="op">,</span> <span class="dv">0</span>]</span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sections<span class="op">;</span></span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">designHP</span>(fc<span class="op">,</span> fs<span class="op">,</span> order) {</span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> sections <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> n <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(order <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> wc <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">tan</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> fc <span class="op">/</span> fs)<span class="op">;</span></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> n<span class="op">;</span> k<span class="op">++</span>) {</span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> theta <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> (<span class="dv">2</span> <span class="op">*</span> k <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> order)<span class="op">;</span></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> alpha <span class="op">=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(theta)<span class="op">;</span></span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> w2 <span class="op">=</span> wc <span class="op">*</span> wc<span class="op">;</span></span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> a0 <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> wc <span class="op">*</span> (<span class="op">-</span>alpha) <span class="op">+</span> w2<span class="op">;</span></span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>      sections<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>        <span class="dt">b</span><span class="op">:</span> [<span class="dv">1</span> <span class="op">/</span> a0<span class="op">,</span> <span class="op">-</span><span class="dv">2</span> <span class="op">/</span> a0<span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> a0]<span class="op">,</span></span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>        <span class="dt">a</span><span class="op">:</span> [<span class="dv">1</span><span class="op">,</span> (<span class="dv">2</span> <span class="op">*</span> w2 <span class="op">-</span> <span class="dv">2</span>) <span class="op">/</span> a0<span class="op">,</span> (<span class="dv">1</span> <span class="op">+</span> wc <span class="op">*</span> alpha <span class="op">+</span> w2) <span class="op">/</span> a0]</span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (order <span class="op">%</span> <span class="dv">2</span> <span class="op">===</span> <span class="dv">1</span>) {</span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> a0 <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> wc<span class="op">;</span></span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>      sections<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>        <span class="dt">b</span><span class="op">:</span> [<span class="dv">1</span> <span class="op">/</span> a0<span class="op">,</span> <span class="op">-</span><span class="dv">1</span> <span class="op">/</span> a0<span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>        <span class="dt">a</span><span class="op">:</span> [<span class="dv">1</span><span class="op">,</span> (wc <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> a0<span class="op">,</span> <span class="dv">0</span>]</span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sections<span class="op">;</span></span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">applyBiquad</span>(sections<span class="op">,</span> x) {</span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> y <span class="op">=</span> <span class="bu">Float64Array</span><span class="op">.</span><span class="fu">from</span>(x)<span class="op">;</span></span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> sec <span class="kw">of</span> sections) {</span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> out <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(y<span class="op">.</span><span class="at">length</span>)<span class="op">;</span></span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> x1 <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> x2 <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> y1 <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> y2 <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> y<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>        out[i] <span class="op">=</span> sec<span class="op">.</span><span class="at">b</span>[<span class="dv">0</span>] <span class="op">*</span> y[i] <span class="op">+</span> sec<span class="op">.</span><span class="at">b</span>[<span class="dv">1</span>] <span class="op">*</span> x1 <span class="op">+</span> sec<span class="op">.</span><span class="at">b</span>[<span class="dv">2</span>] <span class="op">*</span> x2</span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a>               <span class="op">-</span> sec<span class="op">.</span><span class="at">a</span>[<span class="dv">1</span>] <span class="op">*</span> y1 <span class="op">-</span> sec<span class="op">.</span><span class="at">a</span>[<span class="dv">2</span>] <span class="op">*</span> y2<span class="op">;</span></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a>        x2 <span class="op">=</span> x1<span class="op">;</span> x1 <span class="op">=</span> y[i]<span class="op">;</span></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>        y2 <span class="op">=</span> y1<span class="op">;</span> y1 <span class="op">=</span> out[i]<span class="op">;</span></span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> out<span class="op">;</span></span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y<span class="op">;</span></span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {designLP<span class="op">,</span> designHP<span class="op">,</span> applyBiquad}<span class="op">;</span></span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-startfrom="217" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 216;"><span id="cb12-217"><a href="#cb12-217" aria-hidden="true" tabindex="-1"></a>filtered_signal <span class="op">=</span> {</span>
+<span id="cb12-218"><a href="#cb12-218" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> sections<span class="op">;</span></span>
+<span id="cb12-219"><a href="#cb12-219" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_type <span class="op">===</span> <span class="st">"lowpass"</span>) {</span>
+<span id="cb12-220"><a href="#cb12-220" aria-hidden="true" tabindex="-1"></a>    sections <span class="op">=</span> butterworth<span class="op">.</span><span class="fu">designLP</span>(filter_cutoff<span class="op">,</span> sample_rate<span class="op">,</span> filter_order)<span class="op">;</span></span>
+<span id="cb12-221"><a href="#cb12-221" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (filter_type <span class="op">===</span> <span class="st">"highpass"</span>) {</span>
+<span id="cb12-222"><a href="#cb12-222" aria-hidden="true" tabindex="-1"></a>    sections <span class="op">=</span> butterworth<span class="op">.</span><span class="fu">designHP</span>(filter_cutoff<span class="op">,</span> sample_rate<span class="op">,</span> filter_order)<span class="op">;</span></span>
+<span id="cb12-223"><a href="#cb12-223" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb12-224"><a href="#cb12-224" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Bandpass: cascade lowpass at cutoff+20 with highpass at cutoff</span></span>
+<span id="cb12-225"><a href="#cb12-225" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> lp <span class="op">=</span> butterworth<span class="op">.</span><span class="fu">designLP</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(filter_cutoff <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> sample_rate <span class="op">/</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">,</span> sample_rate<span class="op">,</span> filter_order)<span class="op">;</span></span>
+<span id="cb12-226"><a href="#cb12-226" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> hp <span class="op">=</span> butterworth<span class="op">.</span><span class="fu">designHP</span>(filter_cutoff<span class="op">,</span> sample_rate<span class="op">,</span> filter_order)<span class="op">;</span></span>
+<span id="cb12-227"><a href="#cb12-227" aria-hidden="true" tabindex="-1"></a>    sections <span class="op">=</span> [<span class="op">...</span>lp<span class="op">,</span> <span class="op">...</span>hp]<span class="op">;</span></span>
+<span id="cb12-228"><a href="#cb12-228" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-229"><a href="#cb12-229" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> butterworth<span class="op">.</span><span class="fu">applyBiquad</span>(sections<span class="op">,</span> signal)<span class="op">;</span></span>
+<span id="cb12-230"><a href="#cb12-230" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-startfrom="234" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 233;"><span id="cb13-234"><a href="#cb13-234" aria-hidden="true" tabindex="-1"></a>filter_time_data <span class="op">=</span> {</span>
+<span id="cb13-235"><a href="#cb13-235" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> orig <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(signal<span class="op">,</span> (v<span class="op">,</span> i) <span class="kw">=&gt;</span> ({<span class="dt">t</span><span class="op">:</span> i <span class="op">/</span> sample_rate <span class="op">*</span> <span class="dv">1000</span><span class="op">,</span> v<span class="op">,</span> <span class="dt">series</span><span class="op">:</span> <span class="st">"Original"</span>}))<span class="op">;</span></span>
+<span id="cb13-236"><a href="#cb13-236" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> filt <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(filtered_signal<span class="op">,</span> (v<span class="op">,</span> i) <span class="kw">=&gt;</span> ({<span class="dt">t</span><span class="op">:</span> i <span class="op">/</span> sample_rate <span class="op">*</span> <span class="dv">1000</span><span class="op">,</span> v<span class="op">,</span> <span class="dt">series</span><span class="op">:</span> <span class="st">"Filtered"</span>}))<span class="op">;</span></span>
+<span id="cb13-237"><a href="#cb13-237" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [<span class="op">...</span>orig<span class="op">,</span> <span class="op">...</span>filt]<span class="op">;</span></span>
+<span id="cb13-238"><a href="#cb13-238" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-startfrom="242" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 241;"><span id="cb14-242"><a href="#cb14-242" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb14-243"><a href="#cb14-243" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb14-244"><a href="#cb14-244" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span></span>
+<span id="cb14-245"><a href="#cb14-245" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="st">"Original"</span><span class="op">,</span> <span class="st">"Filtered"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"#b0c4d080"</span><span class="op">,</span> <span class="st">"#c0392b"</span>]}<span class="op">,</span></span>
+<span id="cb14-246"><a href="#cb14-246" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Time (ms)"</span>}<span class="op">,</span></span>
+<span id="cb14-247"><a href="#cb14-247" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Amplitude"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span>]}<span class="op">,</span></span>
+<span id="cb14-248"><a href="#cb14-248" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb14-249"><a href="#cb14-249" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#eee"</span>})<span class="op">,</span></span>
+<span id="cb14-250"><a href="#cb14-250" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(filter_time_data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"series"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">series</span> <span class="op">===</span> <span class="st">"Filtered"</span> <span class="op">?</span> <span class="fl">1.8</span> <span class="op">:</span> <span class="dv">1</span>})</span>
+<span id="cb14-251"><a href="#cb14-251" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb14-252"><a href="#cb14-252" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-14" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-startfrom="256" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 255;"><span id="cb15-256"><a href="#cb15-256" aria-hidden="true" tabindex="-1"></a>filtered_spectrum <span class="op">=</span> {</span>
+<span id="cb15-257"><a href="#cb15-257" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> re <span class="op">=</span> <span class="bu">Float64Array</span><span class="op">.</span><span class="fu">from</span>(filtered_signal)<span class="op">;</span></span>
+<span id="cb15-258"><a href="#cb15-258" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> im <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(N)<span class="op">;</span></span>
+<span id="cb15-259"><a href="#cb15-259" aria-hidden="true" tabindex="-1"></a>  fftjs<span class="op">.</span><span class="fu">fft</span>(re<span class="op">,</span> im)<span class="op">;</span></span>
+<span id="cb15-260"><a href="#cb15-260" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> halfN <span class="op">=</span> N <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb15-261"><a href="#cb15-261" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb15-262"><a href="#cb15-262" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> halfN<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb15-263"><a href="#cb15-263" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> mag <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(re[i] <span class="op">*</span> re[i] <span class="op">+</span> im[i] <span class="op">*</span> im[i]) <span class="op">/</span> N<span class="op">;</span></span>
+<span id="cb15-264"><a href="#cb15-264" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> dB <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log10</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(mag<span class="op">,</span> <span class="fl">1e-10</span>))<span class="op">;</span></span>
+<span id="cb15-265"><a href="#cb15-265" aria-hidden="true" tabindex="-1"></a>    result<span class="op">.</span><span class="fu">push</span>({<span class="dt">freq</span><span class="op">:</span> i <span class="op">*</span> sample_rate <span class="op">/</span> N<span class="op">,</span> dB<span class="op">,</span> <span class="dt">series</span><span class="op">:</span> <span class="st">"Filtered"</span>})<span class="op">;</span></span>
+<span id="cb15-266"><a href="#cb15-266" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-267"><a href="#cb15-267" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Add original spectrum for comparison</span></span>
+<span id="cb15-268"><a href="#cb15-268" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> origSpectrum <span class="op">=</span> spectrum<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({<span class="dt">freq</span><span class="op">:</span> d<span class="op">.</span><span class="at">freq</span><span class="op">,</span> <span class="dt">dB</span><span class="op">:</span> d<span class="op">.</span><span class="at">dB</span><span class="op">,</span> <span class="dt">series</span><span class="op">:</span> <span class="st">"Original"</span>}))<span class="op">;</span></span>
+<span id="cb15-269"><a href="#cb15-269" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [<span class="op">...</span>origSpectrum<span class="op">,</span> <span class="op">...</span>result]<span class="op">;</span></span>
+<span id="cb15-270"><a href="#cb15-270" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-15" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-startfrom="274" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 273;"><span id="cb16-274"><a href="#cb16-274" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb16-275"><a href="#cb16-275" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb16-276"><a href="#cb16-276" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">280</span><span class="op">,</span></span>
+<span id="cb16-277"><a href="#cb16-277" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="st">"Original"</span><span class="op">,</span> <span class="st">"Filtered"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"#b0c4d080"</span><span class="op">,</span> <span class="st">"#c0392b"</span>]}<span class="op">,</span></span>
+<span id="cb16-278"><a href="#cb16-278" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Frequency (Hz)"</span>}<span class="op">,</span></span>
+<span id="cb16-279"><a href="#cb16-279" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Magnitude (dB)"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">60</span><span class="op">,</span> <span class="dv">10</span>]}<span class="op">,</span></span>
+<span id="cb16-280"><a href="#cb16-280" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb16-281"><a href="#cb16-281" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(filtered_spectrum<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"freq"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"dB"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"series"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">series</span> <span class="op">===</span> <span class="st">"Filtered"</span> <span class="op">?</span> <span class="fl">1.8</span> <span class="op">:</span> <span class="dv">1</span>})</span>
+<span id="cb16-282"><a href="#cb16-282" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb16-283"><a href="#cb16-283" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-16" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="detector-pulse-shaping" class="level2">
+<h2 class="anchored" data-anchor-id="detector-pulse-shaping">Detector Pulse Shaping</h2>
+<p>Simulates a radiation detector charge pulse and applies the <strong>Jordanov-Knoll trapezoidal filter</strong> — the standard pulse-shaping algorithm used in nuclear spectroscopy (including CZT detectors for PET imaging).</p>
+<p>The trapezoidal filter converts an exponentially-decaying detector pulse into a flat-top trapezoid whose height is proportional to the deposited energy.</p>
+<section id="simulated-detector-pulse" class="level3">
+<h3 class="anchored" data-anchor-id="simulated-detector-pulse">Simulated Detector Pulse</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-startfrom="296" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb17-296"><a href="#cb17-296" aria-hidden="true" tabindex="-1"></a>viewof pulse_rise <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Pulse rise time (samples)"</span>})</span>
+<span id="cb17-297"><a href="#cb17-297" aria-hidden="true" tabindex="-1"></a>viewof pulse_decay <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">20</span><span class="op">,</span> <span class="dv">500</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">150</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Decay time constant (samples)"</span>})</span>
+<span id="cb17-298"><a href="#cb17-298" aria-hidden="true" tabindex="-1"></a>viewof pulse_amplitude <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.1</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">2.0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Pulse amplitude"</span>})</span>
+<span id="cb17-299"><a href="#cb17-299" aria-hidden="true" tabindex="-1"></a>viewof pulse_noise <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.3</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Noise level"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-17-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-17-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-17-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-17-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-startfrom="302" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 301;"><span id="cb18-302"><a href="#cb18-302" aria-hidden="true" tabindex="-1"></a>Npulse <span class="op">=</span> <span class="dv">512</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-18" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-startfrom="306" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 305;"><span id="cb19-306"><a href="#cb19-306" aria-hidden="true" tabindex="-1"></a>detector_pulse <span class="op">=</span> {</span>
+<span id="cb19-307"><a href="#cb19-307" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> arr <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(Npulse)<span class="op">;</span></span>
+<span id="cb19-308"><a href="#cb19-308" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onset <span class="op">=</span> <span class="dv">50</span><span class="op">;</span> <span class="co">// pulse starts at sample 50</span></span>
+<span id="cb19-309"><a href="#cb19-309" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> Npulse<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb19-310"><a href="#cb19-310" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">&gt;=</span> onset) {</span>
+<span id="cb19-311"><a href="#cb19-311" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> dt <span class="op">=</span> i <span class="op">-</span> onset<span class="op">;</span></span>
+<span id="cb19-312"><a href="#cb19-312" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> rise <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>dt <span class="op">/</span> pulse_rise)<span class="op">;</span></span>
+<span id="cb19-313"><a href="#cb19-313" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> decay <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>dt <span class="op">/</span> pulse_decay)<span class="op">;</span></span>
+<span id="cb19-314"><a href="#cb19-314" aria-hidden="true" tabindex="-1"></a>      arr[i] <span class="op">=</span> pulse_amplitude <span class="op">*</span> rise <span class="op">*</span> decay<span class="op">;</span></span>
+<span id="cb19-315"><a href="#cb19-315" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-316"><a href="#cb19-316" aria-hidden="true" tabindex="-1"></a>    arr[i] <span class="op">+=</span> pulse_noise <span class="op">*</span> <span class="fu">gaussRandom</span>()<span class="op">;</span></span>
+<span id="cb19-317"><a href="#cb19-317" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-318"><a href="#cb19-318" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> arr<span class="op">;</span></span>
+<span id="cb19-319"><a href="#cb19-319" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-19" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</section>
+<section id="trapezoidal-filter-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="trapezoidal-filter-parameters">Trapezoidal Filter Parameters</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-startfrom="326" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 325;"><span id="cb20-326"><a href="#cb20-326" aria-hidden="true" tabindex="-1"></a>viewof trap_k <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">2</span><span class="op">,</span> <span class="dv">60</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rise time k (samples)"</span>})</span>
+<span id="cb20-327"><a href="#cb20-327" aria-hidden="true" tabindex="-1"></a>viewof trap_l <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">40</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Flat-top l (samples)"</span>})</span>
+<span id="cb20-328"><a href="#cb20-328" aria-hidden="true" tabindex="-1"></a>viewof trap_M <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">500</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">150</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Decay constant M"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-20-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-20-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-20-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-startfrom="331" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 330;"><span id="cb21-331"><a href="#cb21-331" aria-hidden="true" tabindex="-1"></a>trapezoidal_output <span class="op">=</span> {</span>
+<span id="cb21-332"><a href="#cb21-332" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x <span class="op">=</span> detector_pulse<span class="op">;</span></span>
+<span id="cb21-333"><a href="#cb21-333" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> n <span class="op">=</span> x<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> d <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(n)<span class="op">;</span></span>
+<span id="cb21-335"><a href="#cb21-335" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> p <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(n)<span class="op">;</span></span>
+<span id="cb21-336"><a href="#cb21-336" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(n)<span class="op">;</span></span>
+<span id="cb21-337"><a href="#cb21-337" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> s <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(n)<span class="op">;</span></span>
+<span id="cb21-338"><a href="#cb21-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> k <span class="op">=</span> trap_k<span class="op">;</span></span>
+<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> l <span class="op">=</span> trap_l<span class="op">;</span></span>
+<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> kl <span class="op">=</span> k <span class="op">+</span> l<span class="op">;</span></span>
+<span id="cb21-342"><a href="#cb21-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-343"><a href="#cb21-343" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb21-344"><a href="#cb21-344" aria-hidden="true" tabindex="-1"></a>    <span class="co">// d[n] = x[n] - x[n-k] - x[n-l] + x[n-k-l]</span></span>
+<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a>    d[i] <span class="op">=</span> x[i]</span>
+<span id="cb21-346"><a href="#cb21-346" aria-hidden="true" tabindex="-1"></a>         <span class="op">-</span> (i <span class="op">&gt;=</span> k <span class="op">?</span> x[i <span class="op">-</span> k] <span class="op">:</span> <span class="dv">0</span>)</span>
+<span id="cb21-347"><a href="#cb21-347" aria-hidden="true" tabindex="-1"></a>         <span class="op">-</span> (i <span class="op">&gt;=</span> l <span class="op">?</span> x[i <span class="op">-</span> l] <span class="op">:</span> <span class="dv">0</span>)</span>
+<span id="cb21-348"><a href="#cb21-348" aria-hidden="true" tabindex="-1"></a>         <span class="op">+</span> (i <span class="op">&gt;=</span> kl <span class="op">?</span> x[i <span class="op">-</span> kl] <span class="op">:</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb21-349"><a href="#cb21-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-350"><a href="#cb21-350" aria-hidden="true" tabindex="-1"></a>    <span class="co">// p[n] = p[n-1] + d[n]</span></span>
+<span id="cb21-351"><a href="#cb21-351" aria-hidden="true" tabindex="-1"></a>    p[i] <span class="op">=</span> (i <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> p[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">:</span> <span class="dv">0</span>) <span class="op">+</span> d[i]<span class="op">;</span></span>
+<span id="cb21-352"><a href="#cb21-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-353"><a href="#cb21-353" aria-hidden="true" tabindex="-1"></a>    <span class="co">// r[n] = p[n] + M * d[n]</span></span>
+<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a>    r[i] <span class="op">=</span> p[i] <span class="op">+</span> trap_M <span class="op">*</span> d[i]<span class="op">;</span></span>
+<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-356"><a href="#cb21-356" aria-hidden="true" tabindex="-1"></a>    <span class="co">// s[n] = s[n-1] + r[n]</span></span>
+<span id="cb21-357"><a href="#cb21-357" aria-hidden="true" tabindex="-1"></a>    s[i] <span class="op">=</span> (i <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> s[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">:</span> <span class="dv">0</span>) <span class="op">+</span> r[i]<span class="op">;</span></span>
+<span id="cb21-358"><a href="#cb21-358" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-359"><a href="#cb21-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-360"><a href="#cb21-360" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> s<span class="op">;</span></span>
+<span id="cb21-361"><a href="#cb21-361" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-21" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-startfrom="365" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 364;"><span id="cb22-365"><a href="#cb22-365" aria-hidden="true" tabindex="-1"></a>pulse_plot_data <span class="op">=</span> {</span>
+<span id="cb22-366"><a href="#cb22-366" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> raw <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(detector_pulse<span class="op">,</span> (v<span class="op">,</span> i) <span class="kw">=&gt;</span> ({i<span class="op">,</span> v<span class="op">,</span> <span class="dt">series</span><span class="op">:</span> <span class="st">"Raw pulse"</span>}))<span class="op">;</span></span>
+<span id="cb22-367"><a href="#cb22-367" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Normalize shaped output for visual comparison</span></span>
+<span id="cb22-368"><a href="#cb22-368" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> maxS <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>trapezoidal_output<span class="op">.</span><span class="fu">map</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>))<span class="op">;</span></span>
+<span id="cb22-369"><a href="#cb22-369" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> maxR <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>detector_pulse<span class="op">.</span><span class="fu">map</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>))<span class="op">;</span></span>
+<span id="cb22-370"><a href="#cb22-370" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scale <span class="op">=</span> maxS <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> maxR <span class="op">/</span> maxS <span class="op">:</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb22-371"><a href="#cb22-371" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> shaped <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(trapezoidal_output<span class="op">,</span> (v<span class="op">,</span> i) <span class="kw">=&gt;</span> ({i<span class="op">,</span> <span class="dt">v</span><span class="op">:</span> v <span class="op">*</span> scale<span class="op">,</span> <span class="dt">series</span><span class="op">:</span> <span class="st">"Shaped (trapezoid)"</span>}))<span class="op">;</span></span>
+<span id="cb22-372"><a href="#cb22-372" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [<span class="op">...</span>raw<span class="op">,</span> <span class="op">...</span>shaped]<span class="op">;</span></span>
+<span id="cb22-373"><a href="#cb22-373" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-22" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-startfrom="377" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 376;"><span id="cb23-377"><a href="#cb23-377" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb23-378"><a href="#cb23-378" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb23-379"><a href="#cb23-379" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">320</span><span class="op">,</span></span>
+<span id="cb23-380"><a href="#cb23-380" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="st">"Raw pulse"</span><span class="op">,</span> <span class="st">"Shaped (trapezoid)"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"#4a6b7a"</span><span class="op">,</span> <span class="st">"#c0392b"</span>]}<span class="op">,</span></span>
+<span id="cb23-381"><a href="#cb23-381" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Sample"</span>}<span class="op">,</span></span>
+<span id="cb23-382"><a href="#cb23-382" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Amplitude (normalized)"</span>}<span class="op">,</span></span>
+<span id="cb23-383"><a href="#cb23-383" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb23-384"><a href="#cb23-384" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ddd"</span>})<span class="op">,</span></span>
+<span id="cb23-385"><a href="#cb23-385" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(pulse_plot_data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"i"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"series"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.8</span>})</span>
+<span id="cb23-386"><a href="#cb23-386" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb23-387"><a href="#cb23-387" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-23" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<p>A good trapezoidal shaping result shows a flat top at the pulse peak — the height of that flat region corresponds to the energy deposited in the detector. Adjust <strong>k</strong> (rise time) to match the charge collection time, <strong>l</strong> (flat top) for ballistic deficit compensation, and <strong>M</strong> to match the preamplifier decay constant.</p>
+</section>
+</section>
+<section id="cr-rc-shaping" class="level2">
+<h2 class="anchored" data-anchor-id="cr-rc-shaping">CR-RC Shaping</h2>
+<p>A simpler analog pulse-shaping approach: a high-pass CR stage (differentiator) followed by a low-pass RC stage (integrator). This produces a semi-Gaussian peaked output from the exponential detector pulse.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-startfrom="397" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 396;"><span id="cb24-397"><a href="#cb24-397" aria-hidden="true" tabindex="-1"></a>viewof crrc_tau <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">2</span><span class="op">,</span> <span class="dv">80</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Shaping time τ (samples)"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-24" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-startfrom="401" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 400;"><span id="cb25-401"><a href="#cb25-401" aria-hidden="true" tabindex="-1"></a>crrc_output <span class="op">=</span> {</span>
+<span id="cb25-402"><a href="#cb25-402" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x <span class="op">=</span> detector_pulse<span class="op">;</span></span>
+<span id="cb25-403"><a href="#cb25-403" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> n <span class="op">=</span> x<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb25-404"><a href="#cb25-404" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> tau <span class="op">=</span> crrc_tau<span class="op">;</span></span>
+<span id="cb25-405"><a href="#cb25-405" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> alpha <span class="op">=</span> tau <span class="op">/</span> (tau <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb25-406"><a href="#cb25-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-407"><a href="#cb25-407" aria-hidden="true" tabindex="-1"></a>  <span class="co">// CR stage (high-pass)</span></span>
+<span id="cb25-408"><a href="#cb25-408" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> hp <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(n)<span class="op">;</span></span>
+<span id="cb25-409"><a href="#cb25-409" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb25-410"><a href="#cb25-410" aria-hidden="true" tabindex="-1"></a>    hp[i] <span class="op">=</span> alpha <span class="op">*</span> (hp[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> x[i] <span class="op">-</span> x[i <span class="op">-</span> <span class="dv">1</span>])<span class="op">;</span></span>
+<span id="cb25-411"><a href="#cb25-411" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-412"><a href="#cb25-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-413"><a href="#cb25-413" aria-hidden="true" tabindex="-1"></a>  <span class="co">// RC stage (low-pass)</span></span>
+<span id="cb25-414"><a href="#cb25-414" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lp <span class="op">=</span> <span class="kw">new</span> <span class="bu">Float64Array</span>(n)<span class="op">;</span></span>
+<span id="cb25-415"><a href="#cb25-415" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> beta <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (tau <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb25-416"><a href="#cb25-416" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb25-417"><a href="#cb25-417" aria-hidden="true" tabindex="-1"></a>    lp[i] <span class="op">=</span> lp[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> beta <span class="op">*</span> (hp[i] <span class="op">-</span> lp[i <span class="op">-</span> <span class="dv">1</span>])<span class="op">;</span></span>
+<span id="cb25-418"><a href="#cb25-418" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-419"><a href="#cb25-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-420"><a href="#cb25-420" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> lp<span class="op">;</span></span>
+<span id="cb25-421"><a href="#cb25-421" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-25" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-startfrom="425" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 424;"><span id="cb26-425"><a href="#cb26-425" aria-hidden="true" tabindex="-1"></a>crrc_plot_data <span class="op">=</span> {</span>
+<span id="cb26-426"><a href="#cb26-426" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> raw <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(detector_pulse<span class="op">,</span> (v<span class="op">,</span> i) <span class="kw">=&gt;</span> ({i<span class="op">,</span> v<span class="op">,</span> <span class="dt">series</span><span class="op">:</span> <span class="st">"Raw pulse"</span>}))<span class="op">;</span></span>
+<span id="cb26-427"><a href="#cb26-427" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> maxC <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>crrc_output<span class="op">.</span><span class="fu">map</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>))<span class="op">;</span></span>
+<span id="cb26-428"><a href="#cb26-428" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> maxR <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>detector_pulse<span class="op">.</span><span class="fu">map</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>))<span class="op">;</span></span>
+<span id="cb26-429"><a href="#cb26-429" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scale <span class="op">=</span> maxC <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> maxR <span class="op">/</span> maxC <span class="op">:</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb26-430"><a href="#cb26-430" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> shaped <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(crrc_output<span class="op">,</span> (v<span class="op">,</span> i) <span class="kw">=&gt;</span> ({i<span class="op">,</span> <span class="dt">v</span><span class="op">:</span> v <span class="op">*</span> scale<span class="op">,</span> <span class="dt">series</span><span class="op">:</span> <span class="st">"CR-RC shaped"</span>}))<span class="op">;</span></span>
+<span id="cb26-431"><a href="#cb26-431" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [<span class="op">...</span>raw<span class="op">,</span> <span class="op">...</span>shaped]<span class="op">;</span></span>
+<span id="cb26-432"><a href="#cb26-432" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-26" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" data-startfrom="436" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 435;"><span id="cb27-436"><a href="#cb27-436" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb27-437"><a href="#cb27-437" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb27-438"><a href="#cb27-438" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span></span>
+<span id="cb27-439"><a href="#cb27-439" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="st">"Raw pulse"</span><span class="op">,</span> <span class="st">"CR-RC shaped"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"#4a6b7a"</span><span class="op">,</span> <span class="st">"#27ae60"</span>]}<span class="op">,</span></span>
+<span id="cb27-440"><a href="#cb27-440" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Sample"</span>}<span class="op">,</span></span>
+<span id="cb27-441"><a href="#cb27-441" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Amplitude (normalized)"</span>}<span class="op">,</span></span>
+<span id="cb27-442"><a href="#cb27-442" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb27-443"><a href="#cb27-443" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ddd"</span>})<span class="op">,</span></span>
+<span id="cb27-444"><a href="#cb27-444" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(crrc_plot_data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"i"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"series"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.8</span>})</span>
+<span id="cb27-445"><a href="#cb27-445" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb27-446"><a href="#cb27-446" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-27" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<p>The shaping time <strong>τ</strong> controls the trade-off between noise filtering (larger τ) and pulse pile-up rejection (smaller τ). In CZT detectors for PET, typical shaping times are tuned to the charge collection characteristics of the crystal.</p>
+<hr>
+</section>
+<section id="embedding-3d-models-from-onshape" class="level2">
+<h2 class="anchored" data-anchor-id="embedding-3d-models-from-onshape">Embedding 3D Models from Onshape</h2>
+<p>Onshape doesn’t support direct iframe embedding, but you can export models as <code>.glb</code> files and display them with Google’s <code>&lt;model-viewer&gt;</code> web component. The viewer supports rotate, zoom, and pan.</p>
+<p>To add a 3D model to any project page:</p>
+<ol type="1">
+<li>In Onshape: right-click part/assembly &gt; Export &gt; choose <strong>GLTF</strong> format</li>
+<li>Place the <code>.glb</code> file alongside your <code>.qmd</code> file</li>
+<li>Add this HTML block to your <code>.qmd</code>:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">"module"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">model-viewer</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  src</span><span class="op">=</span><span class="st">"your-model.glb"</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  alt</span><span class="op">=</span><span class="st">"Description of the model"</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  camera-controls</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  auto-rotate</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  shadow-intensity</span><span class="op">=</span><span class="st">"1"</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  style</span><span class="op">=</span><span class="st">"width: 100%; height: 500px;"</span><span class="dt">&gt;</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">model-viewer</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="using-observable-js-in-project-pages" class="level2">
+<h2 class="anchored" data-anchor-id="using-observable-js-in-project-pages">Using Observable JS in Project Pages</h2>
+<p>Any project page can include interactive elements. Use <code>```{ojs}</code> code blocks — no extensions or installs needed. For full Python-in-the-browser support, install the <a href="https://github.com/coatless-quarto/pyodide">quarto-pyodide extension</a> and use <code>```{pyodide-python}</code> blocks.</p>
 
 
 </section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBmcmVxdWVuY3kgPSBJbnB1dHMucmFuZ2UoWzAuNSwgNV0sIHt2YWx1ZTogMSwgc3RlcDogMC4xLCBsYWJlbDogXCJGcmVxdWVuY3k6XCJ9KVxudmlld29mIGFtcGxpdHVkZSA9IElucHV0cy5yYW5nZShbMC4xLCAyXSwge3ZhbHVlOiAxLCBzdGVwOiAwLjEsIGxhYmVsOiBcIkFtcGxpdHVkZTpcIn0pXG52aWV3b2YgcGhhc2UgPSBJbnB1dHMucmFuZ2UoWzAsIDYuMjhdLCB7dmFsdWU6IDAsIHN0ZXA6IDAuMSwgbGFiZWw6IFwiUGhhc2Ugc2hpZnQ6XCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCB3aWR0aCA9IDYwMDtcbiAgY29uc3QgaGVpZ2h0ID0gMzAwO1xuICBjb25zdCBtYXJnaW4gPSB7dG9wOiAyMCwgcmlnaHQ6IDIwLCBib3R0b206IDMwLCBsZWZ0OiA0MH07XG5cbiAgY29uc3QgeCA9IGQzLnNjYWxlTGluZWFyKClcbiAgICAuZG9tYWluKFswLCAyICogTWF0aC5QSV0pXG4gICAgLnJhbmdlKFttYXJnaW4ubGVmdCwgd2lkdGggLSBtYXJnaW4ucmlnaHRdKTtcblxuICBjb25zdCB5ID0gZDMuc2NhbGVMaW5lYXIoKVxuICAgIC5kb21haW4oWy0yLjUsIDIuNV0pXG4gICAgLnJhbmdlKFtoZWlnaHQgLSBtYXJnaW4uYm90dG9tLCBtYXJnaW4udG9wXSk7XG5cbiAgY29uc3QgcG9pbnRzID0gZDMucmFuZ2UoMCwgMiAqIE1hdGguUEksIDAuMDIpO1xuXG4gIGNvbnN0IGxpbmUgPSBkMy5saW5lKClcbiAgICAueChkID0+IHgoZCkpXG4gICAgLnkoZCA9PiB5KGFtcGxpdHVkZSAqIE1hdGguc2luKGZyZXF1ZW5jeSAqIGQgKyBwaGFzZSkpKTtcblxuICBjb25zdCBzdmcgPSBkMy5jcmVhdGUoXCJzdmdcIilcbiAgICAuYXR0cihcInZpZXdCb3hcIiwgWzAsIDAsIHdpZHRoLCBoZWlnaHRdKVxuICAgIC5hdHRyKFwid2lkdGhcIiwgd2lkdGgpXG4gICAgLmF0dHIoXCJoZWlnaHRcIiwgaGVpZ2h0KVxuICAgIC5zdHlsZShcIm1heC13aWR0aFwiLCBcIjEwMCVcIik7XG5cbiAgc3ZnLmFwcGVuZChcImdcIilcbiAgICAuYXR0cihcInRyYW5zZm9ybVwiLCBgdHJhbnNsYXRlKDAsJHtoZWlnaHQgLSBtYXJnaW4uYm90dG9tfSlgKVxuICAgIC5jYWxsKGQzLmF4aXNCb3R0b20oeCkudGlja3MoNSkudGlja0Zvcm1hdChkID0+IGAkeyhkIC8gTWF0aC5QSSkudG9GaXhlZCgxKX3PgGApKTtcblxuICBzdmcuYXBwZW5kKFwiZ1wiKVxuICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoJHttYXJnaW4ubGVmdH0sMClgKVxuICAgIC5jYWxsKGQzLmF4aXNMZWZ0KHkpKTtcblxuICBzdmcuYXBwZW5kKFwicGF0aFwiKVxuICAgIC5kYXR1bShwb2ludHMpXG4gICAgLmF0dHIoXCJmaWxsXCIsIFwibm9uZVwiKVxuICAgIC5hdHRyKFwic3Ryb2tlXCIsIFwiIzRhNmI3YVwiKVxuICAgIC5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDIpXG4gICAgLmF0dHIoXCJkXCIsIGxpbmUpO1xuXG4gIHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpXG4gICAgLmF0dHIoXCJ4XCIsIHdpZHRoIC8gMilcbiAgICAuYXR0cihcInlcIiwgbWFyZ2luLnRvcClcbiAgICAuYXR0cihcInRleHQtYW5jaG9yXCIsIFwibWlkZGxlXCIpXG4gICAgLmF0dHIoXCJmaWxsXCIsIFwiIzFhMWEyZVwiKVxuICAgIC5hdHRyKFwiZm9udC1zaXplXCIsIFwiMTJweFwiKVxuICAgIC50ZXh0KGB5ID0gJHthbXBsaXR1ZGUudG9GaXhlZCgxKX0gc2luKCR7ZnJlcXVlbmN5LnRvRml4ZWQoMSl9eCArICR7cGhhc2UudG9GaXhlZCgxKX0pYCk7XG5cbiAgcmV0dXJuIHN2Zy5ub2RlKCk7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2ZyZXF1ZW5jeScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdhbXBsaXR1ZGUnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncGhhc2UnKSJ9XX0=
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBzaWdfZnJlcTEgPSBJbnB1dHMucmFuZ2UoWzEsIDUwXSwge3ZhbHVlOiA1LCBzdGVwOiAxLCBsYWJlbDogXCJGcmVxdWVuY3kgMSAoSHopXCJ9KVxudmlld29mIHNpZ19hbXAxID0gSW5wdXRzLnJhbmdlKFswLCAyXSwge3ZhbHVlOiAxLjAsIHN0ZXA6IDAuMDUsIGxhYmVsOiBcIkFtcGxpdHVkZSAxXCJ9KVxudmlld29mIHNpZ19mcmVxMiA9IElucHV0cy5yYW5nZShbMSwgMTAwXSwge3ZhbHVlOiAyNSwgc3RlcDogMSwgbGFiZWw6IFwiRnJlcXVlbmN5IDIgKEh6KVwifSlcbnZpZXdvZiBzaWdfYW1wMiA9IElucHV0cy5yYW5nZShbMCwgMl0sIHt2YWx1ZTogMC41LCBzdGVwOiAwLjA1LCBsYWJlbDogXCJBbXBsaXR1ZGUgMlwifSlcbnZpZXdvZiBub2lzZV9hbXAgPSBJbnB1dHMucmFuZ2UoWzAsIDFdLCB7dmFsdWU6IDAuMiwgc3RlcDogMC4wMiwgbGFiZWw6IFwiTm9pc2UgYW1wbGl0dWRlXCJ9KVxudmlld29mIHNhbXBsZV9yYXRlID0gSW5wdXRzLnJhbmdlKFsyNTYsIDQwOTZdLCB7dmFsdWU6IDEwMjQsIHN0ZXA6IDI1NiwgbGFiZWw6IFwiU2FtcGxlIHJhdGVcIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJOID0gMTAyNFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2lnbmFsID0ge1xuICBjb25zdCBhcnIgPSBuZXcgRmxvYXQ2NEFycmF5KE4pO1xuICBmb3IgKGxldCBpID0gMDsgaSA8IE47IGkrKykge1xuICAgIGNvbnN0IHQgPSBpIC8gc2FtcGxlX3JhdGU7XG4gICAgYXJyW2ldID0gc2lnX2FtcDEgKiBNYXRoLnNpbigyICogTWF0aC5QSSAqIHNpZ19mcmVxMSAqIHQpXG4gICAgICAgICAgICsgc2lnX2FtcDIgKiBNYXRoLnNpbigyICogTWF0aC5QSSAqIHNpZ19mcmVxMiAqIHQpXG4gICAgICAgICAgICsgbm9pc2VfYW1wICogZ2F1c3NSYW5kb20oKTtcbiAgfVxuICByZXR1cm4gYXJyO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZnVuY3Rpb24gZ2F1c3NSYW5kb20oKSB7XG4gIGxldCB1ID0gMCwgdiA9IDA7XG4gIHdoaWxlICh1ID09PSAwKSB1ID0gTWF0aC5yYW5kb20oKTtcbiAgd2hpbGUgKHYgPT09IDApIHYgPSBNYXRoLnJhbmRvbSgpO1xuICByZXR1cm4gTWF0aC5zcXJ0KC0yLjAgKiBNYXRoLmxvZyh1KSkgKiBNYXRoLmNvcygyLjAgKiBNYXRoLlBJICogdik7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ0aW1lX2RhdGEgPSBBcnJheS5mcm9tKHNpZ25hbCwgKHYsIGkpID0+ICh7dDogaSAvIHNhbXBsZV9yYXRlICogMTAwMCwgdn0pKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiUGxvdC5wbG90KHtcbiAgd2lkdGg6IDgwMCxcbiAgaGVpZ2h0OiAyODAsXG4gIHg6IHtsYWJlbDogXCJUaW1lIChtcylcIn0sXG4gIHk6IHtsYWJlbDogXCJBbXBsaXR1ZGVcIiwgZG9tYWluOiBbLTQsIDRdfSxcbiAgbWFya3M6IFtcbiAgICBQbG90LnJ1bGVZKFswXSwge3N0cm9rZTogXCIjY2NjXCJ9KSxcbiAgICBQbG90LmxpbmUodGltZV9kYXRhLCB7eDogXCJ0XCIsIHk6IFwidlwiLCBzdHJva2U6IFwiIzRhNmI3YVwiLCBzdHJva2VXaWR0aDogMS4yfSlcbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZmdGpzID0ge1xuICAvLyBJbmxpbmUgcmFkaXgtMiBGRlQg4oCUIG5vIGV4dGVybmFsIGRlcGVuZGVuY3lcbiAgZnVuY3Rpb24gZmZ0KHJlLCBpbSkge1xuICAgIGNvbnN0IG4gPSByZS5sZW5ndGg7XG4gICAgaWYgKG4gPT09IDEpIHJldHVybiBbcmUsIGltXTtcbiAgICAvLyBCaXQtcmV2ZXJzYWwgcGVybXV0YXRpb25cbiAgICBjb25zdCBiaXRzID0gTWF0aC5sb2cyKG4pO1xuICAgIGZvciAobGV0IGkgPSAwOyBpIDwgbjsgaSsrKSB7XG4gICAgICBsZXQgaiA9IDA7XG4gICAgICBmb3IgKGxldCBiID0gMDsgYiA8IGJpdHM7IGIrKykgaiB8PSAoKGkgPj4gYikgJiAxKSA8PCAoYml0cyAtIDEgLSBiKTtcbiAgICAgIGlmIChqID4gaSkge1xuICAgICAgICBbcmVbaV0sIHJlW2pdXSA9IFtyZVtqXSwgcmVbaV1dO1xuICAgICAgICBbaW1baV0sIGltW2pdXSA9IFtpbVtqXSwgaW1baV1dO1xuICAgICAgfVxuICAgIH1cbiAgICAvLyBDb29sZXktVHVrZXkgYnV0dGVyZmxpZXNcbiAgICBmb3IgKGxldCBzaXplID0gMjsgc2l6ZSA8PSBuOyBzaXplICo9IDIpIHtcbiAgICAgIGNvbnN0IGhhbGYgPSBzaXplIC8gMjtcbiAgICAgIGNvbnN0IGFuZ2xlID0gLTIgKiBNYXRoLlBJIC8gc2l6ZTtcbiAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgbjsgaSArPSBzaXplKSB7XG4gICAgICAgIGZvciAobGV0IGsgPSAwOyBrIDwgaGFsZjsgaysrKSB7XG4gICAgICAgICAgY29uc3QgY29zID0gTWF0aC5jb3MoYW5nbGUgKiBrKTtcbiAgICAgICAgICBjb25zdCBzaW4gPSBNYXRoLnNpbihhbmdsZSAqIGspO1xuICAgICAgICAgIGNvbnN0IHRwUmUgPSByZVtpICsgayArIGhhbGZdICogY29zIC0gaW1baSArIGsgKyBoYWxmXSAqIHNpbjtcbiAgICAgICAgICBjb25zdCB0cEltID0gcmVbaSArIGsgKyBoYWxmXSAqIHNpbiArIGltW2kgKyBrICsgaGFsZl0gKiBjb3M7XG4gICAgICAgICAgcmVbaSArIGsgKyBoYWxmXSA9IHJlW2kgKyBrXSAtIHRwUmU7XG4gICAgICAgICAgaW1baSArIGsgKyBoYWxmXSA9IGltW2kgKyBrXSAtIHRwSW07XG4gICAgICAgICAgcmVbaSArIGtdICs9IHRwUmU7XG4gICAgICAgICAgaW1baSArIGtdICs9IHRwSW07XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gICAgcmV0dXJuIFtyZSwgaW1dO1xuICB9XG4gIHJldHVybiB7ZmZ0fTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InNwZWN0cnVtID0ge1xuICBjb25zdCByZSA9IEZsb2F0NjRBcnJheS5mcm9tKHNpZ25hbCk7XG4gIGNvbnN0IGltID0gbmV3IEZsb2F0NjRBcnJheShOKTtcbiAgZmZ0anMuZmZ0KHJlLCBpbSk7XG4gIGNvbnN0IGhhbGZOID0gTiAvIDI7XG4gIGNvbnN0IHJlc3VsdCA9IFtdO1xuICBmb3IgKGxldCBpID0gMDsgaSA8IGhhbGZOOyBpKyspIHtcbiAgICBjb25zdCBtYWcgPSBNYXRoLnNxcnQocmVbaV0gKiByZVtpXSArIGltW2ldICogaW1baV0pIC8gTjtcbiAgICBjb25zdCBkQiA9IDIwICogTWF0aC5sb2cxMChNYXRoLm1heChtYWcsIDFlLTEwKSk7XG4gICAgcmVzdWx0LnB1c2goe2ZyZXE6IGkgKiBzYW1wbGVfcmF0ZSAvIE4sIG1hZywgZEJ9KTtcbiAgfVxuICByZXR1cm4gcmVzdWx0O1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC05IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiUGxvdC5wbG90KHtcbiAgd2lkdGg6IDgwMCxcbiAgaGVpZ2h0OiAyODAsXG4gIHg6IHtsYWJlbDogXCJGcmVxdWVuY3kgKEh6KVwifSxcbiAgeToge2xhYmVsOiBcIk1hZ25pdHVkZSAoZEIpXCIsIGRvbWFpbjogWy02MCwgMTBdfSxcbiAgbWFya3M6IFtcbiAgICBQbG90LnJ1bGVZKFstNjBdLCB7c3Ryb2tlOiBcIiNjY2NcIn0pLFxuICAgIFBsb3QubGluZShzcGVjdHJ1bSwge3g6IFwiZnJlcVwiLCB5OiBcImRCXCIsIHN0cm9rZTogXCIjNGE2YjdhXCIsIHN0cm9rZVdpZHRoOiAxLjV9KVxuICBdXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBmaWx0ZXJfdHlwZSA9IElucHV0cy5zZWxlY3QoW1wibG93cGFzc1wiLCBcImhpZ2hwYXNzXCIsIFwiYmFuZHBhc3NcIl0sIHt2YWx1ZTogXCJsb3dwYXNzXCIsIGxhYmVsOiBcIkZpbHRlciB0eXBlXCJ9KVxudmlld29mIGZpbHRlcl9jdXRvZmYgPSBJbnB1dHMucmFuZ2UoWzEsIDIwMF0sIHt2YWx1ZTogMTUsIHN0ZXA6IDEsIGxhYmVsOiBcIkN1dG9mZiBmcmVxdWVuY3kgKEh6KVwifSlcbnZpZXdvZiBmaWx0ZXJfb3JkZXIgPSBJbnB1dHMucmFuZ2UoWzEsIDhdLCB7dmFsdWU6IDQsIHN0ZXA6IDEsIGxhYmVsOiBcIkZpbHRlciBvcmRlclwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTEiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBCdXR0ZXJ3b3J0aCBJSVIgZmlsdGVyIGltcGxlbWVudGF0aW9uIChiaXF1YWQgY2FzY2FkZSlcbmJ1dHRlcndvcnRoID0ge1xuICBmdW5jdGlvbiBkZXNpZ25MUChmYywgZnMsIG9yZGVyKSB7XG4gICAgY29uc3Qgc2VjdGlvbnMgPSBbXTtcbiAgICBjb25zdCBuID0gTWF0aC5mbG9vcihvcmRlciAvIDIpO1xuICAgIGNvbnN0IHdjID0gTWF0aC50YW4oTWF0aC5QSSAqIGZjIC8gZnMpO1xuICAgIGZvciAobGV0IGsgPSAwOyBrIDwgbjsgaysrKSB7XG4gICAgICBjb25zdCB0aGV0YSA9IE1hdGguUEkgKiAoMiAqIGsgKyAxKSAvICgyICogb3JkZXIpO1xuICAgICAgY29uc3QgYWxwaGEgPSAtMiAqIE1hdGguY29zKHRoZXRhKTtcbiAgICAgIGNvbnN0IHcyID0gd2MgKiB3YztcbiAgICAgIGNvbnN0IGEwID0gMSArIHdjICogKC1hbHBoYSkgKyB3MjtcbiAgICAgIHNlY3Rpb25zLnB1c2goe1xuICAgICAgICBiOiBbdzIgLyBhMCwgMiAqIHcyIC8gYTAsIHcyIC8gYTBdLFxuICAgICAgICBhOiBbMSwgKDIgKiB3MiAtIDIpIC8gYTAsICgxICsgd2MgKiBhbHBoYSArIHcyKSAvIGEwXVxuICAgICAgfSk7XG4gICAgfVxuICAgIC8vIE9kZCBvcmRlcjogYWRkIGZpcnN0LW9yZGVyIHNlY3Rpb25cbiAgICBpZiAob3JkZXIgJSAyID09PSAxKSB7XG4gICAgICBjb25zdCBhMCA9IDEgKyB3YztcbiAgICAgIHNlY3Rpb25zLnB1c2goe1xuICAgICAgICBiOiBbd2MgLyBhMCwgd2MgLyBhMCwgMF0sXG4gICAgICAgIGE6IFsxLCAod2MgLSAxKSAvIGEwLCAwXVxuICAgICAgfSk7XG4gICAgfVxuICAgIHJldHVybiBzZWN0aW9ucztcbiAgfVxuXG4gIGZ1bmN0aW9uIGRlc2lnbkhQKGZjLCBmcywgb3JkZXIpIHtcbiAgICBjb25zdCBzZWN0aW9ucyA9IFtdO1xuICAgIGNvbnN0IG4gPSBNYXRoLmZsb29yKG9yZGVyIC8gMik7XG4gICAgY29uc3Qgd2MgPSBNYXRoLnRhbihNYXRoLlBJICogZmMgLyBmcyk7XG4gICAgZm9yIChsZXQgayA9IDA7IGsgPCBuOyBrKyspIHtcbiAgICAgIGNvbnN0IHRoZXRhID0gTWF0aC5QSSAqICgyICogayArIDEpIC8gKDIgKiBvcmRlcik7XG4gICAgICBjb25zdCBhbHBoYSA9IC0yICogTWF0aC5jb3ModGhldGEpO1xuICAgICAgY29uc3QgdzIgPSB3YyAqIHdjO1xuICAgICAgY29uc3QgYTAgPSAxICsgd2MgKiAoLWFscGhhKSArIHcyO1xuICAgICAgc2VjdGlvbnMucHVzaCh7XG4gICAgICAgIGI6IFsxIC8gYTAsIC0yIC8gYTAsIDEgLyBhMF0sXG4gICAgICAgIGE6IFsxLCAoMiAqIHcyIC0gMikgLyBhMCwgKDEgKyB3YyAqIGFscGhhICsgdzIpIC8gYTBdXG4gICAgICB9KTtcbiAgICB9XG4gICAgaWYgKG9yZGVyICUgMiA9PT0gMSkge1xuICAgICAgY29uc3QgYTAgPSAxICsgd2M7XG4gICAgICBzZWN0aW9ucy5wdXNoKHtcbiAgICAgICAgYjogWzEgLyBhMCwgLTEgLyBhMCwgMF0sXG4gICAgICAgIGE6IFsxLCAod2MgLSAxKSAvIGEwLCAwXVxuICAgICAgfSk7XG4gICAgfVxuICAgIHJldHVybiBzZWN0aW9ucztcbiAgfVxuXG4gIGZ1bmN0aW9uIGFwcGx5QmlxdWFkKHNlY3Rpb25zLCB4KSB7XG4gICAgbGV0IHkgPSBGbG9hdDY0QXJyYXkuZnJvbSh4KTtcbiAgICBmb3IgKGNvbnN0IHNlYyBvZiBzZWN0aW9ucykge1xuICAgICAgY29uc3Qgb3V0ID0gbmV3IEZsb2F0NjRBcnJheSh5Lmxlbmd0aCk7XG4gICAgICBsZXQgeDEgPSAwLCB4MiA9IDAsIHkxID0gMCwgeTIgPSAwO1xuICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCB5Lmxlbmd0aDsgaSsrKSB7XG4gICAgICAgIG91dFtpXSA9IHNlYy5iWzBdICogeVtpXSArIHNlYy5iWzFdICogeDEgKyBzZWMuYlsyXSAqIHgyXG4gICAgICAgICAgICAgICAtIHNlYy5hWzFdICogeTEgLSBzZWMuYVsyXSAqIHkyO1xuICAgICAgICB4MiA9IHgxOyB4MSA9IHlbaV07XG4gICAgICAgIHkyID0geTE7IHkxID0gb3V0W2ldO1xuICAgICAgfVxuICAgICAgeSA9IG91dDtcbiAgICB9XG4gICAgcmV0dXJuIHk7XG4gIH1cblxuICByZXR1cm4ge2Rlc2lnbkxQLCBkZXNpZ25IUCwgYXBwbHlCaXF1YWR9O1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZpbHRlcmVkX3NpZ25hbCA9IHtcbiAgbGV0IHNlY3Rpb25zO1xuICBpZiAoZmlsdGVyX3R5cGUgPT09IFwibG93cGFzc1wiKSB7XG4gICAgc2VjdGlvbnMgPSBidXR0ZXJ3b3J0aC5kZXNpZ25MUChmaWx0ZXJfY3V0b2ZmLCBzYW1wbGVfcmF0ZSwgZmlsdGVyX29yZGVyKTtcbiAgfSBlbHNlIGlmIChmaWx0ZXJfdHlwZSA9PT0gXCJoaWdocGFzc1wiKSB7XG4gICAgc2VjdGlvbnMgPSBidXR0ZXJ3b3J0aC5kZXNpZ25IUChmaWx0ZXJfY3V0b2ZmLCBzYW1wbGVfcmF0ZSwgZmlsdGVyX29yZGVyKTtcbiAgfSBlbHNlIHtcbiAgICAvLyBCYW5kcGFzczogY2FzY2FkZSBsb3dwYXNzIGF0IGN1dG9mZisyMCB3aXRoIGhpZ2hwYXNzIGF0IGN1dG9mZlxuICAgIGNvbnN0IGxwID0gYnV0dGVyd29ydGguZGVzaWduTFAoTWF0aC5taW4oZmlsdGVyX2N1dG9mZiArIDIwLCBzYW1wbGVfcmF0ZSAvIDIgLSAxKSwgc2FtcGxlX3JhdGUsIGZpbHRlcl9vcmRlcik7XG4gICAgY29uc3QgaHAgPSBidXR0ZXJ3b3J0aC5kZXNpZ25IUChmaWx0ZXJfY3V0b2ZmLCBzYW1wbGVfcmF0ZSwgZmlsdGVyX29yZGVyKTtcbiAgICBzZWN0aW9ucyA9IFsuLi5scCwgLi4uaHBdO1xuICB9XG4gIHJldHVybiBidXR0ZXJ3b3J0aC5hcHBseUJpcXVhZChzZWN0aW9ucywgc2lnbmFsKTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmaWx0ZXJfdGltZV9kYXRhID0ge1xuICBjb25zdCBvcmlnID0gQXJyYXkuZnJvbShzaWduYWwsICh2LCBpKSA9PiAoe3Q6IGkgLyBzYW1wbGVfcmF0ZSAqIDEwMDAsIHYsIHNlcmllczogXCJPcmlnaW5hbFwifSkpO1xuICBjb25zdCBmaWx0ID0gQXJyYXkuZnJvbShmaWx0ZXJlZF9zaWduYWwsICh2LCBpKSA9PiAoe3Q6IGkgLyBzYW1wbGVfcmF0ZSAqIDEwMDAsIHYsIHNlcmllczogXCJGaWx0ZXJlZFwifSkpO1xuICByZXR1cm4gWy4uLm9yaWcsIC4uLmZpbHRdO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlBsb3QucGxvdCh7XG4gIHdpZHRoOiA4MDAsXG4gIGhlaWdodDogMzAwLFxuICBjb2xvcjoge2RvbWFpbjogW1wiT3JpZ2luYWxcIiwgXCJGaWx0ZXJlZFwiXSwgcmFuZ2U6IFtcIiNiMGM0ZDA4MFwiLCBcIiNjMDM5MmJcIl19LFxuICB4OiB7bGFiZWw6IFwiVGltZSAobXMpXCJ9LFxuICB5OiB7bGFiZWw6IFwiQW1wbGl0dWRlXCIsIGRvbWFpbjogWy00LCA0XX0sXG4gIG1hcmtzOiBbXG4gICAgUGxvdC5ydWxlWShbMF0sIHtzdHJva2U6IFwiI2VlZVwifSksXG4gICAgUGxvdC5saW5lKGZpbHRlcl90aW1lX2RhdGEsIHt4OiBcInRcIiwgeTogXCJ2XCIsIHN0cm9rZTogXCJzZXJpZXNcIiwgc3Ryb2tlV2lkdGg6IGQgPT4gZC5zZXJpZXMgPT09IFwiRmlsdGVyZWRcIiA/IDEuOCA6IDF9KVxuICBdXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZpbHRlcmVkX3NwZWN0cnVtID0ge1xuICBjb25zdCByZSA9IEZsb2F0NjRBcnJheS5mcm9tKGZpbHRlcmVkX3NpZ25hbCk7XG4gIGNvbnN0IGltID0gbmV3IEZsb2F0NjRBcnJheShOKTtcbiAgZmZ0anMuZmZ0KHJlLCBpbSk7XG4gIGNvbnN0IGhhbGZOID0gTiAvIDI7XG4gIGNvbnN0IHJlc3VsdCA9IFtdO1xuICBmb3IgKGxldCBpID0gMDsgaSA8IGhhbGZOOyBpKyspIHtcbiAgICBjb25zdCBtYWcgPSBNYXRoLnNxcnQocmVbaV0gKiByZVtpXSArIGltW2ldICogaW1baV0pIC8gTjtcbiAgICBjb25zdCBkQiA9IDIwICogTWF0aC5sb2cxMChNYXRoLm1heChtYWcsIDFlLTEwKSk7XG4gICAgcmVzdWx0LnB1c2goe2ZyZXE6IGkgKiBzYW1wbGVfcmF0ZSAvIE4sIGRCLCBzZXJpZXM6IFwiRmlsdGVyZWRcIn0pO1xuICB9XG4gIC8vIEFkZCBvcmlnaW5hbCBzcGVjdHJ1bSBmb3IgY29tcGFyaXNvblxuICBjb25zdCBvcmlnU3BlY3RydW0gPSBzcGVjdHJ1bS5tYXAoZCA9PiAoe2ZyZXE6IGQuZnJlcSwgZEI6IGQuZEIsIHNlcmllczogXCJPcmlnaW5hbFwifSkpO1xuICByZXR1cm4gWy4uLm9yaWdTcGVjdHJ1bSwgLi4ucmVzdWx0XTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJQbG90LnBsb3Qoe1xuICB3aWR0aDogODAwLFxuICBoZWlnaHQ6IDI4MCxcbiAgY29sb3I6IHtkb21haW46IFtcIk9yaWdpbmFsXCIsIFwiRmlsdGVyZWRcIl0sIHJhbmdlOiBbXCIjYjBjNGQwODBcIiwgXCIjYzAzOTJiXCJdfSxcbiAgeDoge2xhYmVsOiBcIkZyZXF1ZW5jeSAoSHopXCJ9LFxuICB5OiB7bGFiZWw6IFwiTWFnbml0dWRlIChkQilcIiwgZG9tYWluOiBbLTYwLCAxMF19LFxuICBtYXJrczogW1xuICAgIFBsb3QubGluZShmaWx0ZXJlZF9zcGVjdHJ1bSwge3g6IFwiZnJlcVwiLCB5OiBcImRCXCIsIHN0cm9rZTogXCJzZXJpZXNcIiwgc3Ryb2tlV2lkdGg6IGQgPT4gZC5zZXJpZXMgPT09IFwiRmlsdGVyZWRcIiA/IDEuOCA6IDF9KVxuICBdXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwdWxzZV9yaXNlID0gSW5wdXRzLnJhbmdlKFsxLCAyMF0sIHt2YWx1ZTogNSwgc3RlcDogMSwgbGFiZWw6IFwiUHVsc2UgcmlzZSB0aW1lIChzYW1wbGVzKVwifSlcbnZpZXdvZiBwdWxzZV9kZWNheSA9IElucHV0cy5yYW5nZShbMjAsIDUwMF0sIHt2YWx1ZTogMTUwLCBzdGVwOiA1LCBsYWJlbDogXCJEZWNheSB0aW1lIGNvbnN0YW50IChzYW1wbGVzKVwifSlcbnZpZXdvZiBwdWxzZV9hbXBsaXR1ZGUgPSBJbnB1dHMucmFuZ2UoWzAuMSwgNV0sIHt2YWx1ZTogMi4wLCBzdGVwOiAwLjEsIGxhYmVsOiBcIlB1bHNlIGFtcGxpdHVkZVwifSlcbnZpZXdvZiBwdWxzZV9ub2lzZSA9IElucHV0cy5yYW5nZShbMCwgMC4zXSwge3ZhbHVlOiAwLjA1LCBzdGVwOiAwLjAxLCBsYWJlbDogXCJOb2lzZSBsZXZlbFwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJOcHVsc2UgPSA1MTJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTkiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJkZXRlY3Rvcl9wdWxzZSA9IHtcbiAgY29uc3QgYXJyID0gbmV3IEZsb2F0NjRBcnJheShOcHVsc2UpO1xuICBjb25zdCBvbnNldCA9IDUwOyAvLyBwdWxzZSBzdGFydHMgYXQgc2FtcGxlIDUwXG4gIGZvciAobGV0IGkgPSAwOyBpIDwgTnB1bHNlOyBpKyspIHtcbiAgICBpZiAoaSA+PSBvbnNldCkge1xuICAgICAgY29uc3QgZHQgPSBpIC0gb25zZXQ7XG4gICAgICBjb25zdCByaXNlID0gMSAtIE1hdGguZXhwKC1kdCAvIHB1bHNlX3Jpc2UpO1xuICAgICAgY29uc3QgZGVjYXkgPSBNYXRoLmV4cCgtZHQgLyBwdWxzZV9kZWNheSk7XG4gICAgICBhcnJbaV0gPSBwdWxzZV9hbXBsaXR1ZGUgKiByaXNlICogZGVjYXk7XG4gICAgfVxuICAgIGFycltpXSArPSBwdWxzZV9ub2lzZSAqIGdhdXNzUmFuZG9tKCk7XG4gIH1cbiAgcmV0dXJuIGFycjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMjAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgdHJhcF9rID0gSW5wdXRzLnJhbmdlKFsyLCA2MF0sIHt2YWx1ZTogMjAsIHN0ZXA6IDEsIGxhYmVsOiBcIlJpc2UgdGltZSBrIChzYW1wbGVzKVwifSlcbnZpZXdvZiB0cmFwX2wgPSBJbnB1dHMucmFuZ2UoWzAsIDQwXSwge3ZhbHVlOiAxMCwgc3RlcDogMSwgbGFiZWw6IFwiRmxhdC10b3AgbCAoc2FtcGxlcylcIn0pXG52aWV3b2YgdHJhcF9NID0gSW5wdXRzLnJhbmdlKFsxMCwgNTAwXSwge3ZhbHVlOiAxNTAsIHN0ZXA6IDUsIGxhYmVsOiBcIkRlY2F5IGNvbnN0YW50IE1cIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIxIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidHJhcGV6b2lkYWxfb3V0cHV0ID0ge1xuICBjb25zdCB4ID0gZGV0ZWN0b3JfcHVsc2U7XG4gIGNvbnN0IG4gPSB4Lmxlbmd0aDtcbiAgY29uc3QgZCA9IG5ldyBGbG9hdDY0QXJyYXkobik7XG4gIGNvbnN0IHAgPSBuZXcgRmxvYXQ2NEFycmF5KG4pO1xuICBjb25zdCByID0gbmV3IEZsb2F0NjRBcnJheShuKTtcbiAgY29uc3QgcyA9IG5ldyBGbG9hdDY0QXJyYXkobik7XG5cbiAgY29uc3QgayA9IHRyYXBfaztcbiAgY29uc3QgbCA9IHRyYXBfbDtcbiAgY29uc3Qga2wgPSBrICsgbDtcblxuICBmb3IgKGxldCBpID0gMDsgaSA8IG47IGkrKykge1xuICAgIC8vIGRbbl0gPSB4W25dIC0geFtuLWtdIC0geFtuLWxdICsgeFtuLWstbF1cbiAgICBkW2ldID0geFtpXVxuICAgICAgICAgLSAoaSA+PSBrID8geFtpIC0ga10gOiAwKVxuICAgICAgICAgLSAoaSA+PSBsID8geFtpIC0gbF0gOiAwKVxuICAgICAgICAgKyAoaSA+PSBrbCA/IHhbaSAtIGtsXSA6IDApO1xuXG4gICAgLy8gcFtuXSA9IHBbbi0xXSArIGRbbl1cbiAgICBwW2ldID0gKGkgPiAwID8gcFtpIC0gMV0gOiAwKSArIGRbaV07XG5cbiAgICAvLyByW25dID0gcFtuXSArIE0gKiBkW25dXG4gICAgcltpXSA9IHBbaV0gKyB0cmFwX00gKiBkW2ldO1xuXG4gICAgLy8gc1tuXSA9IHNbbi0xXSArIHJbbl1cbiAgICBzW2ldID0gKGkgPiAwID8gc1tpIC0gMV0gOiAwKSArIHJbaV07XG4gIH1cblxuICByZXR1cm4gcztcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMjIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJwdWxzZV9wbG90X2RhdGEgPSB7XG4gIGNvbnN0IHJhdyA9IEFycmF5LmZyb20oZGV0ZWN0b3JfcHVsc2UsICh2LCBpKSA9PiAoe2ksIHYsIHNlcmllczogXCJSYXcgcHVsc2VcIn0pKTtcbiAgLy8gTm9ybWFsaXplIHNoYXBlZCBvdXRwdXQgZm9yIHZpc3VhbCBjb21wYXJpc29uXG4gIGNvbnN0IG1heFMgPSBNYXRoLm1heCguLi50cmFwZXpvaWRhbF9vdXRwdXQubWFwKE1hdGguYWJzKSk7XG4gIGNvbnN0IG1heFIgPSBNYXRoLm1heCguLi5kZXRlY3Rvcl9wdWxzZS5tYXAoTWF0aC5hYnMpKTtcbiAgY29uc3Qgc2NhbGUgPSBtYXhTID4gMCA/IG1heFIgLyBtYXhTIDogMTtcbiAgY29uc3Qgc2hhcGVkID0gQXJyYXkuZnJvbSh0cmFwZXpvaWRhbF9vdXRwdXQsICh2LCBpKSA9PiAoe2ksIHY6IHYgKiBzY2FsZSwgc2VyaWVzOiBcIlNoYXBlZCAodHJhcGV6b2lkKVwifSkpO1xuICByZXR1cm4gWy4uLnJhdywgLi4uc2hhcGVkXTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMjMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJQbG90LnBsb3Qoe1xuICB3aWR0aDogODAwLFxuICBoZWlnaHQ6IDMyMCxcbiAgY29sb3I6IHtkb21haW46IFtcIlJhdyBwdWxzZVwiLCBcIlNoYXBlZCAodHJhcGV6b2lkKVwiXSwgcmFuZ2U6IFtcIiM0YTZiN2FcIiwgXCIjYzAzOTJiXCJdfSxcbiAgeDoge2xhYmVsOiBcIlNhbXBsZVwifSxcbiAgeToge2xhYmVsOiBcIkFtcGxpdHVkZSAobm9ybWFsaXplZClcIn0sXG4gIG1hcmtzOiBbXG4gICAgUGxvdC5ydWxlWShbMF0sIHtzdHJva2U6IFwiI2RkZFwifSksXG4gICAgUGxvdC5saW5lKHB1bHNlX3Bsb3RfZGF0YSwge3g6IFwiaVwiLCB5OiBcInZcIiwgc3Ryb2tlOiBcInNlcmllc1wiLCBzdHJva2VXaWR0aDogMS44fSlcbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMjQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgY3JyY190YXUgPSBJbnB1dHMucmFuZ2UoWzIsIDgwXSwge3ZhbHVlOiAyMCwgc3RlcDogMSwgbGFiZWw6IFwiU2hhcGluZyB0aW1lIM+EIChzYW1wbGVzKVwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMjUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJjcnJjX291dHB1dCA9IHtcbiAgY29uc3QgeCA9IGRldGVjdG9yX3B1bHNlO1xuICBjb25zdCBuID0geC5sZW5ndGg7XG4gIGNvbnN0IHRhdSA9IGNycmNfdGF1O1xuICBjb25zdCBhbHBoYSA9IHRhdSAvICh0YXUgKyAxKTtcblxuICAvLyBDUiBzdGFnZSAoaGlnaC1wYXNzKVxuICBjb25zdCBocCA9IG5ldyBGbG9hdDY0QXJyYXkobik7XG4gIGZvciAobGV0IGkgPSAxOyBpIDwgbjsgaSsrKSB7XG4gICAgaHBbaV0gPSBhbHBoYSAqIChocFtpIC0gMV0gKyB4W2ldIC0geFtpIC0gMV0pO1xuICB9XG5cbiAgLy8gUkMgc3RhZ2UgKGxvdy1wYXNzKVxuICBjb25zdCBscCA9IG5ldyBGbG9hdDY0QXJyYXkobik7XG4gIGNvbnN0IGJldGEgPSAxIC8gKHRhdSArIDEpO1xuICBmb3IgKGxldCBpID0gMTsgaSA8IG47IGkrKykge1xuICAgIGxwW2ldID0gbHBbaSAtIDFdICsgYmV0YSAqIChocFtpXSAtIGxwW2kgLSAxXSk7XG4gIH1cblxuICByZXR1cm4gbHA7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTI2IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiY3JyY19wbG90X2RhdGEgPSB7XG4gIGNvbnN0IHJhdyA9IEFycmF5LmZyb20oZGV0ZWN0b3JfcHVsc2UsICh2LCBpKSA9PiAoe2ksIHYsIHNlcmllczogXCJSYXcgcHVsc2VcIn0pKTtcbiAgY29uc3QgbWF4QyA9IE1hdGgubWF4KC4uLmNycmNfb3V0cHV0Lm1hcChNYXRoLmFicykpO1xuICBjb25zdCBtYXhSID0gTWF0aC5tYXgoLi4uZGV0ZWN0b3JfcHVsc2UubWFwKE1hdGguYWJzKSk7XG4gIGNvbnN0IHNjYWxlID0gbWF4QyA+IDAgPyBtYXhSIC8gbWF4QyA6IDE7XG4gIGNvbnN0IHNoYXBlZCA9IEFycmF5LmZyb20oY3JyY19vdXRwdXQsICh2LCBpKSA9PiAoe2ksIHY6IHYgKiBzY2FsZSwgc2VyaWVzOiBcIkNSLVJDIHNoYXBlZFwifSkpO1xuICByZXR1cm4gWy4uLnJhdywgLi4uc2hhcGVkXTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMjciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJQbG90LnBsb3Qoe1xuICB3aWR0aDogODAwLFxuICBoZWlnaHQ6IDMwMCxcbiAgY29sb3I6IHtkb21haW46IFtcIlJhdyBwdWxzZVwiLCBcIkNSLVJDIHNoYXBlZFwiXSwgcmFuZ2U6IFtcIiM0YTZiN2FcIiwgXCIjMjdhZTYwXCJdfSxcbiAgeDoge2xhYmVsOiBcIlNhbXBsZVwifSxcbiAgeToge2xhYmVsOiBcIkFtcGxpdHVkZSAobm9ybWFsaXplZClcIn0sXG4gIG1hcmtzOiBbXG4gICAgUGxvdC5ydWxlWShbMF0sIHtzdHJva2U6IFwiI2RkZFwifSksXG4gICAgUGxvdC5saW5lKGNycmNfcGxvdF9kYXRhLCB7eDogXCJpXCIsIHk6IFwidlwiLCBzdHJva2U6IFwic2VyaWVzXCIsIHN0cm9rZVdpZHRoOiAxLjh9KVxuICBdXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzaWdfZnJlcTEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnc2lnX2FtcDEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnc2lnX2ZyZXEyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NpZ19hbXAyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ25vaXNlX2FtcCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzYW1wbGVfcmF0ZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdmaWx0ZXJfdHlwZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdmaWx0ZXJfY3V0b2ZmJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2ZpbHRlcl9vcmRlcicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwdWxzZV9yaXNlJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3B1bHNlX2RlY2F5JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3B1bHNlX2FtcGxpdHVkZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwdWxzZV9ub2lzZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0cmFwX2snKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndHJhcF9sJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3RyYXBfTScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjcnJjX3RhdScpIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
