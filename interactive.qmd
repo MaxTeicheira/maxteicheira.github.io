@@ -10,6 +10,9 @@ An interactive workbench for exploring signal generation, spectral analysis, dig
 
 Build a test signal from two sine components plus Gaussian noise.
 
+::: {.grid}
+::: {.g-col-md-4 .g-col-12}
+
 ```{ojs}
 viewof sig_freq1 = Inputs.range([1, 50], {value: 5, step: 1, label: "Frequency 1 (Hz)"})
 viewof sig_amp1 = Inputs.range([0, 2], {value: 1.0, step: 0.05, label: "Amplitude 1"})
@@ -19,11 +22,31 @@ viewof noise_amp = Inputs.range([0, 1], {value: 0.2, step: 0.02, label: "Noise a
 viewof sample_rate = Inputs.range([256, 4096], {value: 1024, step: 256, label: "Sample rate"})
 ```
 
+:::
+::: {.g-col-md-8 .g-col-12}
+
 ```{ojs}
+Plot.plot({
+  height: 280,
+  x: {label: "Time (ms)"},
+  y: {label: "Amplitude", domain: [-4, 4]},
+  marks: [
+    Plot.ruleY([0], {stroke: "#ccc"}),
+    Plot.line(time_data, {x: "t", y: "v", stroke: "#4a6b7a", strokeWidth: 1.2})
+  ]
+})
+```
+
+:::
+:::
+
+```{ojs}
+//| output: false
 N = 1024
 ```
 
 ```{ojs}
+//| output: false
 signal = {
   const arr = new Float64Array(N);
   for (let i = 0; i < N; i++) {
@@ -37,6 +60,7 @@ signal = {
 ```
 
 ```{ojs}
+//| output: false
 function gaussRandom() {
   let u = 0, v = 0;
   while (u === 0) u = Math.random();
@@ -46,20 +70,8 @@ function gaussRandom() {
 ```
 
 ```{ojs}
+//| output: false
 time_data = Array.from(signal, (v, i) => ({t: i / sample_rate * 1000, v}))
-```
-
-```{ojs}
-Plot.plot({
-  width: 800,
-  height: 280,
-  x: {label: "Time (ms)"},
-  y: {label: "Amplitude", domain: [-4, 4]},
-  marks: [
-    Plot.ruleY([0], {stroke: "#ccc"}),
-    Plot.line(time_data, {x: "t", y: "v", stroke: "#4a6b7a", strokeWidth: 1.2})
-  ]
-})
 ```
 
 ## Frequency Spectrum (FFT)
@@ -67,6 +79,19 @@ Plot.plot({
 Magnitude spectrum computed via FFT. Peaks appear at the frequencies set by the sliders above.
 
 ```{ojs}
+Plot.plot({
+  height: 280,
+  x: {label: "Frequency (Hz)"},
+  y: {label: "Magnitude (dB)", domain: [-60, 10]},
+  marks: [
+    Plot.ruleY([-60], {stroke: "#ccc"}),
+    Plot.line(spectrum, {x: "freq", y: "dB", stroke: "#4a6b7a", strokeWidth: 1.5})
+  ]
+})
+```
+
+```{ojs}
+//| output: false
 fftjs = {
   // Inline radix-2 FFT — no external dependency
   function fft(re, im) {
@@ -106,6 +131,7 @@ fftjs = {
 ```
 
 ```{ojs}
+//| output: false
 spectrum = {
   const re = Float64Array.from(signal);
   const im = new Float64Array(N);
@@ -121,22 +147,12 @@ spectrum = {
 }
 ```
 
-```{ojs}
-Plot.plot({
-  width: 800,
-  height: 280,
-  x: {label: "Frequency (Hz)"},
-  y: {label: "Magnitude (dB)", domain: [-60, 10]},
-  marks: [
-    Plot.ruleY([-60], {stroke: "#ccc"}),
-    Plot.line(spectrum, {x: "freq", y: "dB", stroke: "#4a6b7a", strokeWidth: 1.5})
-  ]
-})
-```
-
 ## Digital Filtering (Butterworth IIR)
 
 Apply a Butterworth IIR filter to the signal. Compare the original and filtered signals in both time and frequency domains.
+
+::: {.grid}
+::: {.g-col-md-4 .g-col-12}
 
 ```{ojs}
 viewof filter_type = Inputs.select(["lowpass", "highpass", "bandpass"], {value: "lowpass", label: "Filter type"})
@@ -144,7 +160,39 @@ viewof filter_cutoff = Inputs.range([1, 200], {value: 15, step: 1, label: "Cutof
 viewof filter_order = Inputs.range([1, 8], {value: 4, step: 1, label: "Filter order"})
 ```
 
+:::
+::: {.g-col-md-8 .g-col-12}
+
 ```{ojs}
+Plot.plot({
+  height: 300,
+  color: {domain: ["Original", "Filtered"], range: ["#b0c4d080", "#c0392b"]},
+  x: {label: "Time (ms)"},
+  y: {label: "Amplitude", domain: [-4, 4]},
+  marks: [
+    Plot.ruleY([0], {stroke: "#eee"}),
+    Plot.line(filter_time_data, {x: "t", y: "v", stroke: "series", strokeWidth: d => d.series === "Filtered" ? 1.8 : 1})
+  ]
+})
+```
+
+:::
+:::
+
+```{ojs}
+Plot.plot({
+  height: 280,
+  color: {domain: ["Original", "Filtered"], range: ["#b0c4d080", "#c0392b"]},
+  x: {label: "Frequency (Hz)"},
+  y: {label: "Magnitude (dB)", domain: [-60, 10]},
+  marks: [
+    Plot.line(filtered_spectrum, {x: "freq", y: "dB", stroke: "series", strokeWidth: d => d.series === "Filtered" ? 1.8 : 1})
+  ]
+})
+```
+
+```{ojs}
+//| output: false
 // Butterworth IIR filter implementation (biquad cascade)
 butterworth = {
   function designLP(fc, fs, order) {
@@ -217,6 +265,7 @@ butterworth = {
 ```
 
 ```{ojs}
+//| output: false
 filtered_signal = {
   let sections;
   if (filter_type === "lowpass") {
@@ -234,6 +283,7 @@ filtered_signal = {
 ```
 
 ```{ojs}
+//| output: false
 filter_time_data = {
   const orig = Array.from(signal, (v, i) => ({t: i / sample_rate * 1000, v, series: "Original"}));
   const filt = Array.from(filtered_signal, (v, i) => ({t: i / sample_rate * 1000, v, series: "Filtered"}));
@@ -242,20 +292,7 @@ filter_time_data = {
 ```
 
 ```{ojs}
-Plot.plot({
-  width: 800,
-  height: 300,
-  color: {domain: ["Original", "Filtered"], range: ["#b0c4d080", "#c0392b"]},
-  x: {label: "Time (ms)"},
-  y: {label: "Amplitude", domain: [-4, 4]},
-  marks: [
-    Plot.ruleY([0], {stroke: "#eee"}),
-    Plot.line(filter_time_data, {x: "t", y: "v", stroke: "series", strokeWidth: d => d.series === "Filtered" ? 1.8 : 1})
-  ]
-})
-```
-
-```{ojs}
+//| output: false
 filtered_spectrum = {
   const re = Float64Array.from(filtered_signal);
   const im = new Float64Array(N);
@@ -273,39 +310,60 @@ filtered_spectrum = {
 }
 ```
 
-```{ojs}
-Plot.plot({
-  width: 800,
-  height: 280,
-  color: {domain: ["Original", "Filtered"], range: ["#b0c4d080", "#c0392b"]},
-  x: {label: "Frequency (Hz)"},
-  y: {label: "Magnitude (dB)", domain: [-60, 10]},
-  marks: [
-    Plot.line(filtered_spectrum, {x: "freq", y: "dB", stroke: "series", strokeWidth: d => d.series === "Filtered" ? 1.8 : 1})
-  ]
-})
-```
-
 ## Detector Pulse Shaping
 
 Simulates a radiation detector charge pulse and applies the **Jordanov-Knoll trapezoidal filter** --- the standard pulse-shaping algorithm used in nuclear spectroscopy (including CZT detectors for PET imaging).
 
 The trapezoidal filter converts an exponentially-decaying detector pulse into a flat-top trapezoid whose height is proportional to the deposited energy.
 
-### Simulated Detector Pulse
+::: {.grid}
+::: {.g-col-md-4 .g-col-12}
+
+**Detector Pulse**
 
 ```{ojs}
-viewof pulse_rise = Inputs.range([1, 20], {value: 5, step: 1, label: "Pulse rise time (samples)"})
-viewof pulse_decay = Inputs.range([20, 500], {value: 150, step: 5, label: "Decay time constant (samples)"})
+viewof pulse_rise = Inputs.range([1, 20], {value: 5, step: 1, label: "Rise time (samples)"})
+viewof pulse_decay = Inputs.range([20, 500], {value: 150, step: 5, label: "Decay time τ (samples)"})
 viewof pulse_amplitude = Inputs.range([0.1, 5], {value: 2.0, step: 0.1, label: "Pulse amplitude"})
 viewof pulse_noise = Inputs.range([0, 0.3], {value: 0.05, step: 0.01, label: "Noise level"})
 ```
 
+**Trapezoidal Filter**
+
 ```{ojs}
+viewof trap_k = Inputs.range([2, 60], {value: 20, step: 1, label: "Rise time k (samples)"})
+viewof trap_l = Inputs.range([0, 40], {value: 10, step: 1, label: "Flat-top l (samples)"})
+viewof trap_M = Inputs.range([10, 500], {value: 150, step: 5, label: "Decay constant M"})
+```
+
+:::
+::: {.g-col-md-8 .g-col-12}
+
+```{ojs}
+Plot.plot({
+  height: 320,
+  color: {domain: ["Raw pulse", "Shaped (trapezoid)"], range: ["#4a6b7a", "#c0392b"]},
+  x: {label: "Sample"},
+  y: {label: "Amplitude (normalized)"},
+  marks: [
+    Plot.ruleY([0], {stroke: "#ddd"}),
+    Plot.line(pulse_plot_data, {x: "i", y: "v", stroke: "series", strokeWidth: 1.8})
+  ]
+})
+```
+
+:::
+:::
+
+A good trapezoidal shaping result shows a flat top at the pulse peak --- the height of that flat region corresponds to the energy deposited in the detector. Adjust **k** (rise time) to match the charge collection time, **l** (flat top) for ballistic deficit compensation, and **M** to match the preamplifier decay constant.
+
+```{ojs}
+//| output: false
 Npulse = 512
 ```
 
 ```{ojs}
+//| output: false
 detector_pulse = {
   const arr = new Float64Array(Npulse);
   const onset = 50; // pulse starts at sample 50
@@ -322,15 +380,8 @@ detector_pulse = {
 }
 ```
 
-### Trapezoidal Filter Parameters
-
 ```{ojs}
-viewof trap_k = Inputs.range([2, 60], {value: 20, step: 1, label: "Rise time k (samples)"})
-viewof trap_l = Inputs.range([0, 40], {value: 10, step: 1, label: "Flat-top l (samples)"})
-viewof trap_M = Inputs.range([10, 500], {value: 150, step: 5, label: "Decay constant M"})
-```
-
-```{ojs}
+//| output: false
 trapezoidal_output = {
   const x = detector_pulse;
   const n = x.length;
@@ -365,6 +416,7 @@ trapezoidal_output = {
 ```
 
 ```{ojs}
+//| output: false
 pulse_plot_data = {
   const raw = Array.from(detector_pulse, (v, i) => ({i, v, series: "Raw pulse"}));
   // Normalize shaped output for visual comparison
@@ -376,31 +428,40 @@ pulse_plot_data = {
 }
 ```
 
-```{ojs}
-Plot.plot({
-  width: 800,
-  height: 320,
-  color: {domain: ["Raw pulse", "Shaped (trapezoid)"], range: ["#4a6b7a", "#c0392b"]},
-  x: {label: "Sample"},
-  y: {label: "Amplitude (normalized)"},
-  marks: [
-    Plot.ruleY([0], {stroke: "#ddd"}),
-    Plot.line(pulse_plot_data, {x: "i", y: "v", stroke: "series", strokeWidth: 1.8})
-  ]
-})
-```
-
-A good trapezoidal shaping result shows a flat top at the pulse peak --- the height of that flat region corresponds to the energy deposited in the detector. Adjust **k** (rise time) to match the charge collection time, **l** (flat top) for ballistic deficit compensation, and **M** to match the preamplifier decay constant.
-
 ## CR-RC Shaping
 
 A simpler analog pulse-shaping approach: a high-pass CR stage (differentiator) followed by a low-pass RC stage (integrator). This produces a semi-Gaussian peaked output from the exponential detector pulse.
+
+::: {.grid}
+::: {.g-col-md-4 .g-col-12}
 
 ```{ojs}
 viewof crrc_tau = Inputs.range([2, 80], {value: 20, step: 1, label: "Shaping time τ (samples)"})
 ```
 
+:::
+::: {.g-col-md-8 .g-col-12}
+
 ```{ojs}
+Plot.plot({
+  height: 300,
+  color: {domain: ["Raw pulse", "CR-RC shaped"], range: ["#4a6b7a", "#27ae60"]},
+  x: {label: "Sample"},
+  y: {label: "Amplitude (normalized)"},
+  marks: [
+    Plot.ruleY([0], {stroke: "#ddd"}),
+    Plot.line(crrc_plot_data, {x: "i", y: "v", stroke: "series", strokeWidth: 1.8})
+  ]
+})
+```
+
+:::
+:::
+
+The shaping time **τ** controls the trade-off between noise filtering (larger τ) and pulse pile-up rejection (smaller τ). In CZT detectors for PET, typical shaping times are tuned to the charge collection characteristics of the crystal.
+
+```{ojs}
+//| output: false
 crrc_output = {
   const x = detector_pulse;
   const n = x.length;
@@ -425,6 +486,7 @@ crrc_output = {
 ```
 
 ```{ojs}
+//| output: false
 crrc_plot_data = {
   const raw = Array.from(detector_pulse, (v, i) => ({i, v, series: "Raw pulse"}));
   const maxC = Math.max(...crrc_output.map(Math.abs));
@@ -434,22 +496,6 @@ crrc_plot_data = {
   return [...raw, ...shaped];
 }
 ```
-
-```{ojs}
-Plot.plot({
-  width: 800,
-  height: 300,
-  color: {domain: ["Raw pulse", "CR-RC shaped"], range: ["#4a6b7a", "#27ae60"]},
-  x: {label: "Sample"},
-  y: {label: "Amplitude (normalized)"},
-  marks: [
-    Plot.ruleY([0], {stroke: "#ddd"}),
-    Plot.line(crrc_plot_data, {x: "i", y: "v", stroke: "series", strokeWidth: 1.8})
-  ]
-})
-```
-
-The shaping time **τ** controls the trade-off between noise filtering (larger τ) and pulse pile-up rejection (smaller τ). In CZT detectors for PET, typical shaping times are tuned to the charge collection characteristics of the crystal.
 
 ---
 
