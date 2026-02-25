@@ -42,5 +42,3 @@ format:
       dark: darkly
     css: styles.css
     toc: true
-    include-after-body:
-      text: '<script src="/scroll.js"></script>'
