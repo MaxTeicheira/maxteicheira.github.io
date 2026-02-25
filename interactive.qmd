@@ -2,6 +2,10 @@
 title: "Interactive Signal Processing"
 execute:
   echo: false
+format:
+  html:
+    grid:
+      body-width: 1100px
 ---
 
 An interactive workbench for exploring signal generation, spectral analysis, digital filtering, and nuclear detector pulse shaping --- all running in the browser.
@@ -9,9 +13,6 @@ An interactive workbench for exploring signal generation, spectral analysis, dig
 ## Signal Generator
 
 Build a test signal from two sine components plus Gaussian noise.
-
-::: {.grid}
-::: {.g-col-md-4 .g-col-12}
 
 ```{ojs}
 viewof sig_freq1 = Inputs.range([1, 50], {value: 5, step: 1, label: "Frequency 1 (Hz)"})
@@ -22,12 +23,10 @@ viewof noise_amp = Inputs.range([0, 1], {value: 0.2, step: 0.02, label: "Noise a
 viewof sample_rate = Inputs.range([256, 4096], {value: 1024, step: 256, label: "Sample rate"})
 ```
 
-:::
-::: {.g-col-md-8 .g-col-12}
-
 ```{ojs}
 Plot.plot({
-  height: 280,
+  width: 1060,
+  height: 300,
   x: {label: "Time (ms)"},
   y: {label: "Amplitude", domain: [-4, 4]},
   marks: [
@@ -36,9 +35,6 @@ Plot.plot({
   ]
 })
 ```
-
-:::
-:::
 
 ```{ojs}
 //| output: false
@@ -80,7 +76,8 @@ Magnitude spectrum computed via FFT. Peaks appear at the frequencies set by the 
 
 ```{ojs}
 Plot.plot({
-  height: 280,
+  width: 1060,
+  height: 300,
   x: {label: "Frequency (Hz)"},
   y: {label: "Magnitude (dB)", domain: [-60, 10]},
   marks: [
@@ -151,20 +148,15 @@ spectrum = {
 
 Apply a Butterworth IIR filter to the signal. Compare the original and filtered signals in both time and frequency domains.
 
-::: {.grid}
-::: {.g-col-md-4 .g-col-12}
-
 ```{ojs}
 viewof filter_type = Inputs.select(["lowpass", "highpass", "bandpass"], {value: "lowpass", label: "Filter type"})
 viewof filter_cutoff = Inputs.range([1, 200], {value: 15, step: 1, label: "Cutoff frequency (Hz)"})
 viewof filter_order = Inputs.range([1, 8], {value: 4, step: 1, label: "Filter order"})
 ```
 
-:::
-::: {.g-col-md-8 .g-col-12}
-
 ```{ojs}
 Plot.plot({
+  width: 1060,
   height: 300,
   color: {domain: ["Original", "Filtered"], range: ["#b0c4d080", "#c0392b"]},
   x: {label: "Time (ms)"},
@@ -176,12 +168,10 @@ Plot.plot({
 })
 ```
 
-:::
-:::
-
 ```{ojs}
 Plot.plot({
-  height: 280,
+  width: 1060,
+  height: 300,
   color: {domain: ["Original", "Filtered"], range: ["#b0c4d080", "#c0392b"]},
   x: {label: "Frequency (Hz)"},
   y: {label: "Magnitude (dB)", domain: [-60, 10]},
@@ -316,9 +306,6 @@ Simulates a radiation detector charge pulse and applies the **Jordanov-Knoll tra
 
 The trapezoidal filter converts an exponentially-decaying detector pulse into a flat-top trapezoid whose height is proportional to the deposited energy.
 
-::: {.grid}
-::: {.g-col-md-4 .g-col-12}
-
 **Detector Pulse**
 
 ```{ojs}
@@ -336,11 +323,9 @@ viewof trap_l = Inputs.range([0, 40], {value: 10, step: 1, label: "Flat-top l (s
 viewof trap_M = Inputs.range([10, 500], {value: 150, step: 5, label: "Decay constant M"})
 ```
 
-:::
-::: {.g-col-md-8 .g-col-12}
-
 ```{ojs}
 Plot.plot({
+  width: 1060,
   height: 320,
   color: {domain: ["Raw pulse", "Shaped (trapezoid)"], range: ["#4a6b7a", "#c0392b"]},
   x: {label: "Sample"},
@@ -351,9 +336,6 @@ Plot.plot({
   ]
 })
 ```
-
-:::
-:::
 
 A good trapezoidal shaping result shows a flat top at the pulse peak --- the height of that flat region corresponds to the energy deposited in the detector. Adjust **k** (rise time) to match the charge collection time, **l** (flat top) for ballistic deficit compensation, and **M** to match the preamplifier decay constant.
 
@@ -432,18 +414,13 @@ pulse_plot_data = {
 
 A simpler analog pulse-shaping approach: a high-pass CR stage (differentiator) followed by a low-pass RC stage (integrator). This produces a semi-Gaussian peaked output from the exponential detector pulse.
 
-::: {.grid}
-::: {.g-col-md-4 .g-col-12}
-
 ```{ojs}
 viewof crrc_tau = Inputs.range([2, 80], {value: 20, step: 1, label: "Shaping time τ (samples)"})
 ```
 
-:::
-::: {.g-col-md-8 .g-col-12}
-
 ```{ojs}
 Plot.plot({
+  width: 1060,
   height: 300,
   color: {domain: ["Raw pulse", "CR-RC shaped"], range: ["#4a6b7a", "#27ae60"]},
   x: {label: "Sample"},
@@ -454,9 +431,6 @@ Plot.plot({
   ]
 })
 ```
-
-:::
-:::
 
 The shaping time **τ** controls the trade-off between noise filtering (larger τ) and pulse pile-up rejection (smaller τ). In CZT detectors for PET, typical shaping times are tuned to the charge collection characteristics of the crystal.
 
