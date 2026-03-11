@@ -1,0 +1,32 @@
+---
+title: "GATE Monte Carlo Detector Simulation"
+description: "Distributed Monte Carlo simulation of Cs-137 gamma rays through a tungsten collimator onto a CZT detector using OpenGATE 10"
+author: "Max Teicheira"
+date: "3/11/2026"
+categories:
+  - Simulation
+  - Research
+---
+
+## Overview
+
+A Monte Carlo simulation modeling Cs-137 gamma rays passing through a tungsten slit collimator onto a CdZnTe (CZT) semiconductor detector, built with [OpenGATE 10](https://opengate-python.readthedocs.io/) (GEANT4).
+
+**Source code:** [github.com/MaxTeicheiraUCSC/gate_sim](https://github.com/MaxTeicheiraUCSC/gate_sim)
+
+## Geometry
+
+- **Source:** Cs-137 point source
+- **Collimator:** 50 mm tungsten with 0.2 mm slit
+- **Detector:** 5 × 40 × 40 mm CZT semiconductor
+
+## Features
+
+- **Physics modeling** -- energy deposits, per-event summation, energy resolution blurring (2% FWHM), and phase space recording
+- **Distributed execution** -- built for SLURM cluster environments with parallel job submission
+- **Real-time monitoring** -- Slack integration for progress reporting
+- **Analysis pipeline** -- post-processing tools for merging results, energy spectrum analysis, hit mapping, and 3D geometry visualization
+
+## Outputs
+
+The simulation produces ROOT files containing detector hits, summed energies, blurred spectra, and phase space data, along with analysis visualizations including energy histograms, hit maps, and 3D trajectory plots.
